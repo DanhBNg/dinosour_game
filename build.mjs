@@ -1,0 +1,11 @@
+import {build} from 'esbuild';
+import {mkdir,copyFile,rm,cp} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+import {resolve,dirname} from 'node:path';
+const root=dirname(fileURLToPath(import.meta.url)),out=resolve(root,'dist');
+await rm(out,{recursive:true,force:true});
+await mkdir(out,{recursive:true});
+await build({entryPoints:[root+'/src/app.js'],bundle:true,minify:true,format:'esm',outfile:out+'/app.js'});
+for(const f of ['index.html','style.css'])await copyFile(root+'/src/'+f,out+'/'+f);
+await cp(root+'/assets',out+'/assets',{recursive:true});
+console.log('Built '+out);
