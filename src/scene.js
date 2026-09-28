@@ -3,30 +3,47 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {createTrexModel} from './creatures/model.js';
 import {createImportedCreature} from './creatures/imported-creature.js';
 import {createPterosaurModel} from './creatures/pterosaur.js';
-import {catalog} from './catalog.js';
-export function createHabitat(host){
- const renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;host.prepend(renderer.domElement);
- const scene=new T.Scene();scene.background=new T.Color('#8cae9b');scene.fog=new T.Fog('#8cae9b',22,70);
- const camera=new T.PerspectiveCamera(37,1,.1,100),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=3;controls.maxDistance=24;controls.maxPolarAngle=Math.PI*.48;
- scene.add(new T.HemisphereLight(0xe4f3df,0x38432a,2.5));const sun=new T.DirectionalLight(0xffe3a8,3.5);sun.position.set(-6,12,9);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-12,right:12,top:12,bottom:-12});sun.shadow.normalBias=.025;scene.add(sun);const rim=new T.DirectionalLight(0xc4efff,1);rim.position.set(7,5,-6);scene.add(rim);
- const terrain=new T.Group();scene.add(terrain);const mat=(c)=>new T.MeshStandardMaterial({color:c,roughness:.95});
- const ground=new T.Mesh(new T.CircleGeometry(65,80),mat('#77845d'));ground.rotation.x=-Math.PI/2;ground.position.y=-.05;ground.receiveShadow=true;scene.add(ground);
- let seed=7;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
- const leafMat=mat('#355d43'),trunkMat=mat('#605c40'),rockMat=mat('#667d70');
- for(let i=0;i<65;i++){const angle=random()*Math.PI*2,r=10+random()*24,x=Math.cos(angle)*r,z=Math.sin(angle)*r;if(z>3&&Math.abs(x)<12)continue;const tree=new T.Group(),h=3+random()*5;const trunk=new T.Mesh(new T.CylinderGeometry(.14,.4,h,6),trunkMat);trunk.position.y=h/2;tree.add(trunk);for(let j=0;j<3;j++){const leaves=new T.Mesh(new T.IcosahedronGeometry(1.5+random(),1),leafMat);leaves.scale.set(1,1.3,1);leaves.position.set((random()-.5)*2,h-1+j*.6,(random()-.5)*2);tree.add(leaves);}tree.position.set(x,0,z);terrain.add(tree);}
- for(let i=0;i<30;i++){const r=8+random()*20,a=random()*Math.PI*2;const rock=new T.Mesh(new T.DodecahedronGeometry(.5+random()*2,0),rockMat);rock.position.set(Math.cos(a)*r,.2,Math.sin(a)*r);rock.scale.y=.5+random();terrain.add(rock);}
- for(let i=0;i<10;i++){const peak=new T.Mesh(new T.ConeGeometry(5+random()*5,8+random()*12,5),mat(i%2?'#68857c':'#58756b'));peak.position.set((i-5)*8,3,-30-random()*10);terrain.add(peak);}
- const water=new T.Mesh(new T.CircleGeometry(60,64),new T.MeshStandardMaterial({color:'#257f87',roughness:.28,metalness:.2,transparent:true,opacity:.9}));water.rotation.x=-Math.PI/2;water.position.y=-.01;water.visible=false;scene.add(water);
- const bubbles=new T.Group();for(let i=0;i<40;i++){const b=new T.Mesh(new T.SphereGeometry(.025+random()*.04,6,5),new T.MeshBasicMaterial({color:'#addeda',transparent:true,opacity:.5}));b.position.set((random()-.5)*25,random()*8,(random()-.5)*25);bubbles.add(b);}bubbles.visible=false;scene.add(bubbles);
- const cache=new Map();let root,mixer,current,id,finished=null,holdTimer=0,active=true,token=0;
- function resolveClip(key){const r=root.userData.sculptRuntime;if(key==='@first'||!key)return Object.values(r.animations)[0];if(key[0]==='@')key=cache.get(id).definitions[key.slice(1)]?.[0];return r.animations[key];}
- function play(key,{intro=false}={}){if(!root)return false;const clip=resolveClip(key);if(!clip)return false;finished=null;holdTimer=0;const next=mixer.clipAction(clip);next.reset();next.enabled=true;next.setEffectiveWeight(1);next.setEffectiveTimeScale(1);next.setLoop(T.LoopOnce,1);next.clampWhenFinished=true;if(current&&current!==next){current.fadeOut(.22);next.fadeIn(.22);}next.play();current=next;mixer.timeScale=1.25;if(intro)finished=()=>{const rest=resolveClip(catalog[id].rest);if(rest&&rest!==clip){const a=mixer.clipAction(rest);a.reset().setLoop(T.LoopRepeat,Infinity).play();current.crossFadeTo(a,.5,false);current=a;holdTimer=.7;}else mixer.timeScale=0;};return true;}
- function fit(){if(!root)return;camera.aspect=host.clientWidth/Math.max(1,host.clientHeight);camera.updateProjectionMatrix();root.updateMatrixWorld(true);const box=new T.Box3().setFromObject(root,true),center=box.getCenter(new T.Vector3());const dir=new T.Vector3(1,.22,1).normalize(),right=new T.Vector3(dir.z,0,-dir.x).normalize(),up=new T.Vector3().crossVectors(dir,right).normalize(),tan=Math.tan(camera.fov*Math.PI/360);let distance=3;const margin=document.body.dataset.screen==='intro'?.9:.79;for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const v=new T.Vector3(x,y,z).sub(center);distance=Math.max(distance,v.dot(dir)+Math.max(Math.abs(v.dot(right))/(tan*camera.aspect*margin),Math.abs(v.dot(up))/(tan*margin)));}controls.target.copy(center);camera.position.copy(center).addScaledVector(dir,distance);controls.update();}
+import {ACTIONS,createTrexActions} from './creatures/actions.js';
+import {createHuntActions} from './creatures/hunt.js';
+import {createEntranceCamera} from './creatures/entrance-camera.js';
 
- async function load(next){const request=++token;id=next;if(!cache.has(next)){let result;if(next==='trex'){const response=await fetch('assets/trex.json');if(!response.ok)throw Error('Không tải được T-Rex');result={model:await createTrexModel({data:await response.json(),diffuse:'assets/diffuse.jpeg',normal:'assets/normal.jpeg'})};}else{const response=await fetch('assets/'+next+'.glb');if(!response.ok)throw Error('Không tải được model');const bytes=new Uint8Array(await response.arrayBuffer());result=next==='ptero'?await createPterosaurModel(bytes):await createImportedCreature(bytes,next);}cache.set(next,result);}if(request!==token)return false;
-  if(root){scene.remove(root);mixer.stopAllAction();mixer.uncacheRoot(root.userData.sculptRuntime.source);}root=cache.get(next).model;scene.add(root);mixer=new T.AnimationMixer(root.userData.sculptRuntime.source);current=null;mixer.addEventListener('finished',()=>{const callback=finished;finished=null;callback?.();});const marine=next==='mosa';terrain.visible=false;water.visible=false;bubbles.visible=false;ground.material.color.set('#d6dbce');scene.background.set('#d6dbce');scene.fog.color.copy(scene.background);play(catalog[next].intro,{intro:true});mixer.update(.01);fit();return true;
+export function createHabitat(host){
+ const renderer=new T.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.2;host.prepend(renderer.domElement);
+ const scene=new T.Scene();
+ const camera=new T.PerspectiveCamera(37,1,.05,150),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=2;controls.maxDistance=32;controls.maxPolarAngle=Math.PI*.49;
+ const entrance=createEntranceCamera(camera,controls,host);
+ scene.add(new T.HemisphereLight(0xe4f3df,0x38432a,2.5));
+ const sun=new T.DirectionalLight(0xffe3c3,3.2);sun.position.set(6,12,9);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-14,right:14,top:14,bottom:-14});sun.shadow.normalBias=.025;scene.add(sun);
+ const rim=new T.DirectionalLight(0xc4efff,1.5);rim.position.set(-7,5,-6);scene.add(rim);
+ const floor=new T.Mesh(new T.PlaneGeometry(150,150),new T.ShadowMaterial({opacity:.18}));floor.rotation.x=-Math.PI/2;floor.position.y=-.04;floor.receiveShadow=true;scene.add(floor);
+ const ring=new T.Group();scene.add(ring);
+ const cache=new Map();let root,actions,id,active=false,token=0,definitions={},lastKey=null;
+ async function obtain(next){
+  if(cache.has(next))return cache.get(next);
+  let result;
+  if(next==='trex'){
+   const response=await fetch('assets/trex.json');if(!response.ok)throw Error('Không tải được T-Rex');
+   result={model:await createTrexModel({data:await response.json(),diffuse:'assets/diffuse.jpeg',normal:'assets/normal.jpeg'}),definitions:{...ACTIONS,hunt:[null,'Săn đuổi','Đuổi và bắt Deinonychus.',false]}};
+  }else{
+   const response=await fetch('assets/'+next+'.glb');if(!response.ok)throw Error('Không tải được model');
+   const bytes=new Uint8Array(await response.arrayBuffer());result=next==='ptero'?await createPterosaurModel(bytes):await createImportedCreature(bytes,next);
+  }
+  cache.set(next,result);return result;
  }
- const resize=()=>{const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);};new ResizeObserver(resize).observe(host);
- let last=performance.now();function frame(now){requestAnimationFrame(frame);const dt=Math.min((now-last)/1000,.05);last=now;if(!active||document.hidden)return;if(mixer){mixer.update(dt);if(holdTimer>0){holdTimer-=dt;if(holdTimer<=0)mixer.timeScale=0;}}controls.update();if(bubbles.visible)for(const b of bubbles.children){b.position.y+=dt*.25;if(b.position.y>8)b.position.y=0;}renderer.render(scene,camera);}requestAnimationFrame(frame);
- return {load,play,fit,resolveClip,setActive(value){active=value;},stop(){if(mixer)mixer.timeScale=0;finished=null;holdTimer=0;},get state(){return {id,held:mixer?.timeScale===0,time:current?.time,clip:current?.getClip().name};}};
+ async function load(next){
+  const request=++token;const result=await obtain(next);const prey=next==='trex'?(await obtain('deino')).model:null;
+  if(request!==token)return false;
+  entrance.cancel();actions?.dispose();if(root)scene.remove(root);
+  id=next;root=result.model;definitions=result.definitions;scene.add(root);
+  const base=createTrexActions(root,next==='trex'?ACTIONS:definitions);base.setSpeed(1.25);
+  actions=prey?createHuntActions({base,predator:root,prey,scene,camera,controls,floor,ring}):base;
+  actions.update(.001);actions.pause();lastKey=null;resize();return true;
+ }
+ function play(key){if(!actions)return false;entrance.cancel();const ok=actions.play(key);if(ok){lastKey=key;if(!actions.hunt?.active)fit(false);}return ok;}
+ function stop(){if(actions&&!actions.state.paused)actions.pause();}
+ function fit(animate=true){if(!root)return;if(actions?.hunt?.active){actions.frameView('hero');return;}entrance.frame(root,id,{animate});}
+ function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();if(root&&active)fit(false);}
+ new ResizeObserver(resize).observe(host);
+ let last=performance.now();function frame(now){requestAnimationFrame(frame);const dt=Math.min((now-last)/1000,.05);last=now;if(!active||document.hidden)return;actions?.update(dt);entrance.update(dt);controls.update();renderer.render(scene,camera);}requestAnimationFrame(frame);
+ return {load,play,fit,stop,setActive(value){active=value;if(!value){entrance.cancel();stop();}},get definitions(){return definitions;},get state(){return {id,held:actions?.state.paused,clip:lastKey,cameraMoving:entrance.active,camera:camera.position.toArray()};}};
 }

@@ -16,4 +16,4 @@ catalog.ptero.lessons.push(lesson('Sit','Ngồi','The pterosaur sits on the grou
 catalog.mosa.lessons.push(lesson('Lunge','Lao tới','The Mosasaurus lunges forward.','Mosasaurus lao về phía trước.','@strike'));
 catalog.deino.lessons.push(lesson('Look','Nhìn','The Deinonychus looks around.','Deinonychus nhìn xung quanh.','original-6'));
 for(const id of ids)catalog[id].info=SPECIES[id];
-export function matchesWord(text,word){return text.toLowerCase().replace(/[^a-z\s]/g,' ').split(/\s+/).includes(word.toLowerCase());}
+export function matchesWord(text,word){const normalize=s=>s.toLowerCase().replace(/[^a-z\s]/g,' ').replace(/\s+/g,' ').trim();return (' '+normalize(text)+' ').includes(' '+normalize(word)+' ');}

@@ -16,5 +16,5 @@ try{
   }
   assert.equal(await p.locator('#completion').isVisible(),true);await p.locator('.brand').click();
  }
- assert.equal(total,24);console.log('PASS all 24 sentence lessons trigger animations and per-species completion; isolated words rejected in sentence mode');
+ assert.equal(total,50);console.log('PASS all 50 sentence lessons trigger animations and per-species completion; isolated words rejected in sentence mode');
 }finally{await b.close();}

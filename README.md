@@ -26,10 +26,10 @@ Future pushes to main trigger deployments when connected to Vercel. Use the HTTP
 - src/: UI, scene controller and vocabulary lessons.
 - src/creatures/: model factories and sourced species information.
 - assets/: six models, textures, preview MP4s and generated island artwork.
-- docs/island-art.md: image generation provenance.
+- docs/island-art.md and docs/HERO_ASSETS.md: image generation provenance and prompts.
 - dist/: generated static website, excluded from Git.
 
-The map unlocks every species and shows video cards. The introduction plays a one-shot animation and holds a resting pose on a neutral studio floor. Learning includes 24 action lessons, English audio, Vietnamese meanings, examples, word/sentence recognition and listening quizzes. Progress is stored in this browser only.
+The map unlocks every species and shows video cards. The introduction shows a static, model-referenced cinematic portrait for each species. Learning opens with an eased close-up orbit/dolly and includes all 50 runtime action lessons, English audio, Vietnamese meanings, examples, word/sentence recognition and listening quizzes. Progress is stored in this browser only.
 
 ## Verification
 
