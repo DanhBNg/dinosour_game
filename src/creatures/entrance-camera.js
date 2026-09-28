@@ -4,7 +4,7 @@ import {Box3, Vector3, Spherical, MathUtils} from 'three';
 export function createEntranceCamera(camera, controls, host, {reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches}={}) {
   let transition=null;
   const directions={trex:[1.3,.5,3],stego:[2.5,.65,1.4],trice:[2.5,.65,1.4],deino:[-1,.25,1.7],mosa:[1,.24,1.7],ptero:[1,.22,1.8]};
-  function frame(root,id,{animate=true}={}) {
+  function frame(root,id,{animate=true,distanceScale=1}={}) {
     root.updateMatrixWorld(true);
     root.traverse(node=>node.skeleton?.update());
     const box=new Box3().setFromObject(root,true),center=box.getCenter(new Vector3());
@@ -27,6 +27,7 @@ export function createEntranceCamera(camera, controls, host, {reducedMotion=()=>
       const head=root.userData.sculptRuntime?.nodes?.jt_Head_C;
       if(head){const focus=head.getWorldPosition(new Vector3());focus.y=center.y;center.lerp(focus,.3);}
     }
+    distance*=distanceScale;
     center.y-=size.y*.045;
     const final=new Spherical().setFromVector3(direction.multiplyScalar(distance));
     controls.target.copy(center);

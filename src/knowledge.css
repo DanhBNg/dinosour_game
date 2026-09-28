@@ -1,0 +1,76 @@
+/* T-Rex exploration hub: 3D + six visual facts. */
+#topic-hub{position:absolute;z-index:7;left:6%;right:6%;bottom:24px;display:flex;justify-content:center;align-items:center;gap:26px;padding:36px 16px 12px;overflow-x:auto;scrollbar-width:thin}
+.topic-orb{--orb-hue:100;flex:0 0 94px;width:94px;height:94px;border-radius:50%;border:6px solid #987043;box-shadow:0 0 0 2px #e0b777,inset 0 0 0 3px #ffe6a6,0 7px 16px #0008;background:radial-gradient(circle at 35% 25%,hsl(var(--orb-hue) 85% 60%),hsl(var(--orb-hue) 80% 28%));display:grid;place-items:center;transition:transform .2s,box-shadow .2s}
+.topic-orb svg{width:60px;height:60px;fill:#fff5c8;stroke:#fff5c8;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}.topic-orb svg ellipse,.topic-orb svg circle{fill:none}.topic-orb svg path{fill:none;stroke-width:4}.topic-orb:hover,.topic-orb[aria-pressed=true]{transform:translateY(-7px);box-shadow:0 0 0 3px #ffe6a6,0 0 26px #ffdc74,inset 0 0 0 3px #ffebaa}.topic-orb:focus-visible{outline:4px solid white;outline-offset:5px}#topic-hub .action-orb{flex-basis:94px;width:94px;height:94px;margin-right:14px}
+body[data-screen=learn] #experience{grid-template-rows:minmax(0,1fr) 194px;grid-template-columns:minmax(0,1fr) 290px;background:#777149}body[data-screen=learn] #stage{background:#9a916b url('assets/knowledge/trex/habitat.png') center/cover no-repeat}body[data-screen=learn] #stage canvas{height:100%;width:100%}
+#action-tray{grid-column:1/-1;position:relative;display:flex;align-items:center;gap:8px;padding:0 16px;background:linear-gradient(130deg,#344536f5,#26392ef2);border:1px solid #edda9d77;border-radius:28px 28px 0 0;box-shadow:0 -8px 28px #10291640;backdrop-filter:blur(18px);z-index:6;min-width:0}
+#action-tray #action-picker{position:relative;inset:auto;flex:1;min-width:0;padding:42px 38px 20px;min-height:0;height:190px;gap:42px;justify-content:flex-start}#action-tray .round{width:48px;height:48px;font-size:30px;background:#d9c48a;color:#233726;border:0}#action-tray .round:disabled{opacity:.3;cursor:default}#action-picker .action-orb{flex-basis:100px;width:100px;height:100px}#action-picker .action-orb[aria-pressed=true]:before{box-shadow:inset 0 0 0 3px #fff2be,0 0 0 4px #ffe395,0 0 26px #ffe08a}
+#learn-panel{background:#e9e4d1ed;padding:28px 20px 12px}#learn-panel #current-action{display:none}#learn-panel h1{font-size:38px}.learning-controls .round{width:56px;height:56px}
+#knowledge-view{position:absolute;inset:0;isolation:isolate;overflow:hidden;background:#173523}#knowledge-view:before{content:'';position:absolute;inset:-15px;background:var(--topic-art) center/cover;filter:blur(18px) brightness(.6);z-index:-1}#knowledge-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 1s;z-index:0}
+body[data-screen=topic] #experience{display:block;padding:0;height:100dvh;min-height:650px;background:#173523}body[data-screen=topic] #stage,body[data-screen=topic] #hero-image,body[data-screen=topic] .species-navigation{display:none}body[data-screen=topic] #topic-hub{bottom:16px}body[data-screen=topic] #topic-hub .topic-orb,body[data-screen=topic] #topic-hub .action-orb{width:78px;height:78px;flex-basis:78px}
+#knowledge-view[data-topic=size] #knowledge-image,#knowledge-view[data-topic=growth] #knowledge-image{object-fit:contain;height:calc(100% - 100px);top:20px}#knowledge-view[data-topic=range] #knowledge-image{object-fit:contain;background:#001a29}
+#topic-options{position:absolute;top:22px;left:50%;transform:translateX(-50%);display:flex;gap:14px;padding:12px 18px;border-radius:26px;border:1px solid #f6e2a68c;background:#283c36d9;backdrop-filter:blur(14px);z-index:3}#topic-options button{width:76px;height:76px;border:2px solid #dbca9d;border-radius:50%;background:#718a6b;color:#fff7d8;overflow:hidden;padding:0;box-shadow:0 3px 12px #0006}#topic-options button[aria-pressed=true]{border:4px solid #ffe193;box-shadow:0 0 20px #ffe697}#topic-options svg{width:54px;height:54px;fill:none;stroke:currentColor;stroke-width:3}.growth-thumbnail{display:block;width:100%;height:100%;background-image:url('assets/knowledge/trex/growth.png');background-size:450% auto}
+#knowledge-view[data-focus] #knowledge-image{transform:scale(1.08);transform-origin:var(--focus-x) 65%}#topic-notes{position:absolute;z-index:5;bottom:164px;left:24px;width:min(430px,calc(100% - 48px));color:#fff6d7}#topic-notes summary{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:#233e31e8;cursor:pointer;list-style:none;font-size:24px}#topic-notes[open]{padding:16px;border-radius:16px;background:#1e352ef5}#topic-notes p,#topic-notes a{font-size:12px;line-height:1.65}#size-guide{position:absolute;bottom:26%;left:40%;font-size:28px;background:#24382ee8;color:#ffefb8;padding:12px 24px;border-radius:16px;border:1px solid #ddc789;z-index:2}#size-guide[data-measure=human]{left:9%;bottom:28%}
+@media(max-width:900px){#topic-hub{gap:18px;left:2%;right:2%;justify-content:flex-start}.topic-orb{width:82px;height:82px;flex-basis:82px}.topic-orb svg{width:50px;height:50px}#topic-hub .action-orb{width:82px;height:82px;flex-basis:82px}body[data-screen=learn] #experience{grid-template-columns:minmax(0,1fr) 250px}}
+@media(max-width:650px){#topic-hub{display:grid;grid-template-columns:repeat(4,64px);justify-content:center;gap:16px 20px;overflow:visible;padding:24px 6px 8px;bottom:18px}.topic-orb,#topic-hub .action-orb{width:64px;height:64px;flex-basis:64px;margin:0;border-width:4px}.topic-orb svg{width:40px;height:40px}#topic-hub .action-orb{grid-row:1/3;height:112px;width:72px;align-self:center}#topic-hub .action-orb:before{inset:20px 0}#topic-hub .action-orb .action-sprite{top:-18%}body[data-screen=learn] #experience{display:flex;min-height:100dvh;height:auto}body[data-screen=learn] #stage{height:53dvh;min-height:330px}#learn-panel{min-height:200px;width:100%;border-radius:22px 22px 0 0;margin-top:-10px;padding:20px 18px 12px}#learn-panel h1{font-size:32px;margin:0 0 12px}#action-tray{width:100%;padding:0 7px;gap:0;border-radius:0}#action-tray #action-picker{height:165px;padding:38px 30px 12px;gap:36px}#action-picker .action-orb{width:80px;height:80px;flex-basis:80px}#action-tray .round{width:36px;height:44px;font-size:28px;border-radius:14px}body[data-screen=topic] #experience{min-height:700px}body[data-screen=topic] #topic-hub .topic-orb,body[data-screen=topic] #topic-hub .action-orb{width:64px;height:64px;flex-basis:64px}body[data-screen=topic] #topic-hub .action-orb{height:112px;width:72px}#topic-options{top:82px;gap:10px;padding:9px 12px}#topic-options button{width:58px;height:58px}#topic-options svg{width:40px;height:40px}#knowledge-view[data-topic=size] #knowledge-image,#knowledge-view[data-topic=growth] #knowledge-image{top:110px;height:calc(100% - 310px)}#topic-notes{bottom:210px;left:16px}#size-guide{bottom:34%;left:36%;font-size:20px;padding:8px 12px}#size-guide[data-measure=human]{left:5%;bottom:34%}#knowledge-view[data-topic=diet] #knowledge-image{object-fit:contain;height:70%;top:8%}#knowledge-view[data-topic=footprints] #knowledge-image{object-position:64% center}}
+@media(prefers-reduced-motion:reduce){#knowledge-image,.topic-orb{transition:none}}
+
+@media(max-width:650px){#topic-hub .action-orb,body[data-screen=topic] #topic-hub .action-orb{width:72px;height:72px}#topic-hub .action-orb:before{inset:0}#topic-hub .action-orb .action-sprite{top:-56%}}
+
+/* Glass UI over continuous scenery. */
+#topic-hub{background:rgba(24,45,34,.18);border:1px solid #fff6;border-radius:28px;backdrop-filter:blur(7px);box-shadow:0 8px 30px #0003;padding:28px 24px 18px}
+.topic-orb{padding:0;overflow:hidden;background:#65543a}.picture-icon{width:100%;height:100%;border-radius:50%;background-image:url('assets/knowledge/trex/icons.png');background-size:300% 200%;display:block}
+.picture-habitat{background-position:0 0}.picture-diet{background-position:50% 0}.picture-footprints{background-position:100% 0}.picture-size{background-position:0 100%}.picture-growth{background-position:50% 100%}.picture-range{background-position:100% 100%}
+body[data-screen=learn] #experience{display:block;position:relative;background:#7d805e url('assets/knowledge/trex/habitat.png') center/cover;height:100dvh;min-height:700px}
+body[data-screen=learn] #stage{position:absolute;inset:0 260px 145px 0;height:auto;background:transparent;min-height:0}
+#learn-panel{position:absolute;right:20px;top:100px;bottom:190px;width:250px;min-height:0;margin:0;border:1px solid #fff7;border-radius:24px;background:#f6f3dc36;backdrop-filter:blur(9px);box-shadow:0 10px 30px #0002;color:#fff8df;justify-content:center}
+#learn-panel h1{font-size:32px;text-shadow:0 2px 6px #0008}#lesson-details p,#lesson-details label,#learn-panel #feedback{color:#fff8e5}#lesson-details{border-color:#fff6}#lesson-details[open]{background:#183c2c99;border-radius:14px;padding:12px}
+#action-tray{position:absolute;bottom:12px;left:2%;right:2%;width:auto;height:164px;border-radius:26px;background:#25453326;backdrop-filter:blur(7px);border:1px solid #fff7;box-shadow:0 8px 30px #0003}
+#action-tray #action-picker{height:160px;padding-top:32px;padding-bottom:16px}#action-picker .action-orb{width:88px;height:88px;flex-basis:88px}
+#knowledge-overlay{position:absolute;inset:0;z-index:2;pointer-events:none}.growth-arrow{position:absolute;color:#ffe28b;font-size:64px;filter:drop-shadow(0 2px 5px #7a470a);top:58%}.a1{left:14%}.a2{left:34%;top:49%}.a3{left:60%;top:35%}
+.range-marker{position:absolute;left:39%;top:29%;width:90px;height:90px;border:4px solid #ffe78e;border-radius:50%;background:#1b654664;box-shadow:0 0 0 15px #ffe88720,0 0 25px #ffe887}.range-marker img{width:100%;height:100%;object-fit:contain}
+.dimension-labels{position:absolute;left:5%;right:5%;bottom:22%;display:grid;grid-template-columns:52% 10% 18% 20%;gap:4px}.dimension-labels span{background:#203c2dbf;border:1px solid #fff8;border-radius:10px;color:#fff4cc;font-size:14px;padding:8px;text-align:center}
+@media(max-width:650px){#topic-hub{left:10px;right:10px;padding:20px 10px 14px;gap:14px 18px}body[data-screen=learn] #experience{display:block;min-height:850px;height:100dvh}body[data-screen=learn] #stage{inset:0 0 380px;height:auto;min-height:0}#learn-panel{left:16px;right:16px;top:auto;bottom:175px;width:auto;height:190px;padding:12px;overflow:auto;justify-content:flex-start}#learn-panel h1{font-size:28px;margin:0 0 8px}.learning-controls .round{width:48px;height:48px}#lesson-details{padding-top:4px}#feedback{min-height:14px}#action-tray{left:10px;right:10px;bottom:10px;width:auto;height:152px}#action-tray #action-picker{height:150px}#action-picker .action-orb{width:76px;height:76px;flex-basis:76px}.growth-arrow{font-size:32px;top:52%}.a2{top:47%}.a3{top:42%}.range-marker{left:31%;top:35%;width:65px;height:65px}.dimension-labels{bottom:35%;left:3%;right:3%}.dimension-labels span{font-size:9px;padding:5px}#size-guide{display:none}}
+
+/* Compact listening card and picture-based comparison selectors. */
+@media(min-width:651px){#learn-panel{top:50%;bottom:auto;transform:translateY(-58%);height:auto;max-height:60vh;overflow:auto;padding:24px 18px;justify-content:flex-start}}
+#topic-hub,#action-tray{backdrop-filter:blur(3px);background:#193b2620}
+#learn-panel{backdrop-filter:blur(4px);background:#213e3438}
+#size-guide{display:none}
+.size-thumbnail{display:block;width:100%;height:100%;background-image:url('assets/knowledge/trex/size-v2.png');background-repeat:no-repeat;background-size:440% auto}
+.size-thumb-0{background-position:18% 60%;background-size:200% auto}.size-thumb-1{background-position:45% 72%;background-size:900% auto}.size-thumb-2{background-position:65% 69%}.size-thumb-3{background-position:99% 63%}
+.dimension-labels{left:9%;right:9%;grid-template-columns:43% 10% 23% 24%}.dimension-labels .selected{border-color:#ffe17b;background:#6d521ac9;box-shadow:0 0 10px #ffe17b88}
+.range-marker{background:#295a3f url("assets/knowledge/trex/icons.png") 0 0/300% 200%;overflow:hidden}.range-marker img{display:none}
+
+/* Give the mobile feet room to reach the foreground ground plane. */
+@media(max-width:650px){body[data-screen=learn] #stage{bottom:280px}}
+
+/* Illustrated controls, generous framing and anchored measurements. */
+#topic-hub{overflow-y:hidden;scrollbar-width:none}#topic-hub::-webkit-scrollbar{display:none}
+.picture-icon{background-image:url('assets/knowledge/trex/icons-v3.png')}
+#knowledge-image{object-fit:contain!important;top:0!important;height:100%!important;transform:none!important}
+#knowledge-view[data-topic=size] #knowledge-image{object-fit:cover!important}
+#knowledge-view[data-topic=size] #topic-options{display:none}
+.dimension-labels{inset:0;display:block;pointer-events:none}
+.dimension-labels button{position:absolute;transform:translate(-50%,-100%);pointer-events:auto;padding:6px 10px;background:#183e34b8;border:1px solid #fff9;border-radius:12px;color:#fff7db;font-size:13px;line-height:1.4;white-space:nowrap;box-shadow:0 3px 10px #0003}
+.dimension-labels button.selected{background:#886522dc;border-color:#ffe28c}
+.growth-thumbnail{background-image:url('assets/knowledge/trex/growth-v3.png')}
+@media(max-width:650px){#knowledge-view[data-topic=size] #knowledge-image{object-fit:contain!important}.dimension-labels button{font-size:10px;padding:4px 6px}}
+
+/* Each pictorial control owns a separate image; no sprite boundaries. */
+.picture-icon{background-size:contain;background-position:center;background-repeat:no-repeat}
+.picture-habitat{background-image:url('assets/knowledge/trex/icon-habitat.png')}
+.picture-diet{background-image:url('assets/knowledge/trex/icon-diet.png')}
+.picture-footprints{background-image:url('assets/knowledge/trex/icon-footprints.png')}
+.picture-size{background-image:url('assets/knowledge/trex/icon-size.png')}
+.picture-growth{background-image:url('assets/knowledge/trex/icon-growth.png')}
+.picture-range{background-image:url('assets/knowledge/trex/icon-range.png')}
+@media(min-width:651px){#knowledge-image{object-fit:cover!important}}
+#knowledge-view[data-topic=growth] #topic-options{display:none}
+.growth-region{position:absolute;pointer-events:auto;border:2px solid transparent;border-radius:48%;background:transparent;transition:background .25s,box-shadow .25s,border-color .25s;padding:0}
+.growth-region[aria-pressed=true]{border-color:#ffe37c;background:#ffdc611c;box-shadow:0 0 28px #ffe27e99,inset 0 0 35px #ffdf7066}
+.growth-pick{position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#1c4235b8;color:#fff2ac;border:1px solid #ffe7a4;font-size:22px}
+.growth-region[aria-pressed=true] .growth-pick{background:#b78227;color:white}
+.growth-region:focus-visible{outline:3px solid white}
+
+@media(max-aspect-ratio:19/10){#knowledge-view[data-topic=growth] #knowledge-image{object-fit:contain!important}}

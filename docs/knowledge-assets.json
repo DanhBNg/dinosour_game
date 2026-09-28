@@ -1,0 +1,36 @@
+{
+  "paths": {
+    "habitat": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-83bb0301-b7fc-42ef-9cf2-7d41c4f31537.png",
+    "diet": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-af57d978-cef1-445c-9ac0-ecc912906849.png",
+    "footprints": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-0583387c-6fec-427d-aa85-f50693c6b747.png",
+    "size": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-146100ce-0e5d-4a5b-9919-d6fbe6bb5f54.png",
+    "growth": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-3d6caab2-4d8e-4ce3-a5d5-0bd9f2ce2bba.png",
+    "range": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-928b77e0-6a6a-4a43-8bca-ac71cac9f659.png"
+  },
+  "prompts": [
+    [
+      "habitat",
+      "An expansive late Maastrichtian western North American wooded river floodplain, lush ferns, flowering shrubs, scattered conifers, meandering shallow river, soft distant low hills. Empty wide clearing in lower central half for compositing a 3D dinosaur on a sandstone pedestal later. NO animals, NO platform. Camera at child eye height, horizon at upper third. Warm morning light from upper left, muted olive ochre ground, blue atmospheric depth. Not a tropical volcano fantasy."
+    ],
+    [
+      "diet",
+      "A powerful adult brown Tyrannosaurus rex at left observing a healthy living Triceratops and hadrosaur grazing far away at right in a wooded river floodplain. A calm wildlife natural history scene explaining predator and prey, no attack, no wounds, no blood. T-rex heavy head, two small fingers, horizontal body and balancing tail. Full silhouettes visible. Warm sunlight."
+    ],
+    [
+      "footprints",
+      "Close low angled view of several large three-toed theropod footprints pressed into damp riverbank mud leading away toward the right, with the three-toed foot and lower leg of a brown T-rex at upper right. Three broad forward pointing toes with claw impressions. Fine realistic sediment ripples, ferns, shallow water reflections. Footprints are the central focus. Not a fossil claim, illustrative natural history reconstruction."
+    ],
+    [
+      "size",
+      "A natural history museum comparison tableau, exact side profile of an adult brown Tyrannosaurus rex, entire animal from nose to tail visible, horizontally balanced torso, two tiny arms, beside a separate neutral adult human figure. Both stand at precisely the same ground baseline, perpendicular orthographic-like view without perspective scaling. Dinosaur total nose-tail length 12 metres, hip height about 3.6 metres; human height 1.7 metres. Adult human clearly much smaller but NOT toy-sized. No attack, no interaction. Warm prehistoric forest clearing, muted misty background. No rulers or words, the website adds them."
+    ],
+    [
+      "growth",
+      "Wide scientific educational panoramic illustration of FOUR separated life stages of Tyrannosaurus arranged left to right on a shared woodland floor: a small unbroken pale generic dinosaur egg; a small fluffy hatchling with slender limbs; a slim long-legged juvenile with narrow muzzle; a large robust brown adult with heavy skull and powerful thighs. Clear gaps between four subjects, progressively larger, all fully visible. Plausible reconstructed baby, not a miniature chunky adult, not cartoon oversized head. Warm woodland sunrise. No arrows, labels, frames or text."
+    ],
+    [
+      "range",
+      "Beautiful educational globe viewed from space with North America centrally prominent and recognizable correct continental outline, blue ocean, green North America and tan western mountain ranges, Greenland at upper right, South America bottom right. Western North America softly highlighted amber, rest natural green. Starless dark teal background, soft atmosphere glow. Modern geographic locator illustration, not a Cretaceous paleomap. No dinosaur, no text, no labels."
+    ]
+  ]
+}

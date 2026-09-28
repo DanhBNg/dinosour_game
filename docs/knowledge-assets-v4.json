@@ -1,0 +1,59 @@
+{
+  "tool": "built-in imagegen",
+  "icons": {
+    "habitat": "two fresh green leaves on a stem, emerald background",
+    "diet": "red steak with white bone, crimson background",
+    "footprints": "one broad three-toed brown dinosaur footprint, amber background",
+    "size": "cute full-body blue T rex beside a yellow measuring ruler, blue background",
+    "growth": "baby green dinosaur emerging from pale cracked egg, purple background",
+    "range": "blue turquoise planet Earth with green continents, teal background"
+  },
+  "panoramas": {
+    "habitat": "One full-body brown T rex walking beside a river in prehistoric wooded floodplain. Dinosaur occupies left-middle 45 percent image width, fully visible including tail, head and feet, all subject between y25 and y72 percent. Right half river and trees. Realistic natural history illustration.",
+    "diet": "Brown full-body T rex on left chasing a smaller Edmontosaurus on right, running rightward, clear gap, dust under feet, no blood. Both entire silhouettes including tails inside frame, subjects between y28 and y70 percent. Forest riverbank, cinematic natural history.",
+    "footprints": "Overhead realistic muddy ground, one clear deep broad THREE-TOED dinosaur footprint in center, whole imprint visible. Dinosaur three-toed foot at upper right, small human shoeprint left for scale. The whole footprint occupies middle 45 percent of width and 55 percent height. Rich mud textures.",
+    "growth": "Four sequential distinct stages in forest clearing: speckled egg at x14 percent, full-body small brown T rex hatchling at x34 percent, slender juvenile at x55 percent, full-body adult T rex at x80 percent. All feet at y70 percent. Adult head at y25 percent. Exactly THREE golden curved arrows between stages, pointing right. Leave gaps between subjects. Full tails visible, educational natural history illustration."
+  },
+  "files": [
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-1e302abb-29ba-4cc3-90e8-497f80931668.png",
+      "assets/knowledge/trex/icon-habitat.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-2ed1bf82-7446-4bfc-8600-3cb8c69887e3.png",
+      "assets/knowledge/trex/icon-diet.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-6313aad9-3d44-4754-947d-8bac95a51013.png",
+      "assets/knowledge/trex/icon-footprints.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-ef7da080-6edd-496b-b7c6-0afb1665c537.png",
+      "assets/knowledge/trex/icon-size.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-8a68b213-b911-4da4-b420-7e5b31142096.png",
+      "assets/knowledge/trex/icon-growth.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-9fdc63cc-105a-48cf-9e56-c7f997acd100.png",
+      "assets/knowledge/trex/icon-range.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-18f4a54e-e23c-4f96-9fd3-2af129475d9d.png",
+      "assets/knowledge/trex/habitat-wide.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-233f9276-bc43-49b5-847f-1b1d9fa3d1d5.png",
+      "assets/knowledge/trex/diet-wide.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-6a90c1c8-f588-4bc6-a533-aadfbff9faa8.png",
+      "assets/knowledge/trex/footprints-wide.png"
+    ],
+    [
+      "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-8b95b7d9-2005-4372-a32a-63d47634ef64.png",
+      "assets/knowledge/trex/growth-wide.png"
+    ]
+  ]
+}

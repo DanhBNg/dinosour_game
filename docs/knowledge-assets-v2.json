@@ -1,0 +1,26 @@
+{
+  "tool": "built-in imagegen",
+  "purpose": "T-Rex visual knowledge revision",
+  "assets": [
+    [
+      "habitat-v2",
+      "A large full-body brown T rex calmly walking through a lush wooded river floodplain, clearly visible in the center left, fern foreground, river to right, conifers and flowering trees in background. Warm realistic cinematic daylight. Teaching habitat, dinosaur and landscape equally readable."
+    ],
+    [
+      "diet-v2",
+      "Very clear side-view wildlife action scene of a brown T rex at LEFT running after a smaller Edmontosaurus at RIGHT, both moving to the RIGHT along a riverbank. Clear gap between predator and prey, all limbs and silhouettes readable, dust under feet, dynamic but plausible balanced anatomy, no blood no wounds no biting. Educational predator chasing prey."
+    ],
+    [
+      "footprints-v2",
+      "Scientific natural history close-up, looking almost straight down on wet brown mud. One enormous CLEAR THREE-TOED dinosaur footprint dominates center: three separate thick toe depressions diverging like a bird foot, central toe longest, left and right toes splayed, rounded heel pad. Deep sunken imprint with unmistakable claw marks, not a leaf, no leaf veins. A three-toed brown theropod foot at upper right beside the imprint explains what made it. Small human shoe print at bottom left for visual comparison. Realistic sediment and light."
+    ],
+    [
+      "size-v2",
+      "Museum-quality size comparison illustration, side profiles of a Tyrannosaurus rex, adult human, off-road SUV and African elephant, all full bodies on SAME baseline, orthographic side view, no perspective size distortion. T rex nose to tail 12 metres long and hip 3.7m high; human 1.7m tall; SUV 4.5m long and 1.8m high; elephant shoulder 3m high and body about 5m long. T rex on left takes 53 percent canvas width, human and car in middle and elephant on right. Spacious wide panorama, realistic textured animals and car, forest backdrop subdued. NO labels no arrows no rulers. Comparison exhibit not coexisting animals."
+    ],
+    [
+      "icons",
+      "A single sprite sheet of SIX square photorealistic miniature educational illustrations in an exact 3 columns by 2 rows grid, equal cells no gutters no text no borders. Each cell fills its square and uses large simple subject composition easy to recognize at 80 pixels. Top-left: brown T rex among green trees and river, habitat. Top-middle: close-up red raw meat steak with white bone, food. Top-right: deep three-toed dinosaur foot impression in brown mud, three broad toes, not a leaf. Bottom-left: full side silhouette textured brown T rex next to much smaller human and ruler, size. Bottom-middle: cute plausible baby theropod emerging from cracked pale eggshell, birth. Bottom-right: blue green Earth with North America facing viewer, location. Rich natural colors, realistic three dimensional lighting, no symbols or line drawings. Output square."
+    ]
+  ]
+}

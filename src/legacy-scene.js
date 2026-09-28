@@ -3,10 +3,8 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {createTrexModel} from './creatures/model.js';
 import {createImportedCreature} from './creatures/imported-creature.js';
 import {createPterosaurModel} from './creatures/pterosaur.js';
-import {ACTIONS,createTrexActions} from './creatures/actions.js';
+import {ACTIONS,createTrexActions} from './creatures/legacy-actions.js';
 import {createHuntActions} from './creatures/hunt.js';
-import {CUSTOM} from './creatures/authored-motion.js';
-import {ROAR_SWEEP_DURATION} from './creatures/roar-sweep.js';
 import {createEntranceCamera} from './creatures/entrance-camera.js';
 
 export function createHabitat(host){
@@ -19,7 +17,6 @@ export function createHabitat(host){
  const rim=new T.DirectionalLight(0xc4efff,1.5);rim.position.set(-7,5,-6);scene.add(rim);
  const floor=new T.Mesh(new T.PlaneGeometry(150,150),new T.ShadowMaterial({opacity:.18}));floor.rotation.x=-Math.PI/2;floor.position.y=-.04;floor.receiveShadow=true;scene.add(floor);
  const ring=new T.Group();scene.add(ring);
-
  const cache=new Map();let root,actions,id,active=false,token=0,definitions={},lastKey=null;
  async function obtain(next){
   if(cache.has(next))return cache.get(next);
@@ -38,37 +35,15 @@ export function createHabitat(host){
   if(request!==token)return false;
   entrance.cancel();actions?.dispose();if(root)scene.remove(root);
   id=next;root=result.model;definitions=result.definitions;scene.add(root);
-  const base=createTrexActions(root,next==='trex'?ACTIONS:definitions,{once:false});base.setSpeed(1.25);
+  const base=createTrexActions(root,next==='trex'?ACTIONS:definitions);base.setSpeed(1.25);
   actions=prey?createHuntActions({base,predator:root,prey,scene,camera,controls,floor,ring}):base;
   actions.update(.001);actions.pause();lastKey=null;resize();return true;
  }
  function play(key){if(!actions)return false;entrance.cancel();const ok=actions.play(key);if(ok){lastKey=key;if(!actions.hunt?.active)fit(false);}return ok;}
  function stop(){if(actions&&!actions.state.paused)actions.pause();}
- function fit(animate=true){if(!root)return;if(actions?.hunt?.active){actions.frameView('hero');return;}entrance.frame(root,id,{animate,distanceScale:1.16});}
- function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.clearViewOffset();if(matchMedia("(max-width:650px)").matches)camera.setViewOffset(w,h,0,-h*.07,w,h);camera.updateProjectionMatrix();if(root&&active)fit(false);}
+ function fit(animate=true){if(!root)return;if(actions?.hunt?.active){actions.frameView('hero');return;}entrance.frame(root,id,{animate});}
+ function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();if(root&&active)fit(false);}
  new ResizeObserver(resize).observe(host);
- let last=performance.now();function frame(now){requestAnimationFrame(frame);const dt=Math.min((now-last)/1000,.05);last=now;if(!active||document.hidden)return;actions?.update(dt);if(actions?.hunt?.active&&actions.progress>=1&&!actions.state.paused)actions.play("hunt");entrance.update(dt);controls.update();renderer.render(scene,camera);}requestAnimationFrame(frame);
-
- // Build-time alpha sprite generation, using the same model and action controller.
- async function captureAction(key){
-  active=false;entrance.cancel();floor.visible=false;ring.visible=false;renderer.setPixelRatio(1);renderer.setSize(256,256);camera.aspect=1;camera.updateProjectionMatrix();
-  const animation=root.userData.sculptRuntime.animations[definitions[key]?.[0]];
-  const duration=key==='hunt'?10:key==='roarSweep'?ROAR_SWEEP_DURATION:CUSTOM[key]?.duration||animation?.duration||6;
-  const step=duration/1.25/48;
-  function advance(){let left=step;while(left>0){const dt=Math.min(.025,left);actions.update(dt);left-=dt;}root.updateMatrixWorld(true);root.traverse(n=>n.skeleton?.update());}
-  const box=new T.Box3();actions.mixer.stopAllAction();actions.play(key);
-  for(let i=0;i<48;i++){advance();box.union(new T.Box3().setFromObject(root,true));}
-  const target=box.getCenter(new T.Vector3()),size=box.getSize(new T.Vector3());
-  const direction=new T.Vector3(...({trex:[1.3,.5,3],stego:[2.5,.65,1.4],trice:[2.5,.65,1.4],deino:[-1,.25,1.7],mosa:[1,.24,1.7],ptero:[1,.22,1.8]}[id]));
-  const distance=Math.max(size.x,size.y,size.z)*1.65;
-  const atlas=document.createElement('canvas');atlas.width=2048;atlas.height=1536;const ctx=atlas.getContext('2d');
-  actions.mixer.stopAllAction();actions.play(key);
-  for(let i=0;i<48;i++){
-   advance();if(key!=='hunt'){controls.target.copy(target);camera.position.copy(target).add(direction.clone().normalize().multiplyScalar(distance));controls.update();}
-   renderer.render(scene,camera);ctx.drawImage(renderer.domElement,(i%8)*256,Math.floor(i/8)*256,256,256);
-  }
-  stop();floor.visible=true;ring.visible=true;resize();return atlas.toDataURL('image/webp',.88);
- }
-
- return {captureAction,load,play,fit,stop,setActive(value){active=value;if(!value){entrance.cancel();stop();}},get definitions(){return definitions;},get state(){return {id,held:actions?.state.paused,clip:lastKey,pedestal:false,cameraMoving:entrance.active,camera:camera.position.toArray()};}};
+ let last=performance.now();function frame(now){requestAnimationFrame(frame);const dt=Math.min((now-last)/1000,.05);last=now;if(!active||document.hidden)return;actions?.update(dt);entrance.update(dt);controls.update();renderer.render(scene,camera);}requestAnimationFrame(frame);
+ return {load,play,fit,stop,setActive(value){active=value;if(!value){entrance.cancel();stop();}},get definitions(){return definitions;},get state(){return {id,held:actions?.state.paused,clip:lastKey,cameraMoving:entrance.active,camera:camera.position.toArray()};}};
 }
