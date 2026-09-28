@@ -1,0 +1,54 @@
+{
+  "tool": "image_gen built-in",
+  "style": "One square cinematic natural history underwater portrait per animal; single centered subject occupying central 65 percent; safe circular crop; no border, text, collage or UI.",
+  "entries": [
+    {
+      "id": "seal",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-44b224b5-2337-4125-8842-b495803c5ed1.png"
+    },
+    {
+      "id": "squid",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-1923f163-271b-4cc8-b7f4-e45029ebbe91.png"
+    },
+    {
+      "id": "isopod",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-b7ad4ec3-7fa0-4a2d-a259-da23bd56198a.png"
+    },
+    {
+      "id": "hawksbill",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-70a08310-ad3e-426a-a59c-12d2be0146ba.png"
+    },
+    {
+      "id": "whale",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-bdfc53fe-5e36-4bb5-bf7e-5d319dc0a4e6.png"
+    },
+    {
+      "id": "loggerhead",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-7e130737-b52e-4cee-a2ca-168e01096640.png"
+    },
+    {
+      "id": "tuna",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-094b0f30-1fcf-47af-83fe-57d447ba97e5.png"
+    },
+    {
+      "id": "slug",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-d3f512c8-b9de-49ed-80c4-08a1ba4b36e3.png"
+    },
+    {
+      "id": "shark",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-de506ac1-876f-42f8-a6e9-0ccca1f5a712.png"
+    },
+    {
+      "id": "paShark",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-8ea89e14-01b9-483f-bb60-fbc9ab7d8279.png"
+    },
+    {
+      "id": "fish",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-450f15a0-7c6e-4a6f-8486-8e4920337ed0.png"
+    },
+    {
+      "id": "amplectobelua",
+      "path": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-f668267b-95f5-479d-83a6-2eaeb5a0b98b.png"
+    }
+  ]
+}

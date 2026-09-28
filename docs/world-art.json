@@ -1,0 +1,13 @@
+{
+  "generator": "built-in imagegen",
+  "assets": {
+    "home": "Animal World adventure archipelago with volcano prehistoric valley left, savanna, central rainforest, snowy mountains, ocean right, farm, misty ruins; no text or UI.",
+    "ocean": "Turquoise ocean archipelago map with lagoons, cliffs and deep trenches; no UI.",
+    "reef": "Empty tropical underwater reef, clear center and sandy floor.",
+    "deep": "Deep blue open water with rocky seabed.",
+    "coast": "Underwater rocky temperate coastline.",
+    "forest": "Prehistoric forest clearing with empty dirt foreground.",
+    "cliffs": "Coastal cliff ledge and open sky."
+  },
+  "composition": "16:9 cinematic illustration; captions, region controls and model rendering are HTML and Three.js layers."
+}

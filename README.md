@@ -1,48 +1,31 @@
-# Dino Island
+# Animal World
 
-Six-species 3D exploration and English-learning web demo.
+Web demo with a biome home map, prehistoric branch (6 models), ocean branch (12 unique supplied models), model introduction and looping animation viewer.
 
-## Run locally
+## Local
 
-```sh
-npm ci
-npm run build
-npm start
-```
+Run `npm ci`, `npm run build`, then `npm start`. Open http://127.0.0.1:4175.
 
-Open http://127.0.0.1:4175.
+## Routes
 
-## Deploy to Vercel from GitHub
+- `/`: Animal World, two available regions and five locked regions.
+- `/world/dinosaurs`, `/world/ocean`: species maps.
+- `/animal/trex`, `/animal/seal`: introduction.
+- `/animal/trex/actions/roar`: looping action.
+- `/animal/trex/topics/growth`: completed T-Rex illustrated knowledge.
 
-1. In Vercel, choose Add New > Project and import DanhBNg/dinosour_game.
-2. Keep Root Directory at the repository root (not dist).
-3. The root vercel.json configures: Framework Other, Install npm ci, Build npm run build, Output dist.
-4. Click Deploy. No environment variables or database are needed.
+Browser back/forward and direct refresh use History API and server fallbacks. Old index hash links migrate to clean routes. Knowledge topics for species other than T-Rex show unavailable feedback. The speech practice card is removed for all species.
 
-Future pushes to main trigger deployments when connected to Vercel. Use the HTTPS deployment URL for microphone support.
+## Assets and animation
 
-## Source
+`src/marine.js` maps each unique GLB/FBX to its supplied texture and environment. Original clips are retained. Great white shark has no original skeletal animation: its display motion is a small drift. Giant isopod has no rig/clip and currently provides a static observation action. These are not newly rigged locomotion cycles. Duplicate Copy archives are excluded. Generated environments and maps are in `assets/worlds`; model-based portraits and per-action alpha sprites are in `assets/portraits` and `assets/action-previews`.
 
-- src/: UI, scene controller and vocabulary lessons.
-- src/creatures/: model factories and sourced species information.
-- assets/: six models, textures, preview MP4s and generated island artwork.
-- docs/island-art.md and docs/HERO_ASSETS.md: image generation provenance and prompts.
-- dist/: generated static website, excluded from Git.
-
-The map unlocks every species and shows video cards. The introduction shows a static, model-referenced cinematic portrait for each species. Learning opens with an eased close-up orbit/dolly and includes all 50 runtime action lessons, English audio, Vietnamese meanings, examples, word/sentence recognition and listening quizzes. Progress is stored in this browser only.
+Run `node scripts/render-action-previews.mjs [species IDs]` after model changes, then rebuild. Some original assets are large (up to about 60 MB per model), so this is a demonstration build; models load on demand. FBX texture mappings are explicit in the manifest.
 
 ## Verification
 
-Run npm test with the local server running. Browser tests currently expect Google Chrome installed at C:/Program Files/Google/Chrome/Application/chrome.exe. Tests simulate speech recognition; real microphone behavior requires device testing.
+With the local server running, `npm test` verifies home/branch navigation, direct URLs, refresh, every action across 18 models and mobile layout. Tests use installed Google Chrome and Playwright. Earlier learning tests remain as historical files but are not part of the current no-speech-card workflow.
 
-Speech recognition requires a supported browser and microphone permission, and may use an online service. It checks recognized text, not pronunciation quality. Manual action playback remains available. Voice availability depends on the device. Models and animations are illustrative reconstructions. Pterosaurs and mosasaurs are identified separately from dinosaurs in the species information.
+## Vercel
 
-## T-Rex visual knowledge pilot
-
-Only T-Rex uses the new profile hub: one 3D entry and six illustrated topics. The 3D page has a static 2D habitat background with no pedestal, a compact translucent listening card, and all 12 actions in a transparent tray with scroll arrows. Other species keep the published legacy interface.
-
-Generated assets live in `assets/knowledge/trex/`. Prompts and built-in imagegen provenance: `docs/knowledge-assets.json`. Scientific sources are linked from each topic’s information button. Images are reconstructions; the size tableau is illustrative, growth details are uncertain, and the distribution image uses modern geography.
-
-Preview `/#intro/trex`, `/#topic/trex/growth`, or `/#learn/trex/roar`. The browser tests require `npm run build` and `npm start` on port 4175.
-
-The T-Rex hub uses six picture icons. Revised illustrations show habitat with the animal, a prey chase, a three-toed footprint, and human/SUV/elephant comparisons. Growth arrows and a North America marker provide context. Size figures distinguish nose-to-tail length from hip or shoulder height; AI illustrations are not precision scale drawings.
+Import DanhBNg/dinosour_game, root directory repository root. The supplied vercel.json uses `npm ci`, `npm run build`, output `dist`, and clean-route rewrites. No database or environment variables required. This update has not been pushed automatically.

@@ -7,3 +7,7 @@ artifacts/
 !.env.example
 .vercel/
 *.log
+
+# Source archives are already extracted for the runtime.
+assets/sea/**/*.zip
+assets/sea/**/*.rar
