@@ -33,3 +33,33 @@ Run `node tests/ocean-topics.mjs` for the shared icon, hidden-route, topic and r
 ## Vercel
 
 Import DanhBNg/dinosour_game, root directory repository root. The supplied vercel.json uses `npm ci`, `npm run build`, output `dist`, and clean-route rewrites. No database or environment variables required. This update has not been pushed automatically.
+
+### Nội dung loài — đợt bổ sung 29/09/2026
+
+- Sáu mục đã có nội dung riêng cho Stegosaurus, Triceratops, Deinonychus, Pterosaur và Mosasaurus; bảy model biển còn lại cũng đã có tranh riêng. T-Rex và rùa quản đồng giữ các bài minh họa chuyên biệt hiện có.
+- Dữ liệu: src/species-knowledge-data.js và src/marine-knowledge-data.js. Mỗi mục gồm nhãn ngắn, lời đọc, ghi chú và nguồn; có thể ghi đè nguồn theo từng mục.
+- Mỗi mục đã có tranh toàn cảnh riêng và vùng chạm để nghe, với ghi chú dài nằm trong nút ⓘ. Trang animation không thêm lại thẻ nghe/nói.
+- Seal, bobtail squid, tuna, Black_White_Fish chưa được xác định đến loài: thông tin ví dụ ghi rõ loài tham chiếu, không coi đó là định danh model. Pterosaur chỉ ở cấp nhóm; Amplectobelua đã tuyệt chủng. Không tự điền con số vào trường chưa đủ bằng chứng.
+- Kiểm tra: node tests/species-knowledge.mjs (cần server cổng 4175 và Chrome).
+
+### Dedicated illustrated knowledge scenes
+
+Stegosaurus and Triceratops now each have six independent panorama illustrations, image-aligned listening targets, growth-stage highlights, size comparison labels and fossil-region markers. On narrow screens, swipe the illustration horizontally or use the side arrows. These are educational reconstructions, with sources and limitations available through the information button. All six prehistoric entries now have dedicated picture lessons. All eight visible marine entries also have dedicated illustrated topics, including the existing loggerhead sample.
+
+Validation: `node tests/stego-exploration.mjs` and `node tests/trice-exploration.mjs` (local server on port 4175).
+
+### Complete prehistoric branch
+
+Deinonychus, Pterosaur and Mosasaurus each have six dedicated full-screen illustrations with listening/highlight targets. Pterosaur uses a wing-anatomy topic (the existing footprints URL remains compatible); Deinonychus has a two-toed track icon; Mosasaurus has swimming and live-young illustrations. Growth arrows are embedded in the artwork. Modern maps identify example fossil locations, not living distributions. Size comparisons state reference species and uncertainty; generated drawings are educational reconstructions rather than measured diagrams.
+
+Data: `src/remaining-dino-exploration.js`. Art and prompts: `assets/knowledge/{deino,ptero,mosa}/`, `docs/remaining-dino-art.json`. Verify with `node tests/remaining-dinos.mjs`, plus the Stegosaurus/Triceratops suites and `npm test`. Mobile panoramas support horizontal swiping.
+
+### Complete marine branch
+
+Seal, bobtail squid, tuna, Chromodoris annae, great white shark, bannerfish reference and Amplectobelua now each have six independent panoramas. Tap animals, food, body parts, growth stages and map markers to highlight and hear short explanations. The same six illustrated marine icons are shared; the existing loggerhead lessons remain intact. Narrow screens pan horizontally without stretching the artwork. No listening/speaking card is added to the animation page.
+
+Generic model names remain explicitly linked to reference species, not treated as confirmed identifications. Size cards distinguish example specimens, maximum lengths and human comparison dimensions. Slug and Amplectobelua do not receive invented numerical sizes. Amplectobelua growth uses a fossil investigation rather than an unsupported egg/larva cycle. Generated fossils, maps and anatomical illustrations are reconstructions, not specimen photographs or calibrated diagrams.
+
+Source data: `src/marine-knowledge-data.js`; artwork-aligned targets: `src/marine-exploration.js`; generated assets and prompts: `assets/knowledge/{seal,squid,tuna,slug,shark,fish,amplectobelua}/`, `docs/marine-knowledge-art.json`. Sources appear behind ⓘ in each scene.
+
+Verification with local server on port 4175: `node tests/marine-exploration.mjs` (42 topics at three viewport sizes), `node tests/illustrated-switching.mjs`, `node tests/ocean-topics.mjs`, and `npm test`. `tests/species-knowledge.mjs` forwards to the new marine suite, superseding the old generic-card checks.

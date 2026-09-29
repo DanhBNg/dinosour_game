@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-09-29",
+  "assets": [
+    {
+      "path": "assets/knowledge/shared/herbivore-food.png",
+      "tool": "image_gen",
+      "purpose": "Shared plant-food icon for Stegosaurus and Triceratops; symbolic vegetation, not an exact reconstructed diet.",
+      "prompt": "Create ONE standalone square game UI icon, 512x512. A polished tactile 3D illustrated prehistoric HERBIVORE FOOD icon for preschool children. Three clearly visible edible leafy fern fronds and a cut tender green twig together as a small bundle, with one curled young fern shoot. Saturated fresh lime green and emerald leaves, dimensional thick soft shapes, luminous highlights, detailed but simple recognizable food bundle. Center it entirely inside a round rich warm orange-red disk with generous 15% safe margin around subject; no border, no wood rim, no other icons, no text, no letters, no animals, no meat, no grid. Outside disk transparent if possible. One single icon in the image, not an atlas. Render as high quality family adventure game pictogram, more solid and realistic than line art."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-29",
+  "generator": "image_gen",
+  "reference": "assets/heroes/trice.png",
+  "description": "Six independently generated panoramic Triceratops educational scenes. Image coordinates reviewed individually. Scientific sources and reconstruction caveats in src/trice-exploration.js.",
+  "files": {
+    "habitat": "7ffc8f86-7fd9-4200-acc4-12d91f8e019d",
+    "diet": "5eb01ed2-dbb8-4833-9620-672ac23e1295",
+    "footprints": "7d1df969-ce63-425f-a356-af9d09b269dd",
+    "growth": "95db7c9b-0eaf-4f35-aaea-a8b3e6a50313",
+    "size": "941b88c4-eb74-4756-b841-855eade01bfd",
+    "range": "0ed4230d-7e0c-4ed0-9657-619349e6ea82"
+  },
+  "edgeRepairs": {
+    "habitat": "84b54302-beb6-4eb5-9a23-ba962a24841f",
+    "diet": "9d86d048-1c51-448d-ae90-bd4eb9c0f0e1",
+    "footprints": "3ea46b90-53a4-49c4-a742-492a2635ef46"
+  }
+}

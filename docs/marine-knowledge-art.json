@@ -1,0 +1,296 @@
+[
+  {
+    "id": "seal",
+    "key": "habitat",
+    "asset": "assets/knowledge/seal/habitat.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-b41c69f7-71ae-4c0c-9fa8-626c937b14c3.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic harbor seal, silver-grey spotted coat, round whiskered head, no external ear flaps, small front flippers and paired rear flippers. Habitat: animal resting x25-68% on wet coastal rock, ocean x74-96%, distant rocky shore left. Whole body above y70%, northern coast daylight."
+  },
+  {
+    "id": "seal",
+    "key": "diet",
+    "asset": "assets/knowledge/seal/diet.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-d762fb3c-b36d-4e77-b48c-bbf70f52b86f.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic harbor seal, silver-grey spotted coat, round whiskered head, no external ear flaps, small front flippers and paired rear flippers. Feeding: animal swimming x10-62%, pursuing separate silver fish x73-94%, underwater kelp forest, no injury."
+  },
+  {
+    "id": "seal",
+    "key": "movement",
+    "asset": "assets/knowledge/seal/movement.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-beb78588-d74a-4135-94cc-202e759df477.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic harbor seal, silver-grey spotted coat, round whiskered head, no external ear flaps, small front flippers and paired rear flippers. Movement: seal swimming horizontal sideview x10-89%, rear flippers right atx78%, front flipper x43%, two small golden curved arrows by rear flippers show propulsion, bubbles surface above."
+  },
+  {
+    "id": "seal",
+    "key": "size",
+    "asset": "assets/knowledge/seal/size.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-16c16546-a992-4322-a724-7f9d6dd685be.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic harbor seal, silver-grey spotted coat, round whiskered head, no external ear flaps, small front flippers and paired rear flippers. Size: full sideview seal length1.8m x8-52%, standing human height1.7m x68%, both same ground baseline y71%, strict scale: seal length approximately same pixel distance as human height. Coastal museum illustration, no touching."
+  },
+  {
+    "id": "amplectobelua",
+    "key": "diet",
+    "asset": "assets/knowledge/amplectobelua/diet.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-da1ac0bc-c88a-4e43-b406-3740c3a75b6b.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Scientifically plausible Amplectobelua symbrachiata Cambrian radiodont, slender segmented brownish body, many paired lateral swimming flaps, two stalked eyes, paired curved spiny frontal grasping appendages with large opposing spines, tail fan. No shrimp walking legs, no modern fish, no coral. Feeding: radiodont x10-65% holding frontal appendages toward separate small generic Cambrian trilobite x75-91% on muddy seabed, no injury, grasping spines clearly visible."
+  },
+  {
+    "id": "amplectobelua",
+    "key": "growth",
+    "asset": "assets/knowledge/amplectobelua/growth.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-53f7365f-89ec-490c-a211-0bdcbaf3ebf9.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Scientifically plausible Amplectobelua symbrachiata Cambrian radiodont, slender segmented brownish body, many paired lateral swimming flaps, two stalked eyes, paired curved spiny frontal grasping appendages with large opposing spines, tail fan. No shrimp walking legs, no modern fish, no coral. Growth: scientific fossil exploration scene, two separated fossils fragments on shale: clear spiny frontal appendage leftx15-40%, segmented swimming flap impression rightx59-85%, soft natural museum lighting, magnifying glass nearby. No egg or larva or invented complete life cycle, no questionmark text."
+  },
+  {
+    "id": "amplectobelua",
+    "key": "habitat",
+    "asset": "assets/knowledge/amplectobelua/habitat.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-ed92d03b-5c66-479b-a984-7b430824c9d5.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Scientifically plausible Amplectobelua symbrachiata Cambrian radiodont, slender segmented brownish body, many paired lateral swimming flaps, two stalked eyes, paired curved spiny frontal grasping appendages with large opposing spines, tail fan. No shrimp walking legs, no modern fish, no coral. Habitat: whole radiodont x20-77% swimming above Cambrian seabed with simple sponges and microbial mats, no modern coral, no kelp, no dinosaurs, teal murky water sunlight, whole body above70%."
+  },
+  {
+    "id": "amplectobelua",
+    "key": "movement",
+    "asset": "assets/knowledge/amplectobelua/movement.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-438aa92d-0bfa-4b14-bbb9-974c172eb30a.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Scientifically plausible Amplectobelua symbrachiata Cambrian radiodont, slender segmented brownish body, many paired lateral swimming flaps, two stalked eyes, paired curved spiny frontal grasping appendages with large opposing spines, tail fan. No shrimp walking legs, no modern fish, no coral. Movement: dorsal three-quarter view full radiodontx10-91%, paired lateral swimming flaps clearly distinguishable along both sides, subtle golden wave-like arrows beside body flaps, segmented trunk and tail fan, no walking legs."
+  },
+  {
+    "id": "amplectobelua",
+    "key": "range",
+    "asset": "assets/knowledge/amplectobelua/range.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-7b1bc3e4-e0ce-4ade-bc2d-90f41511b3e5.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic natural-history educational artwork with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Range: accurate satellite map East Asia, China large central, southeast Asia lower, golden soft small glow over Yunnan southwestern China near Chengjiang, modern geography, no labels no pins. Beautiful geographic panorama. CRITICAL: the map itself IS the entire image edge to edge. Absolutely no gallery, no museum room, no frames, no visitors, no people, no floor, no wall, no furniture. Pure flat satellite cartographic art."
+  },
+  {
+    "id": "amplectobelua",
+    "key": "size",
+    "asset": "assets/knowledge/amplectobelua/size.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-5e5233d8-5481-46a9-a79d-15a700ef953d.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Scientifically plausible Amplectobelua symbrachiata Cambrian radiodont, slender segmented brownish body, many paired lateral swimming flaps, two stalked eyes, paired curved spiny frontal grasping appendages with large opposing spines, tail fan. No shrimp walking legs, no modern fish, no coral. Size: museum macro overhead scene natural shale slab with plausible complete flattened radiodont fossil impression x15-70%, unnumbered metric ruler beside it atx75%, brush near bottom, no numbers no assumed fullbody length, crisp scientific rock texture."
+  },
+  {
+    "id": "fish",
+    "key": "diet",
+    "asset": "assets/knowledge/fish/diet.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-2c768e7c-652b-4350-8cd3-a4df94d7f8ae.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic natural-history educational artwork with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic longfin bannerfish Heniochus acuminatus reference, flattened white body crossed by two black diagonal bands, yellow rear dorsal fin and tail, long thin white dorsal streamer. Feeding: bannerfish x20-63% facing right, tiny realistic zooplankton visible as softly magnified small copepods atx75-92%, underwater reef background, no meat chunks, no plants as food. CRITICAL: exactly ONE bannerfish at x22-62%, facing RIGHT. At x76-93% show a clearly visible small grouping of magnified translucent copepods (tiny crustaceans with antennae), not more fish. No school of fish."
+  },
+  {
+    "id": "fish",
+    "key": "growth",
+    "asset": "assets/knowledge/fish/growth.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-c8d17b4b-cf7d-4ce2-9180-17e57859a8a0.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic longfin bannerfish Heniochus acuminatus reference, flattened white body crossed by two black diagonal bands, yellow rear dorsal fin and tail, long thin white dorsal streamer. Growth: two distinctly proportioned bannerfish: small juvenile x18-39%, larger adult x61-87%, one golden arrow between atx49%. No eggs or larvae invented, simply comparison of smaller and larger fish in reef scene."
+  },
+  {
+    "id": "fish",
+    "key": "habitat",
+    "asset": "assets/knowledge/fish/habitat.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-7bd5b799-22fa-41c8-a97a-6805d1613ddb.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic longfin bannerfish Heniochus acuminatus reference, flattened white body crossed by two black diagonal bands, yellow rear dorsal fin and tail, long thin white dorsal streamer. Habitat: entire bannerfish x28-68% facing viewer-left swimming beside tropical reef, coral atleftx8-20%, blue water right, long dorsal streamer entirely in frame."
+  },
+  {
+    "id": "fish",
+    "key": "movement",
+    "asset": "assets/knowledge/fish/movement.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-584745f3-8921-42ca-99fb-f2f162901921.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic longfin bannerfish Heniochus acuminatus reference, flattened white body crossed by two black diagonal bands, yellow rear dorsal fin and tail, long thin white dorsal streamer. Movement: sideview bannerfish x20-75%, long dorsal streamer and yellow tail visible, small gold curved arrows by pectoral fin x40% and tailx70%, entire fish including streamer."
+  },
+  {
+    "id": "fish",
+    "key": "range",
+    "asset": "assets/knowledge/fish/range.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-bda0fa51-015a-4616-8465-0a2402c8b73e.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic natural-history educational artwork with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Range: accurate satellite panorama centered Indian and western-central Pacific oceans, Africa left, India and Asia top, Australia lowerright, subtle turquoise glow in tropical ocean waters around reefs, no text or pins. CRITICAL: the map itself IS the entire image edge to edge. Absolutely no gallery, no museum room, no frames, no visitors, no people, no floor, no wall, no furniture. Pure flat satellite cartographic art."
+  },
+  {
+    "id": "fish",
+    "key": "size",
+    "asset": "assets/knowledge/fish/size.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-8be284dc-782c-41e4-9af9-b2dc6d187789.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic longfin bannerfish Heniochus acuminatus reference, flattened white body crossed by two black diagonal bands, yellow rear dorsal fin and tail, long thin white dorsal streamer. Size: sideview bannerfish x15-53%, total fishlength25cm excluding streamer, plain metric measuring rulerx12-88% beneath y65%, unnumbered ticks, no words. Fish headleft and tailright, entire dorsal streamer visible. Macro natural reef background."
+  },
+  {
+    "id": "seal",
+    "key": "growth",
+    "asset": "assets/knowledge/seal/growth.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-578b8b17-b6e5-4292-afea-c33e41acb551.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic harbor seal, silver-grey spotted coat, round whiskered head, no external ear flaps, small front flippers and paired rear flippers. Growth: three distinct stages: small seal pup x10-28%, juvenile x40-57%, adult x69-95%, increasing size, resting on shore baseline70%. Exactly two golden progression arrows x33% and63%. No eggs."
+  },
+  {
+    "id": "seal",
+    "key": "range",
+    "asset": "assets/knowledge/seal/range.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-e7bb0399-00ff-4eac-8e83-ce9448cd4ff7.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic natural-history educational artwork with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Range: modern satellite world map full continents above y75%, oceans deep blue. Highlight only northern Atlantic and northern Pacific coastlines with subtle turquoise-gold glow. No text no pins. CRITICAL: the map itself IS the entire image edge to edge. Absolutely no gallery, no museum room, no frames, no visitors, no people, no floor, no wall, no furniture. Pure flat satellite cartographic art."
+  },
+  {
+    "id": "shark",
+    "key": "diet",
+    "asset": "assets/knowledge/shark/diet.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-8c949c86-49f1-4f58-9770-cf7bddff6ce3.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic natural-history educational artwork with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic great white shark, grey back white belly, conical snout, five gill slits, triangular dorsal fin, two pectoral fins, unequal tail lobes. Feeding: great white x7-65% pursuing separate large fishx76-93%, fully underwater, no injury or blood, natural fishing behavior only. CRITICAL: exactly ONE shark, head points RIGHT, tail on LEFT, positioned left half x8-62%. Exactly ONE prey fish with a clearly different oval body and tiny forked tail, positioned right half x77-92%. Not a school of sharks."
+  },
+  {
+    "id": "shark",
+    "key": "growth",
+    "asset": "assets/knowledge/shark/growth.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-51954463-5b0c-4e53-af7f-f12f3be36d61.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic great white shark, grey back white belly, conical snout, five gill slits, triangular dorsal fin, two pectoral fins, unequal tail lobes. Growth: three distinct stages underwater: newborn sharkx7-26%, juvenilex38-59%, adultx68-96%, increasing size, exactly two small gold arrows x31%and63%. No eggs, no umbilical cords, no birth anatomy. Full bodies including tails."
+  },
+  {
+    "id": "shark",
+    "key": "habitat",
+    "asset": "assets/knowledge/shark/habitat.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-e7a13000-38b8-44dd-992e-2533b8beee2b.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic great white shark, grey back white belly, conical snout, five gill slits, triangular dorsal fin, two pectoral fins, unequal tail lobes. Habitat: full great white shark x18-79% swimming in temperate coastal blue water, rocky kelp ecosystem distant left, open oceanright, no tropical brightly colored corals."
+  },
+  {
+    "id": "shark",
+    "key": "movement",
+    "asset": "assets/knowledge/shark/movement.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-6539372c-8058-4b8a-be3a-eb3dec6fc4c6.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic great white shark, grey back white belly, conical snout, five gill slits, triangular dorsal fin, two pectoral fins, unequal tail lobes. Movement: full sideview shark headleft tailright x9-91% y20-63%, large tail visible x80%, pectoral fins clear, two small golden lateral movement arrows near tail, flow through gills not bubbles."
+  },
+  {
+    "id": "shark",
+    "key": "range",
+    "asset": "assets/knowledge/shark/range.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-8940e723-41cc-43a2-b1c8-152fa2d478af.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic natural-history educational artwork with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Range: accurate world satellite map, subtle golden-turquoise highlights on temperate and subtropical oceans, west/east North America, Mediterranean, South Africa, south Australia, New Zealand; no land glow no labels no pins. CRITICAL: the map itself IS the entire image edge to edge. Absolutely no gallery, no museum room, no frames, no visitors, no people, no floor, no wall, no furniture. Pure flat satellite cartographic art."
+  },
+  {
+    "id": "shark",
+    "key": "size",
+    "asset": "assets/knowledge/shark/size.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-50ff003f-c5dc-4f1e-9333-45ebac856271.png",
+    "prompt": "Create a 2.2:1 full-bleed educational size comparison underwater. Strict side-on ORTHOGRAPHIC equal scale. ONE great white shark length6.4m in upper row extends x10% to90%, center y28%, full tail and fins fit. Below TWO comparison objects: adult human swimming horizontally in wetsuit with BARE FEET NO FINS, length1.7m extends x12% to33.25%, center y62%; yellow research submersible length3m extends x48% to85.5%, center y62%. CRITICAL equal pixel scale: shark length is3.765 times human head-to-heel length and2.133 times submarine length. Diver must NOT be tiny. All whole objects fit above y76%. Natural blue ocean background, bottom22% calm seafloor, no aquarium architecture. Beautiful photorealistic educational illustration. No words no numbers no UI."
+  },
+  {
+    "id": "slug",
+    "key": "diet",
+    "asset": "assets/knowledge/slug/diet.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-4e4d4162-951f-49fa-9d58-72aa42f8a818.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Chromodoris annae nudibranch, blue speckled mantle bordered black and yellow-orange, orange rhinophores and orange rear gill plume, soft creeping foot. Feeding: macro nudibranch headleftx30%, mouth near encrusting sponge atx16%, bodyx30-78%, visible sponge texture distinct from coral and plants, entire scene underwater."
+  },
+  {
+    "id": "slug",
+    "key": "growth",
+    "asset": "assets/knowledge/slug/growth.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-4a455461-ad01-46dc-a805-70097e566bee.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Chromodoris annae nudibranch, blue speckled mantle bordered black and yellow-orange, orange rhinophores and orange rear gill plume, soft creeping foot. Growth: underwater rock showing characteristic spiral ribbon of nudibranch eggs leftx12-38%, separate adult Chromodoris annae rightx60-87%, no imagined larva, no progression arrow implying complete lifecycle, no hard-shell eggs. Wide natural panorama."
+  },
+  {
+    "id": "slug",
+    "key": "habitat",
+    "asset": "assets/knowledge/slug/habitat.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-a5cfff51-af97-4445-ba89-bbdbd4de59ed.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Chromodoris annae nudibranch, blue speckled mantle bordered black and yellow-orange, orange rhinophores and orange rear gill plume, soft creeping foot. Habitat: macro underwater nudibranch x25-69% crawling over rough coral-rubble rock, sponges at right x78-95%, blue water background, entire animal visible above70%."
+  },
+  {
+    "id": "slug",
+    "key": "movement",
+    "asset": "assets/knowledge/slug/movement.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-8c92acd9-e5bf-476d-8a0c-041a5422bebf.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Chromodoris annae nudibranch, blue speckled mantle bordered black and yellow-orange, orange rhinophores and orange rear gill plume, soft creeping foot. Movement: close low sideview nudibranch x15-83%, soft broad foot visible at base y57-65% touching rock; two small golden arrows along substrate indicate creeping, dorsal gill plume distinct. No fins."
+  },
+  {
+    "id": "slug",
+    "key": "range",
+    "asset": "assets/knowledge/slug/range.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-3ade55f9-339d-4091-a6c0-c02a4b96fd82.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic natural-history educational artwork with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Range: accurate satellite map western tropical Pacific, Philippines top center, Indonesia centerleft, Papua New Guinea centerright, northern Australia bottom, ocean highlighted around Philippines Indonesia PNG, no labels no pins. CRITICAL: the map itself IS the entire image edge to edge. Absolutely no gallery, no museum room, no frames, no visitors, no people, no floor, no wall, no furniture. Pure flat satellite cartographic art."
+  },
+  {
+    "id": "slug",
+    "key": "size",
+    "asset": "assets/knowledge/slug/size.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-275ff41b-db55-47ec-8259-abf852a3b44d.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Chromodoris annae nudibranch, blue speckled mantle bordered black and yellow-orange, orange rhinophores and orange rear gill plume, soft creeping foot. Size: macro nudibranch on rock x25-70%, beside an unnumbered small metric ruler along bottom y68%, obvious fine millimeter ticks, no numeric scale labels because specimen size unknown. Close-up emphasizes small body not giant animal."
+  },
+  {
+    "id": "squid",
+    "key": "diet",
+    "asset": "assets/knowledge/squid/diet.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-81ca6d26-e72a-4676-8451-89740093a150.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Hawaiian bobtail squid Euprymna scolopes, tiny rounded amber-speckled mantle, large iridescent blue-green eyes, two rounded side fins and short arms, not long torpedo squid. Feeding: underwater macro squid x15-62% reaching toward tiny translucent shrimp x74-90%, shrimp obviously separate, no gore."
+  },
+  {
+    "id": "squid",
+    "key": "growth",
+    "asset": "assets/knowledge/squid/growth.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-d05501e5-c678-4e1e-ac73-466be5d53cef.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Hawaiian bobtail squid Euprymna scolopes, tiny rounded amber-speckled mantle, large iridescent blue-green eyes, two rounded side fins and short arms, not long torpedo squid. Growth: underwater macro three separate stages: small cluster gelatinous egg capsules x8-24%, tiny newly hatched rounded squid x40-56%, adult squid x70-94%, exactly two golden arrows between, none on animals. No cracked bird eggs."
+  },
+  {
+    "id": "squid",
+    "key": "habitat",
+    "asset": "assets/knowledge/squid/habitat.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-e8fdbd40-6ce5-453c-a8c6-503eb2f07b94.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Hawaiian bobtail squid Euprymna scolopes, tiny rounded amber-speckled mantle, large iridescent blue-green eyes, two rounded side fins and short arms, not long torpedo squid. Habitat: macro underwater night scene squid half buried sand x26-62%, eyes visible, textured pale sandy seabed and shallow water, little sand mound right."
+  },
+  {
+    "id": "squid",
+    "key": "movement",
+    "asset": "assets/knowledge/squid/movement.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-0a62ae25-4bed-4596-a412-9f05f5ab91e6.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Hawaiian bobtail squid Euprymna scolopes, tiny rounded amber-speckled mantle, large iridescent blue-green eyes, two rounded side fins and short arms, not long torpedo squid. Movement: squid x20-77% hovering above sandy bottom, side fins clear, short jet of water with tiny bubbles from siphon, one small golden arrow showing water exiting and opposite motion, no ink cloud."
+  },
+  {
+    "id": "squid",
+    "key": "range",
+    "asset": "assets/knowledge/squid/range.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-c39f3046-4cdf-431f-a50c-30059f9ab0a0.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Range: accurate satellite panorama of Hawaiian island chain, Pacific all around, Kauai and Oahu left, Maui center, Big Island right, islands above y68%, no labels no markers, turquoise coastal shallows."
+  },
+  {
+    "id": "squid",
+    "key": "size",
+    "asset": "assets/knowledge/squid/size.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-5685b05f-8266-4448-a039-a3de386708a6.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic Hawaiian bobtail squid Euprymna scolopes, tiny rounded amber-speckled mantle, large iridescent blue-green eyes, two rounded side fins and short arms, not long torpedo squid. Size: macro sideview complete squid x15-50%, mantle only spansx17-40%. A plain centimeter ruler with unnumbered ticks lies parallel x15-80% on sand, no words no numerals. Leave space for length label at y25%. No human hands."
+  },
+  {
+    "id": "tuna",
+    "key": "diet",
+    "asset": "assets/knowledge/tuna/diet.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-2e86017c-8d03-45ee-aae8-b6b5839f078b.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic yellowfin tuna reference, streamlined metallic blue back and silver body, yellow finlets, crescent tail. Feeding: one full tuna x7-65% pursuing separate school small silver fish x75-96%, open ocean, no gore."
+  },
+  {
+    "id": "tuna",
+    "key": "growth",
+    "asset": "assets/knowledge/tuna/growth.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-189b26b3-705c-4e38-935c-cd6aec7de64f.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic yellowfin tuna reference, streamlined metallic blue back and silver body, yellow finlets, crescent tail. Growth: three stages separated underwater: cluster tiny transparent pelagic eggs x10-23%, tiny translucent fish larva with large eye x39-55%, adult yellowfin tuna x66-94%. Two golden progression arrows in gaps. No fish hatching from hard shell eggs. Stages enlarged independently."
+  },
+  {
+    "id": "tuna",
+    "key": "habitat",
+    "asset": "assets/knowledge/tuna/habitat.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-c45a9f21-1450-4502-8ca3-98446aca99f4.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic yellowfin tuna reference, streamlined metallic blue back and silver body, yellow finlets, crescent tail. Habitat: one full tuna x18-76% swimming near sunlit ocean surface, distant small school x83%, clear deep open blue water, no reef floor."
+  },
+  {
+    "id": "tuna",
+    "key": "movement",
+    "asset": "assets/knowledge/tuna/movement.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-dfa9698d-ca9f-489d-aef7-a9372206b336.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic museum illustration with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. A realistic yellowfin tuna reference, streamlined metallic blue back and silver body, yellow finlets, crescent tail. Movement: sideview tuna entirebodyx10-89%, headleft, crescent tail rightx80%, subtle water streamlines, small golden curved arrows near tail showing side-to-side beat. No extra fins."
+  },
+  {
+    "id": "tuna",
+    "key": "range",
+    "asset": "assets/knowledge/tuna/range.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-d61f973b-a867-4013-bd13-d0865382554a.png",
+    "prompt": "ONE standalone fullbleed 2.2:1 educational panorama for young children. Photorealistic natural-history educational artwork with beautiful natural lighting, sharp subject textures, no writing no UI no borders no transparency no edge artifacts. Bottom22% unobtrusive environment reserved for app tray. Main subjects inside frame above y72%. Range: accurate modern satellite world map with subtle turquoise band ONLY ocean tropical and subtropical waters between about35N and35S, land natural, no labels no pins. Full continents fit, no polar highlights. CRITICAL: the map itself IS the entire image edge to edge. Absolutely no gallery, no museum room, no frames, no visitors, no people, no floor, no wall, no furniture. Pure flat satellite cartographic art."
+  },
+  {
+    "id": "tuna",
+    "key": "size",
+    "asset": "assets/knowledge/tuna/size.png",
+    "source": "C:\\Users\\AMLT\\.codex\\generated_images\\01a09ed8-3a0f-7710-bffa-cc87a4cceda2\\exec-357b1655-3919-4cdd-aba3-a360953afe06.png",
+    "prompt": "Create a 2.2:1 full-bleed educational size comparison underwater. ONE yellowfin tuna in upper row, ONE adult human swimming horizontally in lower row, no other animals. Strict side-on orthographic equal scale, both facing left. Human wears a wetsuit with BARE FEET, NO FINS OR FLIPPERS, mask and air tank. Human total length head-to-heel 1.7m must appear 13% LONGER than tuna total length nose-to-tail 1.5m. Tuna nose x20% tail x73%; human head x20% heels x80%. Tuna center at y27%; human center y60%. Both whole bodies fit. Entire scene naturally illuminated blue water, photorealistic illustration, no aquarium or museum architecture. Reserve bottom22% as plain ocean background for app tray. No text, labels, rulers or UI."
+  }
+]
