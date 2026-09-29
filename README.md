@@ -1,6 +1,6 @@
 # Animal World
 
-Web demo with a biome home map, prehistoric branch (6 models), ocean branch (12 unique supplied models), model introduction and looping animation viewer.
+Web demo with a biome home map, prehistoric branch (6 models), ocean branch (8 visible models; 4 retained but hidden), model introduction and looping animation viewer.
 
 ## Local
 
@@ -14,7 +14,9 @@ Run `npm ci`, `npm run build`, then `npm start`. Open http://127.0.0.1:4175.
 - `/animal/trex/actions/roar`: looping action.
 - `/animal/trex/topics/growth`: completed T-Rex illustrated knowledge.
 
-Browser back/forward and direct refresh use History API and server fallbacks. Old index hash links migrate to clean routes. Knowledge topics for species other than T-Rex show unavailable feedback. The speech practice card is removed for all species.
+Browser back/forward and direct refresh use History API and server fallbacks. Old index hash links migrate to clean routes. T-Rex and loggerhead have illustrated knowledge topics. All marine species share the same six category icons; other species show unavailable feedback. The speech practice card is removed for all species.
+
+`/animal/loggerhead/topics/habitat` opens the marine knowledge sample. `isopod`, `hawksbill`, `whale`, and `paShark` are hidden via `hiddenMarineIds`; their previous routes redirect to the ocean map. Original files remain available for repair.
 
 ## Assets and animation
 
@@ -24,7 +26,9 @@ Run `node scripts/render-action-previews.mjs [species IDs]` after model changes,
 
 ## Verification
 
-With the local server running, `npm test` verifies home/branch navigation, direct URLs, refresh, every action across 18 models and mobile layout. Tests use installed Google Chrome and Playwright. Earlier learning tests remain as historical files but are not part of the current no-speech-card workflow.
+With the local server running, `npm test` verifies home/branch navigation, direct URLs, refresh, every action across 14 visible models and mobile layout. Tests use installed Google Chrome and Playwright. Earlier learning tests remain as historical files but are not part of the current no-speech-card workflow.
+
+Run `node tests/ocean-topics.mjs` for the shared icon, hidden-route, topic and responsive map checks; `node tests/world-interaction.mjs` for marine drag/zoom and navigation. New artwork and full generation prompts: `assets/knowledge/ocean/`, `docs/ocean-topic-art.json`. Loggerhead factual reference: NOAA Fisheries species page, linked within each topic.
 
 ## Vercel
 

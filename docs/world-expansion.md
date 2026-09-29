@@ -12,3 +12,6 @@ Approved scope: clean History API routes; new home and ocean branch; all six pre
 
 ## Navigation and pointer regression checks
 Run `node tests/world-interaction.mjs` with the local server running. Covers mouse drag and wheel zoom on both marine screens, parent navigation through species/map/home for all 12 marine models, horizontal map tray scrolling, and restored dinosaur portraits. Bind selection handlers only to the relevant buttons: body also carries data-world/data-species state and must never receive those click handlers. Evaluate imported animation pose before measuring animated geometry for camera framing.
+
+
+Viewer and alpha previews share `src/creatures/view-directions.js`. Directions are checked against four rendered quadrants of each model; loggerhead and Deinonychus face negative Z. Re-render affected action atlases after editing a view. The Deinonychus map card uses its corrected animated atlas. Ocean map uses one continuous image; tray bounds constrain pin positions, not image height.

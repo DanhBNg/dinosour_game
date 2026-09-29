@@ -1,3 +1,4 @@
+import {viewDirection} from './creatures/view-directions.js';
 import {marine,loadMarine} from './marine.js';
 import * as T from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
@@ -61,7 +62,7 @@ export function createHabitat(host){
   const box=new T.Box3();actions.mixer.stopAllAction();actions.play(key);
   for(let i=0;i<48;i++){advance();box.union(new T.Box3().setFromObject(root,true));}
   const target=box.getCenter(new T.Vector3()),size=box.getSize(new T.Vector3());
-  const direction=new T.Vector3(...({trex:[1.3,.5,3],stego:[2.5,.65,1.4],trice:[2.5,.65,1.4],deino:[-1,.25,1.7],mosa:[1,.24,1.7],ptero:[1,.22,1.8]}[id]||[1,.24,1.8]));
+  const direction=new T.Vector3(...viewDirection(id));
   const distance=Math.max(size.x,size.y,size.z)*1.65;
   const atlas=document.createElement('canvas');atlas.width=2048;atlas.height=1536;const ctx=atlas.getContext('2d');
   actions.mixer.stopAllAction();actions.play(key);

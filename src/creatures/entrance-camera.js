@@ -1,16 +1,16 @@
+import {viewDirection} from './view-directions.js';
 import {Box3, Vector3, Spherical, MathUtils} from 'three';
 
 // Independent camera choreography. Never changes a model transform or animation pose.
 export function createEntranceCamera(camera, controls, host, {reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches}={}) {
   let transition=null;
-  const directions={trex:[1.3,.5,3],stego:[2.5,.65,1.4],trice:[2.5,.65,1.4],deino:[-1,.25,1.7],mosa:[1,.24,1.7],ptero:[1,.22,1.8]};
   function frame(root,id,{animate=true,distanceScale=1}={}) {
     root.updateMatrixWorld(true);
     root.traverse(node=>node.skeleton?.update());
     const box=new Box3().setFromObject(root,true),center=box.getCenter(new Vector3());
     if(box.isEmpty())return;
     const size=box.getSize(new Vector3());
-    const direction=new Vector3(...(directions[id]||[1,.26,1.6])).normalize();
+    const direction=new Vector3(...viewDirection(id)).normalize();
     const right=new Vector3(direction.z,0,-direction.x).normalize();
     const up=new Vector3().crossVectors(direction,right).normalize();
     camera.aspect=host.clientWidth/Math.max(1,host.clientHeight);camera.updateProjectionMatrix();

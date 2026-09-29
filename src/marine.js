@@ -16,6 +16,9 @@ export const marine={
  fish:{name:'Cá biển',file:'sea-fish-with-anim/source/Black_White_Fish.FBX',texture:'sea-fish-with-anim/textures/Black_White_Fish.png',env:'reef'},
  amplectobelua:{name:'Amplectobelua',file:'amplectobelua-symbrachiata/source/amplectobelua/amplectobelua_anim.fbx',texture:'amplectobelua-symbrachiata/textures/amplectobelua_diffuse.png',env:'deep'}
 };
+// Temporarily hidden at the user's request; keep source assets for repair.
+export const hiddenMarineIds=new Set(['isopod','hawksbill','whale','paShark']);
+export const visibleMarineIds=Object.keys(marine).filter(id=>!hiddenMarineIds.has(id));
 export async function loadMarine(id){
  const spec=marine[id],manager=new T.LoadingManager();
  // FBX files carry author-machine texture paths. Resolve the supplied diffuse explicitly.

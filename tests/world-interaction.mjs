@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const p=await browser.newPage({viewport:{width:1366,height:768}});
 try {
-for(const id of ['seal','squid','isopod','hawksbill','whale','loggerhead','tuna','slug','shark','paShark','fish','amplectobelua']){
+for(const id of ['seal','squid','loggerhead','tuna','slug','shark','fish','amplectobelua']){
  await p.goto('http://127.0.0.1:4175/animal/'+id);
  await p.locator('[data-enter-3d]:enabled').waitFor({timeout:90000});
  await p.waitForFunction(()=>!dinoGame.state.cameraMoving);

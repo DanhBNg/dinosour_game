@@ -46,10 +46,10 @@ export function createKnowledgeView({speak}){
   $('knowledge-overlay').querySelectorAll('[data-growth-step]').forEach((b,i)=>b.onclick=()=>choose(i));
   layout();
   $('topic-options').querySelectorAll('button').forEach((b,i)=>b.onclick=()=>choose(i));
-  document.querySelectorAll('[data-topic]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topic===key)));
+  document.querySelectorAll('#topic-hub button[data-topic]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topic===key)));
  }
  function layout(){
-  const box=$('knowledge-view'),img=$('knowledge-image');if(!['size','growth'].includes(current)||!img.naturalWidth)return;
+  const box=$('knowledge-view'),img=$('knowledge-image');if(box.dataset.owner==='ocean')return;if(!['size','growth'].includes(current)||!img.naturalWidth)return;
   const w=box.clientWidth,h=box.clientHeight,scale=(getComputedStyle(img).objectFit==='contain'?Math.min:Math.max)(w/img.naturalWidth,h/img.naturalHeight),iw=img.naturalWidth*scale,ih=img.naturalHeight*scale;
   if(current==='growth'){
    const regions=[[.10,.55,.065,.15],[.23,.50,.12,.20],[.39,.36,.23,.33],[.62,.12,.33,.57]];
