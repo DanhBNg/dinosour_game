@@ -17,7 +17,15 @@ const paths={
 export const topicIcon=key=>`<svg viewBox="0 0 64 64" aria-hidden="true">${paths[key]}</svg>`;
 export function topicButtons(){return Object.entries(topics).map(([key,t])=>`<button class="topic-orb" data-topic="${key}" style="--orb-hue:${t.hue}" aria-label="${t.title}"><span class="picture-icon picture-${key}" aria-hidden="true"></span></button>`).join('');}
 export function createKnowledgeView({speak}){
- const $=id=>document.getElementById(id);let current='habitat',narration='';
+ const $=id=>document.getElementById(id);let current='habitat',narration='',zoomed=true,pan=.5;
+ const view=$('knowledge-view'),img=$('knowledge-image');
+ const fit=document.createElement('button');fit.className='trex-fit round';fit.textContent='⛶';fit.setAttribute('aria-label','Đổi giữa toàn cảnh và phóng gần');fit.onclick=()=>{zoomed=!zoomed;layout();};view.append(fit);
+ for(const [direction,label]of [[-1,'Xem phần bên trái'],[1,'Xem phần bên phải']]){const b=document.createElement('button');b.className='trex-pan round '+(direction<0?'previous':'next');b.textContent=direction<0?'‹':'›';b.setAttribute('aria-label',label);b.onclick=()=>{pan=Math.max(0,Math.min(1,pan+direction*.28));layout();};view.append(b);}
+ let drag=null;
+ view.addEventListener('pointerdown',e=>{if(view.dataset.owner!=='dinosaur'||!zoomed||!matchMedia('(max-width:650px) and (orientation:portrait)').matches||e.target.closest('button,details'))return;drag={x:e.clientX,pan};view.setPointerCapture(e.pointerId);});
+ view.addEventListener('pointermove',e=>{if(!drag)return;pan=Math.max(0,Math.min(1,drag.pan-(e.clientX-drag.x)/Math.max(1,view.clientHeight*1.25-view.clientWidth)));layout();});
+ for(const event of ['pointerup','pointercancel'])view.addEventListener(event,()=>drag=null);
+ new MutationObserver(()=>{if(view.dataset.owner!=='dinosaur'){img.style.removeProperty('width');img.style.removeProperty('left');}}).observe(view,{attributes:true,attributeFilter:['data-owner']});
  function choose(index){
   document.querySelectorAll('#topic-options button, [data-growth-step]').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
   const t=topics[current];narration=t.voice;
@@ -36,7 +44,7 @@ export function createKnowledgeView({speak}){
   speak(narration,'vi-VN');
  }
  function show(key){
-  current=key;const t=topics[key];narration=t.voice;$('knowledge-view').dataset.topic=key;$('knowledge-view').removeAttribute('data-focus');
+  current=key;zoomed=key!=='range';pan=.5;const t=topics[key];narration=t.voice;$('knowledge-view').dataset.topic=key;$('knowledge-view').removeAttribute('data-focus');
   $('knowledge-image').src=`assets/knowledge/trex/${['habitat','diet','footprints','growth'].includes(key)?key+'-wide':key==='size'?'size-v2':key}.png`;$('knowledge-image').alt=t.title+' — ảnh minh họa';$('knowledge-view').style.setProperty('--topic-art',`url("assets/knowledge/trex/${key}.png")`);
   $('topic-explanation').textContent=t.note;$('topic-source').href=t.source;$('topic-source').textContent='Nguồn: '+(t.source.includes('amnh')?'AMNH':'Natural History Museum');$('topic-notes').open=false;
   $('knowledge-overlay').innerHTML=key==='growth'?['Trứng','Con non','Con đang lớn','Trưởng thành'].map((label,i)=>`<button class="growth-region" data-growth-step="${i}" aria-label="${label}" aria-pressed="false"><span class="growth-pick">◉</span></button>`).join(''):key==='range'?'<span class="range-marker" aria-label="Phía tây Bắc Mỹ"><img src="assets/trex.png" alt="T-Rex"></span>':key==='size'?'<div class="dimension-labels"><button data-measure-index="0">T-Rex · ↔ ≈ 12 m<br>Hông · ↕ ≈ 3,7 m</button><button data-measure-index="1">Người · ↕ 1,7 m</button><button data-measure-index="2">Xe · ↔ 4,5 m</button><button data-measure-index="3">Voi · ↕ vai ≈ 3 m</button></div>':'';
@@ -49,14 +57,14 @@ export function createKnowledgeView({speak}){
   document.querySelectorAll('#topic-hub button[data-topic]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topic===key)));
  }
  function layout(){
-  const box=$('knowledge-view'),img=$('knowledge-image');if(box.dataset.owner!=='dinosaur')return;if(!['size','growth'].includes(current)||!img.naturalWidth)return;
-  const w=box.clientWidth,h=box.clientHeight,scale=(getComputedStyle(img).objectFit==='contain'?Math.min:Math.max)(w/img.naturalWidth,h/img.naturalHeight),iw=img.naturalWidth*scale,ih=img.naturalHeight*scale;
+  const box=$('knowledge-view'),img=$('knowledge-image');if(box.dataset.owner!=='dinosaur')return;if(!img.naturalWidth)return;
+  const portrait=matchMedia('(max-width:650px) and (orientation:portrait)').matches;const w=portrait&&zoomed?Math.max(box.clientWidth,box.clientHeight*1.25):box.clientWidth,h=box.clientHeight,offset=(w-box.clientWidth)*pan;img.style.setProperty('width',w+'px','important');img.style.setProperty('left',-offset+'px','important');fit.setAttribute('aria-pressed',String(zoomed));box.querySelectorAll('.trex-pan').forEach(b=>{b.hidden=!portrait||!zoomed||w<=box.clientWidth;b.disabled=b.classList.contains('previous')?pan<=0:pan>=1;});const scale=(getComputedStyle(img).objectFit==='contain'?Math.min:Math.max)(w/img.naturalWidth,h/img.naturalHeight),iw=img.naturalWidth*scale,ih=img.naturalHeight*scale;
   if(current==='growth'){
    const regions=[[.10,.55,.065,.15],[.23,.50,.12,.20],[.39,.36,.23,.33],[.62,.12,.33,.57]];
-   box.querySelectorAll('[data-growth-step]').forEach((b,i)=>{const [x,y,rw,rh]=regions[i];Object.assign(b.style,{left:((w-iw)/2+x*iw)+'px',top:((h-ih)/2+y*ih)+'px',width:rw*iw+'px',height:rh*ih+'px'});});return;
+   box.querySelectorAll('[data-growth-step]').forEach((b,i)=>{const [x,y,rw,rh]=regions[i];Object.assign(b.style,{left:((w-iw)/2+x*iw-offset)+'px',top:((h-ih)/2+y*ih)+'px',width:rw*iw+'px',height:rh*ih+'px'});});return;
   }
   const anchors=[[.29,.39],[.45,.60],[.61,.58],[.87,.45]];
-  box.querySelectorAll('[data-measure-index]').forEach((b,i)=>{b.style.left=((w-iw)/2+anchors[i][0]*iw)+'px';b.style.top=((h-ih)/2+anchors[i][1]*ih)+'px';});
+  box.querySelectorAll('[data-measure-index]').forEach((b,i)=>{b.style.left=((w-iw)/2+anchors[i][0]*iw-offset)+'px';b.style.top=((h-ih)/2+anchors[i][1]*ih)+'px';});
  }
  $('knowledge-image').addEventListener('load',layout);new ResizeObserver(layout).observe($('knowledge-view'));
  return {show,narrate(){speak(narration,'vi-VN');}};

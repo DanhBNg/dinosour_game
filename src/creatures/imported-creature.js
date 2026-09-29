@@ -15,7 +15,7 @@ export async function createImportedCreature(bytes,id){
  root.updateMatrixWorld(true);const framed=new T.Box3().setFromObject(root,true),head=new T.Object3D();head.position.copy(framed.getCenter(new T.Vector3()));head.userData.viewCenter=head.position.toArray();root.add(head);
  mixer.stopAllAction();mixer.uncacheRoot(source);
  const labels={Observe:'Đứng quan sát',Stalk:'Đi rình tại chỗ',Pounce:'Lấy đà bật nhảy','Threat display':'Cảnh giác · vung tay'};
- const definitions={},animations={};gltf.animations.forEach((clip,i)=>{clip.name=clip.name||`Animation ${i+1}`;const key=`original-${i}`;animations[key]=clip;definitions['clip'+i]=[key,labels[clip.name]||clip.name,`${id==='deino'?'Chuyển động tự tạo':'Clip gốc đầy đủ'} · ${clip.duration.toFixed(2)} giây.`,true];});
+ const definitions={},animations={};gltf.animations.forEach((clip,i)=>{clip.name=clip.name||`Animation ${i+1}`;const key=`original-${i}`;animations[key]=clip;definitions['clip'+i]=[key,(id==='brachio'?'Chuyển động gốc':labels[clip.name]||clip.name),`${id==='deino'?'Chuyển động tự tạo':'Clip gốc đầy đủ'} · ${clip.duration.toFixed(2)} giây.`,true];});
  if(!gltf.animations.length){const clip=new T.AnimationClip('rest',1,[]);animations.rest=clip;definitions.rest=['rest','Tư thế gốc','Model không có animation.',true];}
  root.userData.sculptRuntime={source,meshes,nodes,sockets:{head},animations,stats:{triangles},provenance:{route:'imported-glb',notes:['All original clips retained.']}};
  if(id==='mosa')addCreatureMotions(root,source,nodes,gltf.animations[0],animations,definitions,id);

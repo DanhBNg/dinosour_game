@@ -63,3 +63,15 @@ Generic model names remain explicitly linked to reference species, not treated a
 Source data: `src/marine-knowledge-data.js`; artwork-aligned targets: `src/marine-exploration.js`; generated assets and prompts: `assets/knowledge/{seal,squid,tuna,slug,shark,fish,amplectobelua}/`, `docs/marine-knowledge-art.json`. Sources appear behind ⓘ in each scene.
 
 Verification with local server on port 4175: `node tests/marine-exploration.mjs` (42 topics at three viewport sizes), `node tests/illustrated-switching.mjs`, `node tests/ocean-topics.mjs`, and `npm test`. `tests/species-knowledge.mjs` forwards to the new marine suite, superseding the old generic-card checks.
+
+### Brachiosaurus
+
+User-supplied `branchiosaurussf.glb` is now `assets/brachio.glb`, with embedded textures, original rig and its one original animation. Open `/animal/brachio` or select it in the dinosaur map. The action loops; drag/zoom and camera reset use the existing viewer. Six knowledge topics are pending and remain disabled. The generated hero uses a rendered model reference; preview sprites use the actual model. Verify with `node tests/brachio.mjs`.
+
+### Mobile
+
+Touch devices require landscape orientation. A blocking rotate-device screen appears immediately in portrait, including direct links, and reappears when the device returns to portrait. Background controls are inert. The app attempts orientation locking; the start button requests fullscreen and retries the lock on browsers requiring a user gesture. Unsupported browsers remain gated until physical rotation. Desktop navigation is unaffected.
+
+Landscape layouts account for safe areas and browser viewport height, with one-row scrolling trays. Model loading shows the selected animal with a waiting ring and retry on failure. Settings controls have been removed throughout the app.
+
+Run `node tests/mobile-refresh.mjs` against the local server. Browser tests emulate viewport changes and supported/unsupported orientation APIs; real device testing remains necessary for OS/browser fullscreen restrictions.

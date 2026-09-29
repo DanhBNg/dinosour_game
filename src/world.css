@@ -30,3 +30,6 @@ body[data-screen=learn][data-species=trex] #stage{bottom:100px}
 @media(max-width:650px){body[data-world=dinosaurs] #map-screen .map-pin{width:83px;top:calc(155px + var(--y)*.51)}body[data-world=dinosaurs] #map-screen .map-pin img{width:72px;height:72px}.catalog-tray{gap:3px}.catalog-tray>.round{width:30px;flex-basis:30px}#cards .creature-card{flex-basis:145px}body[data-screen=learn][data-species=trex] #experience{min-height:850px}body[data-screen=learn][data-species=trex] #stage{bottom:280px}}
 
 #cards .mystery-card{min-width:0;background:radial-gradient(ellipse at 50% 35%,#232725,#060807 78%);border:2px solid #8b8367;display:grid;place-items:center;flex-grow:0;flex-shrink:0;cursor:default}#cards .mystery-card span{font-size:clamp(36px,5vw,70px);font-weight:800;color:#b5b6ae;text-shadow:0 3px 7px #000}#cards .mystery-card:hover{transform:none;box-shadow:none}
+
+/* The upright neck sits near 40% of the generated panorama. */
+body[data-screen=intro][data-species=brachio] #hero-image{object-position:42% center}
