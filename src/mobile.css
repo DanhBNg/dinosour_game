@@ -79,3 +79,52 @@ body[data-screen=home] .world-badge.locked{opacity:.65;z-index:1}
 @media(max-width:1024px), (pointer:coarse) and (max-width:1600px){body[data-screen=home] .world-badge.available[data-world=dinosaurs]{top:42%!important}body[data-screen=home] .world-badge.available[data-world=ocean]{top:48%!important}}
 
 body[data-screen=home] .world-badge[data-world=dinosaurs] .action-sprite{width:205%!important;height:205%!important;left:-52.5%!important;top:-66%!important;z-index:1}
+
+/* Four-screen flow: animated map pins and knowledge-first browsing. */
+body .catalog-tray,body .species-navigation{display:none!important}
+body[data-screen=home] #home-screen{overflow:auto!important;touch-action:pan-x pan-y}
+body[data-screen=home] .home-canvas{min-height:440px}
+body[data-screen=home] .world-badge>span{position:relative;overflow:visible;background:radial-gradient(ellipse,#58826b,#19392f);padding:0}
+body[data-screen=home] .world-badge .action-sprite,body[data-screen=home] .world-badge.available .action-sprite,body[data-screen=home] .world-badge[data-world=dinosaurs] .action-sprite{position:absolute!important;width:230%!important;height:230%!important;left:-65%!important;top:-78%!important;inset:auto;background-size:800% 600%;background-repeat:no-repeat;border:0;border-radius:0;pointer-events:none;filter:drop-shadow(0 6px 4px #001b2866)}
+body[data-screen=home] .world-badge.locked{opacity:.9;filter:saturate(.55) drop-shadow(0 5px 5px #0009)}
+.badge-lock{position:absolute;bottom:-2px;right:-8px;font-size:20px;font-style:normal;background:#18342e;border:1px solid #d8c791;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;z-index:3}
+body #island{overflow:auto!important;inset:0;touch-action:pan-x pan-y}
+body #island>.island-art{width:var(--map-width)!important;height:var(--map-height)!important;max-width:none;object-fit:fill}
+body[data-world] #map-screen .map-pin{width:90px!important;height:90px;left:calc(var(--map-width)*var(--px));top:calc(var(--map-height)*var(--py));overflow:visible;background:none;}
+.pin-orb{position:relative;display:block!important;width:100%;height:100%;border:3px solid #efda93;border-radius:50%;background:radial-gradient(ellipse,#5ab8a499,#173e3880);box-shadow:0 0 0 4px #243b2b80,0 0 22px #ffe89d50;overflow:visible}
+.map-pin .pin-orb .action-sprite{position:absolute;display:block;width:225%;height:225%;left:-62.5%;top:-74%;background-size:800% 600%;background-repeat:no-repeat;pointer-events:none;filter:drop-shadow(0 8px 4px #031f2380)}
+.knowledge-step{display:none;position:absolute;top:42%;z-index:16;background:#143d3688}body[data-screen=topic] .knowledge-step{display:grid}#knowledge-prev{left:12px}#knowledge-next{right:12px}.knowledge-step:disabled{opacity:.25}
+#knowledge-view{touch-action:pan-y}body[data-screen=topic] #experience{background:#17443d var(--environment) center/cover}
+body #load-status .loading-subject{width:min(78vw,78vh);height:min(78vw,78vh);max-width:none;filter:drop-shadow(0 15px 12px #001b2633)}
+#load-status .action-sprite{display:block;width:100%;height:100%;background-size:800% 600%;background-repeat:no-repeat}
+body[data-screen=learn] #stage{transition:opacity .22s ease}
+@media(max-width:1024px),(pointer:coarse) and (max-width:1600px){
+ body[data-screen=home] .home-canvas{min-height:400px;min-width:710px}
+ body[data-screen=home] .world-badge>span{width:64px;height:64px}
+ body[data-screen=home] .world-badge b{font-size:9px;padding:4px}
+ body[data-world] #map-screen .map-pin{width:64px!important;height:64px}
+ body[data-screen=map] #orientation-toggle{bottom:12px}
+ body #load-status{padding-top:0!important}
+ body #load-status .loading-subject{width:min(62vw,calc(var(--app-height) - var(--scene-bottom)));height:min(62vw,calc(var(--app-height) - var(--scene-bottom)))}
+}
+
+/* Per-animation framing is measured over the entire loop, not a single pose. */
+body[data-screen=home] .world-badge .action-sprite,
+body[data-screen=home] .world-badge.available .action-sprite,
+body[data-screen=home] .world-badge[data-world=dinosaurs] .action-sprite,
+body .map-pin .pin-orb .action-sprite,
+body #topic-hub .action-orb .action-sprite,
+body #action-picker .action-orb .action-sprite{
+ inset:auto!important;width:var(--preview-scale)!important;height:var(--preview-scale)!important;
+ left:var(--preview-left)!important;top:var(--preview-top)!important;margin:0!important;
+}
+body .map-pin .pin-orb{margin:0}
+body[data-screen=home] .world-badge b{z-index:3}
+body .header-right:empty,body .header-right:has(>#progress:only-child){display:none!important}
+body #knowledge-view .explore-scroll{touch-action:pan-y}
+body[data-screen=map] #island{padding-bottom:30px}
+
+/* One navigation pair: old panorama pan buttons competed with topic arrows. */
+body[data-screen=topic] #knowledge-view .explore-pan{display:none!important}
+body[data-screen=topic] #knowledge-view img{-webkit-user-drag:none;user-select:none}
+body[data-screen=topic] #knowledge-view .explore-point{touch-action:pan-y}

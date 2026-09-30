@@ -77,3 +77,10 @@ Landscape layouts account for safe areas and browser viewport height, with one-r
 Run `node tests/mobile-refresh.mjs` against the local server. Browser tests emulate viewport changes and supported/unsupported orientation APIs; real device testing remains necessary for OS/browser fullscreen restrictions.
 
 Mobile browser bars: the layout follows VisualViewport resize/scroll events at normal zoom, with innerHeight fallback. Under 350px available landscape height, trays and spacing become compact while touch controls stay usable. Fullscreen is optional; selecting a world no longer automatically enters fullscreen. Pinch zoom is not reset.
+
+### Navigation and animated map icons
+Home → world → animal habitat/knowledge topics → 3D actions. Swipe knowledge scenes or use the topic buttons; the last button opens 3D. Model files load only on the action screen; a looping sprite remains visible while loading, with retry on failure.
+
+Home open-world representatives shuffle every 9.6 seconds. Four locked worlds have elephant, gorilla, cow and wolf previews from supplied models. Icons use per-animation silhouette bounds over 48 frames; run `node scripts/measure-preview-bounds.mjs` with the local server running after replacing preview sheets. Generated locked previews need no model downloads at runtime.
+
+Regression: `node tests/navigation-overhaul.mjs`, `node tests/navigation-loading.mjs`, and `npm test`.

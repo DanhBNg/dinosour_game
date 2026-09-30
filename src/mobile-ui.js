@@ -1,3 +1,5 @@
+import {previewMarkup} from './action-previews.js';
+import {previewKey} from './preview-species.js';
 // Mobile chrome follows viewport geometry; no CSS rotation of the 3D canvas.
 export function createMobileUI({notify}){
  const $=id=>document.getElementById(id),mobile=()=>matchMedia('(max-width:1024px)').matches||(navigator.maxTouchPoints>0&&innerWidth<=1600),portraitPhone=()=>navigator.maxTouchPoints>0&&innerHeight>innerWidth;
@@ -44,9 +46,9 @@ export function createMobileUI({notify}){
 }
 
 export function createModelLoading(host){
- function begin(id,marine){
+ function begin(id,marine,action){
   host.hidden=false;host.dataset.failed='false';host.setAttribute('aria-busy','true');host.onclick=null;
-  host.innerHTML=`<div class="loading-subject"><img src="/assets/${marine?'map-portraits':'heroes'}/${id}.png" alt=""><svg class="loading-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/></svg><span class="sr-only">Đang chuẩn bị mô hình</span></div>`;
+  host.innerHTML=`<div class="loading-subject">${previewMarkup(id,previewKey(id))}<span class="sr-only">Đang chuẩn bị mô hình</span></div>`;
  }
  function end(){host.hidden=true;host.setAttribute('aria-busy','false');host.onclick=null;}
  function fail(retry){host.dataset.failed='true';host.setAttribute('aria-busy','false');host.querySelector('.loading-ring')?.remove();const b=document.createElement('button');b.className='round loading-retry';b.textContent='↻';b.setAttribute('aria-label','Tải model chưa thành công. Chạm để thử lại');b.onclick=retry;host.querySelector('.loading-subject')?.append(b);const hint=host.querySelector('.sr-only');if(hint)hint.textContent='Tải chưa thành công. Có thể thử lại hoặc quay về.';}

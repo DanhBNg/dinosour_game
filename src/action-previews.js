@@ -1,5 +1,14 @@
+import {previewBounds} from './preview-framing.js';
 // Offline-rendered alpha sprites; visible map cards all animate together.
-export function previewMarkup(id,key){return `<span class="action-sprite" data-preview="${id}/${key}" style="background-image:url('assets/action-previews/${id}-${key}.webp')" aria-hidden="true"></span>`;}
+export function framePreview(id,key){
+ const [x0,y0,x1,y1]=previewBounds[id+'-'+key]||[.2,.2,.8,.8];
+ const land=['trex','stego','trice','deino','brachio','elephant','gorilla','cow','wolf','slug'].includes(id);
+ // Keep the complete animated silhouette centered horizontally; feet have a stable baseline.
+ const scale=Math.min(1.28/(x1-x0),1.16/(y1-y0),5);
+ const left=.5-(x0+x1)*scale/2,top=land?.98-y1*scale:.48-(y0+y1)*scale/2;
+ return '--preview-scale:'+scale*100+'%;--preview-left:'+left*100+'%;--preview-top:'+top*100+'%;';
+}
+export function previewMarkup(id,key){return '<span class="action-sprite" data-preview="'+id+'/'+key+'" style="'+framePreview(id,key)+'background-image:url(\'/assets/action-previews/'+id+'-'+key+'.webp\')" aria-hidden="true"></span>';}
 export function createActionPreviews(){
  let active=false,items=[],videos=[],preferred=null,last=0,clock=0;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
@@ -11,7 +20,7 @@ export function createActionPreviews(){
  function syncVideos(){videos.forEach(syncVideo);}
  function refresh(){
   videos.forEach(v=>v.pause());observer.disconnect();
-  items=[...document.querySelectorAll('#action-picker [data-preview], #topic-hub [data-preview], #cards [data-preview], #home-screen [data-preview]')];
+  items=[...document.querySelectorAll('#action-picker [data-preview], #topic-hub [data-preview], #cards [data-preview], #home-screen [data-preview], #island [data-preview], #load-status [data-preview]')];
   videos=[...document.querySelectorAll('#cards video')];
   for(const item of [...items,...videos]){item._visible=false;observer.observe(item);}
   preferred=null;clock=0;
