@@ -13,7 +13,7 @@ export const oceanContent={loggerhead:{
  growth:{voice:'Rùa đẻ trứng trên bãi cát. Rùa con nở ra, xuống biển rồi lớn lên.',note:'Các giai đoạn được phóng to để dễ nhìn, không cùng tỉ lệ. Hình minh họa vòng đời, không mô tả thời gian chính xác.'},
  range:{voice:'Rùa quản đồng sống ở Đại Tây Dương, Thái Bình Dương, Ấn Độ Dương và Địa Trung Hải.',note:'Điểm sáng chỉ các vùng biển khái quát, không phải ranh giới phân bố hay vị trí cá thể. Loài chủ yếu sống ở vùng cận nhiệt và ôn đới.'}
 }};
-export function oceanTopicButtons(){return Object.entries(oceanCategories).map(([key,t])=>`<button class="topic-orb ocean-topic-orb" data-topic="${key}" style="--orb-hue:${t.hue}" aria-label="${t.title}"><img src="/assets/knowledge/ocean/icons/${key}.png" alt=""></button>`).join('');}
+export function oceanTopicButtons(){return Object.entries(oceanCategories).filter(([key])=>key!=='range').map(([key,t])=>`<button class="topic-orb ocean-topic-orb" data-topic="${key}" style="--orb-hue:${t.hue}" aria-label="${t.title}"><img src="/assets/knowledge/ocean/icons/${key}.png" alt=""></button>`).join('');}
 export function createOceanKnowledge({speak}){
  const $=id=>document.getElementById(id);let narration='';
  const hotspot=()=>'';

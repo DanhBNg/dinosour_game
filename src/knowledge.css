@@ -74,3 +74,4 @@ body[data-screen=learn] #stage{position:absolute;inset:0 260px 145px 0;height:au
 .growth-region:focus-visible{outline:3px solid white}
 
 @media(max-aspect-ratio:19/10){#knowledge-view[data-topic=growth] #knowledge-image{object-fit:contain!important}}
+[data-topic=range],button[data-topic=range],.picture-range,#knowledge-view[data-topic=range]{display:none!important}

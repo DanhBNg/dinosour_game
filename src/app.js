@@ -12,7 +12,7 @@ import {previewMarkup,framePreview,createActionPreviews} from './action-previews
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const seaIds=visibleMarineIds,all={...catalog,...marine};let selected='trex',world='dinosaurs',screen='home',habitat,ticket=0,loading=false,currentAction='',defs={};
 const previews=createActionPreviews(),knowledge=createKnowledgeView({speak}),oceanKnowledge=createOceanKnowledge({speak}),speciesView=createSpeciesKnowledge({speak});
-const hasTopic=(id,key)=>!!(speciesKnowledge[id]?.topics[key]||(id==='trex'&&topics[key])||oceanContent[id]?.[key]);
+const hasTopic=(id,key)=>key!=='range'&&!!(speciesKnowledge[id]?.topics[key]||(id==='trex'&&topics[key])||oceanContent[id]?.[key]);
 function speak(text,lang='vi-VN'){if(!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=lang;speechSynthesis.speak(u);}
 const group=id=>marine[id]?'ocean':'dinosaurs',list=()=>world==='ocean'?seaIds:dinosaurIds;
 const portrait=id=>'/assets/portraits/'+id+'.webp';
@@ -68,7 +68,7 @@ for(const [id,d]of [['actions-prev',-1],['actions-next',1]])$(id).onclick=()=>$(
 // Keep marine pins and the painting in the same coordinate system, including on phones.
 function layoutMap(){const e=$('island');if(!e.querySelector('.island-art'))return;const w=Math.max(e.clientWidth,e.clientHeight*1.777),h=w/1.777;e.style.setProperty('--map-width',w+'px');e.style.setProperty('--map-height',h+'px');}
 new ResizeObserver(layoutMap).observe($('island'));
-function topicKeys(){return [...$('topic-hub').querySelectorAll('[data-topic]')].filter(b=>b.getAttribute('aria-disabled')!=='true').map(b=>b.dataset.topic);}
+function topicKeys(){return [...$('topic-hub').querySelectorAll('[data-topic]')].filter(b=>b.getAttribute('aria-disabled')!=='true'&&b.dataset.topic!=='range').map(b=>b.dataset.topic);}
 function stepTopic(d){if(screen!=='topic')return;const keys=topicKeys(),i=keys.indexOf(currentTopic)+d;if(i>=keys.length){navigate('/animal/'+selected+'/actions');}else if(i>=0)navigate('/animal/'+selected+'/topics/'+keys[i]);}
 for(const [id,d]of [['knowledge-prev',-1],['knowledge-next',1]]){const button=document.createElement('button');button.id=id;button.className='round knowledge-step';button.textContent=d<0?'‹':'›';button.setAttribute('aria-label',d<0?'Mục kiến thức trước':'Mục tiếp theo hoặc model 3D');button.onclick=()=>stepTopic(d);$('experience').append(button);}
 let gesture=null,suppressSceneClick=false;

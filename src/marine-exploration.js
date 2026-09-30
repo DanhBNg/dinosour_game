@@ -48,22 +48,22 @@ export const marineExploration={
    point([39,27,14,22],'Hawaii','Mực bobtail Hawaii sống ở vùng nước nông ven các đảo Hawaii. Đây là loài tham chiếu cho model bobtail.')],mapNote)
  },
  tuna:{
-  habitat:scene('Cá ngừ vây vàng bơi gần mặt đại dương',[
+  habitat:{...scene('Cá ngừ vây vàng bơi gần mặt đại dương',[
    point([17,23,59,46],'Cá ngừ','Cá ngừ vây vàng sống trong các đại dương ấm, thường ở tầng gần mặt.'),
-   point([79,25,18,30],'Đàn cá','Cá ngừ có thể bơi thành đàn ở vùng biển khơi.')]),
-  diet:scene('Cá ngừ đuổi theo đàn cá nhỏ',[
+   point([79,25,18,30],'Đàn cá','Cá ngừ có thể bơi thành đàn ở vùng biển khơi.')]),video:'habitat.mp4'},
+  diet:{...scene('Cá ngừ đuổi theo đàn cá nhỏ',[
    point([7,22,57,44],'Cá ngừ săn mồi','Cá ngừ vây vàng ăn cá, mực và giáp xác.'),
-   point([74,27,23,40],'Cá nhỏ','Đàn cá nhỏ trong hình là một ví dụ thức ăn.')]),
-  movement:scene('Đuôi hình lưỡi liềm của cá ngừ tạo lực bơi',[
+   point([74,27,23,40],'Cá nhỏ','Đàn cá nhỏ trong hình là một ví dụ thức ăn.')]),video:'diet.mp4'},
+  movement:{...scene('Đuôi hình lưỡi liềm của cá ngừ tạo lực bơi',[
    point([71,23,22,42],'Đuôi','Cá ngừ quẫy đuôi sang hai bên để đẩy mình về phía trước.'),
-   point([24,25,44,35],'Thân thuôn','Thân thuôn giúp cá đi qua nước. Cá ngừ vây vàng có thể di chuyển rất xa.')]),
-  size:scene('Cá ngừ và người bơi nằm ngang cùng mặt phẳng',[
+   point([24,25,44,35],'Thân thuôn','Thân thuôn giúp cá đi qua nước. Cá ngừ vây vàng có thể di chuyển rất xa.')]),video:'motion.mp4'},
+  size:{...scene('Cá ngừ và người bơi nằm ngang cùng mặt phẳng',[
    point([27,20,45,25],'Cá ngừ','Cá ngừ minh họa dài một mét rưỡi. Đây là cá thể giả định để so sánh, không phải chiều dài tối đa.','↔ ví dụ 1,5 m'),
-   point([29,49,60,23],'Người','Người đối chiếu dài một mét bảy từ đầu đến gót, không tính chân vịt.','↔ 1,7 m')],{voice:'Cá ngừ minh họa dài một mét rưỡi; người đối chiếu dài một mét bảy, không tính chân vịt.',note:'Ví dụ cá ngừ vây vàng dài 1,5 m và người 1,7 m; không khẳng định loài hoặc kích thước của model. Tranh minh họa không thay phép đo.'}),
-  growth:scene('Trứng trong nước, cá non và cá ngừ trưởng thành',[
+   point([29,49,60,23],'Người','Người đối chiếu dài một mét bảy từ đầu đến gót, không tính chân vịt.','↔ 1,7 m')],{voice:'Cá ngừ minh họa dài một mét rưỡi; người đối chiếu dài một mét bảy, không tính chân vịt.',note:'Ví dụ cá ngừ vây vàng dài 1,5 m và người 1,7 m; không khẳng định loài hoặc kích thước của model. Tranh minh họa không thay phép đo.'}),video:'size.mp4'},
+  growth:{...scene('Trứng trong nước, cá non và cá ngừ trưởng thành',[
    point([8,33,19,34],'Trứng trong nước','Cá ngừ vây vàng đẻ trứng trong nước biển.'),
    point([37,32,21,36],'Cá mới nở','Cá mới nở rất nhỏ, hình dáng chưa giống cá trưởng thành.'),
-   point([65,25,31,44],'Cá trưởng thành','Cá lớn lên và phát triển thân thuôn cùng chiếc đuôi khỏe.')],{note:growthNote}),
+   point([65,25,31,44],'Cá trưởng thành','Cá lớn lên và phát triển thân thuôn cùng chiếc đuôi khỏe.')],{note:growthNote}),video:'growth.mp4'},
   range:map('Các vùng đại dương ấm trên bản đồ thế giới',[
    point([3,35,13,22],'Thái Bình Dương','Cá ngừ vây vàng sống trong vùng nhiệt đới và cận nhiệt đới Thái Bình Dương.'),
    point([34,36,13,22],'Đại Tây Dương','Loài này cũng có ở Đại Tây Dương ấm.'),
