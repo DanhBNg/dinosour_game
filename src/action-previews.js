@@ -11,7 +11,7 @@ export function createActionPreviews(){
  function syncVideos(){videos.forEach(syncVideo);}
  function refresh(){
   videos.forEach(v=>v.pause());observer.disconnect();
-  items=[...document.querySelectorAll('#action-picker [data-preview], #topic-hub [data-preview], #cards [data-preview]')];
+  items=[...document.querySelectorAll('#action-picker [data-preview], #topic-hub [data-preview], #cards [data-preview], #home-screen [data-preview]')];
   videos=[...document.querySelectorAll('#cards video')];
   for(const item of [...items,...videos]){item._visible=false;observer.observe(item);}
   preferred=null;clock=0;
@@ -19,9 +19,9 @@ export function createActionPreviews(){
  function tick(now){
   requestAnimationFrame(tick);if(now-last<100)return;last=now;
   if(!active||document.hidden||reduced.matches)return;clock++;
-  const shown=items.filter(x=>x._visible),others=shown.filter(x=>!x.closest('#cards'));
-  const chosen=preferred?others.filter(x=>x.parentElement===preferred):others.slice(Math.floor(clock/64)%Math.max(1,others.length),Math.floor(clock/64)%Math.max(1,others.length)+2);
-  for(const item of shown){if(!item.closest('#cards')&&!chosen.includes(item))continue;const frame=clock%48;item.style.backgroundPosition=`${frame%8/7*100}% ${Math.floor(frame/8)/5*100}%`;}
+  // Every visible preview loops independently of hover/focus, without a held final frame.
+  for(const item of items){if(!item._visible)continue;const frame=(clock+(item.dataset.preview.startsWith('loggerhead')?24:0))%48;item.style.backgroundPosition=`${frame%8/7*100}% ${Math.floor(frame/8)/5*100}%`;}
+
  }
  document.addEventListener('visibilitychange',syncVideos);reduced.addEventListener('change',syncVideos);
  requestAnimationFrame(tick);

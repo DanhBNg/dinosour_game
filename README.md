@@ -75,3 +75,5 @@ Touch devices require landscape orientation. A blocking rotate-device screen app
 Landscape layouts account for safe areas and browser viewport height, with one-row scrolling trays. Model loading shows the selected animal with a waiting ring and retry on failure. Settings controls have been removed throughout the app.
 
 Run `node tests/mobile-refresh.mjs` against the local server. Browser tests emulate viewport changes and supported/unsupported orientation APIs; real device testing remains necessary for OS/browser fullscreen restrictions.
+
+Mobile browser bars: the layout follows VisualViewport resize/scroll events at normal zoom, with innerHeight fallback. Under 350px available landscape height, trays and spacing become compact while touch controls stay usable. Fullscreen is optional; selecting a world no longer automatically enters fullscreen. Pinch zoom is not reset.

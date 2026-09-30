@@ -50,3 +50,32 @@ body #topic-hub[hidden],body #action-tray[hidden],body #load-status[hidden],body
 .trex-fit,.trex-pan{display:none!important}
 #landscape-start{font-family:inherit;font-size:18px;font-weight:700}
 @media(max-width:1024px) and (orientation:landscape), (pointer:coarse) and (max-width:1600px) and (orientation:landscape){.explore-measure{min-width:88px;max-width:160px;padding:5px 8px;font-size:10px}.explore-measure b{white-space:nowrap;font-size:12px}}
+
+/* Use the visible browser area, whether fullscreen is available or not. */
+@media(max-width:1024px), (pointer:coarse) and (max-width:1600px){
+ body{position:relative;left:var(--app-left,0px);top:var(--app-top,0px);width:var(--app-width,100%);height:var(--app-height,100dvh);min-height:0}
+ #orientation-toggle,body #topic-notes{position:absolute}
+ #landscape-gate{position:absolute;inset:0;min-height:0;height:var(--app-height,100dvh)}
+ body[data-compact=true]{--tray-height:76px;--tray-bottom:calc(4px + var(--safe-bottom));--scene-bottom:calc(var(--tray-height) + var(--tray-bottom) + 6px)}
+ body[data-compact=true] #topic-hub{padding:14px 48px 8px;gap:14px}
+ body[data-compact=true] #topic-hub .topic-orb,body[data-compact=true] #topic-hub .action-orb,body[data-compact=true] #action-picker .action-orb{width:48px;height:48px;min-width:48px;flex-basis:48px}
+ body[data-compact=true] #action-tray #action-picker{padding:14px 24px 8px;gap:28px}
+ body[data-compact=true] .topic-scroll{bottom:calc(var(--tray-bottom) + 16px)}
+ body[data-compact=true] header{height:54px;padding-top:5px;padding-bottom:5px}body[data-compact=true] .stage-tools{top:5px}
+ body[data-compact=true] .loading-subject{width:clamp(80px,calc((var(--app-height) - var(--scene-bottom) - 44px)*.7),130px)}
+ body[data-compact=true] #load-status{padding-top:20px!important}
+ body[data-compact=true] .world-badge>span{width:44px;height:44px}body[data-compact=true] .world-badge b{font-size:8px;padding:3px}
+ body[data-compact=true] #map-screen .map-pin{width:48px}body[data-compact=true] #map-screen .map-pin img{width:44px;height:44px}
+}
+
+/* Home prototype: existing alpha animation atlases, no extra WebGL contexts or background video. */
+body[data-screen=home] .world-badge.available{z-index:4;filter:drop-shadow(0 8px 10px #061b19a0);isolation:isolate}
+body[data-screen=home] .world-badge.available>span{position:relative;overflow:visible;border:3px solid #ffe9a8;background:radial-gradient(ellipse at 50% 70%,#cba74799,#325638bf 62%,#143828dc);box-shadow:0 0 0 5px #ffe7aa22,0 0 30px #ffde6880}
+body[data-screen=home] .world-badge.available[data-world=ocean]>span{background:radial-gradient(ellipse at 50% 65%,#7cf4eaaa,#167e9acb 65%,#123a58);border-color:#b4fff1;box-shadow:0 0 0 5px #abffeb22,0 0 30px #49e6ee80}
+body[data-screen=home] .world-badge.available .action-sprite{position:absolute!important;inset:auto!important;width:165%!important;height:165%!important;left:-32.5%!important;top:-40%!important;border:0;border-radius:0;background-size:800% 600%;background-repeat:no-repeat;pointer-events:none;transform:none!important;filter:drop-shadow(0 8px 3px #00191b55)}
+body[data-screen=home] .world-badge.available b{position:relative;border-color:#ffe5a2;box-shadow:0 4px 12px #0005}
+body[data-screen=home] .world-badge.available:hover>span,body[data-screen=home] .world-badge.available:focus-visible>span{box-shadow:0 0 0 7px #fff1bc66,0 0 42px #ffefaabf}
+body[data-screen=home] .world-badge.locked{opacity:.65;z-index:1}
+@media(max-width:1024px), (pointer:coarse) and (max-width:1600px){body[data-screen=home] .world-badge.available[data-world=dinosaurs]{top:42%!important}body[data-screen=home] .world-badge.available[data-world=ocean]{top:48%!important}}
+
+body[data-screen=home] .world-badge[data-world=dinosaurs] .action-sprite{width:205%!important;height:205%!important;left:-52.5%!important;top:-66%!important;z-index:1}

@@ -17,7 +17,7 @@ export function createMobileUI({notify}){
   }catch{if(fromGate)$('rotate-hint').textContent='Hãy xoay ngang điện thoại. Bật tự xoay nếu máy đang khóa.';else if(explicit)notify('Xoay ngang điện thoại; bật tự xoay nếu máy đang khóa');}
  }
  rotate.onclick=()=>landscape(true);$('landscape-start').onclick=()=>landscape(true,true);
- document.addEventListener('click',e=>{if(mobile()&&!attempted&&e.target.closest('[data-world],[data-species].creature-card,[data-enter-3d]'))landscape();});
+ // Browsing stays in the tab; fullscreen is an explicit optional control.
  document.addEventListener('fullscreenchange',()=>{rotate.setAttribute('aria-label',document.fullscreenElement?'Thoát toàn màn hình':'Mở ngang toàn màn hình');if(!document.fullscreenElement)screen.orientation?.unlock?.();});
  const hub=$('topic-hub');
  for(const [id,label,d]of [['topics-prev','Mục trước',-1],['topics-next','Mục tiếp theo',1]]){
@@ -27,8 +27,18 @@ export function createMobileUI({notify}){
  hub.addEventListener('scroll',tray);new ResizeObserver(tray).observe(hub);
  new MutationObserver(()=>{requestAnimationFrame(()=>{hub.querySelector('[aria-pressed=true]')?.scrollIntoView({block:'nearest',inline:'nearest'});tray();});}).observe(hub,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-pressed']});
  new MutationObserver(tray).observe(document.body,{attributes:true,attributeFilter:['data-screen']});
- function viewport(){document.documentElement.style.setProperty('--app-height',window.innerHeight+'px');gateLayout();tray();}
- addEventListener('resize',viewport);screen.orientation?.addEventListener('change',viewport);viewport();
+ let viewportFrame=0;
+ function viewport(){
+  const vv=window.visualViewport,unzoomed=!vv||Math.abs(vv.scale-1)<.02;
+  // Do not counteract accessibility pinch zoom. Browser bars change the visual viewport at scale 1.
+  if(unzoomed){const h=Math.round(vv?.height||innerHeight),w=Math.round(vv?.width||innerWidth),root=document.documentElement;
+   root.style.setProperty('--app-height',h+'px');root.style.setProperty('--app-width',w+'px');root.style.setProperty('--app-top',(vv?.offsetTop||0)+'px');root.style.setProperty('--app-left',(vv?.offsetLeft||0)+'px');
+   document.body.dataset.compact=String(mobile()&&w>h&&h<350);
+  }
+  gateLayout();tray();
+ }
+ function scheduleViewport(){cancelAnimationFrame(viewportFrame);viewportFrame=requestAnimationFrame(viewport);}
+ addEventListener('resize',scheduleViewport);window.visualViewport?.addEventListener('resize',scheduleViewport);window.visualViewport?.addEventListener('scroll',scheduleViewport);screen.orientation?.addEventListener('change',scheduleViewport);document.addEventListener('fullscreenchange',scheduleViewport);addEventListener('pageshow',scheduleViewport);viewport();
  // Best effort on entry; gesture-only browsers keep the gate until physical rotation or a tap.
  if(portraitPhone()&&screen.orientation?.lock)screen.orientation.lock('landscape').catch(()=>{});
 }
