@@ -191,3 +191,10 @@ body[data-screen=explore] #orientation-toggle{bottom:12px}
 
 .roam-hint{max-width:calc(100% - 150px);width:max-content;font-size:12px}
 @media(max-height:400px){.roam-hint{font-size:10px;padding:6px 10px;max-width:calc(100% - 120px)}}
+
+/* Enlarge the visible silhouette around its feet or swimming center. */
+body[data-screen=home] .world-badge.locked>span{border-width:3px;box-shadow:0 0 0 3px #44331b}
+@media(max-width:1024px),(pointer:coarse) and (max-width:1600px){
+ body[data-screen=home] .world-badge .action-sprite,body .map-pin .pin-orb .action-sprite{transform:scale(1.5);transform-origin:var(--preview-anchor-x,50%) var(--preview-anchor-y,80%)}
+}
+body.landscape-shell{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important}

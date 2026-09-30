@@ -29,7 +29,7 @@ function route(next){roamScreen.hidden=next!=='explore';if(next!=='explore')roam
 function navigate(path,replace=false){history[replace?'replaceState':'pushState']({},'',path);readRoute();}
 function showMap(){ticket++;loading=false;modelLoading.end();route('map');
  $('island').innerHTML='<img class="island-art" src="/assets/'+(world==='ocean'?'worlds/ocean.png':'prehistoric-island.png')+'" alt="">'+list().map(id=>{
- const pos=world==='ocean'?({seal:[12,28],squid:[30,44],loggerhead:[54,32],tuna:[77,33],slug:[50,51],shark:[85,57],fish:[38,51],amplectobelua:[66,64]})[id]:catalog[id].pos;
+ const pos=world==='ocean'?({seal:[54,32],squid:[30,44],loggerhead:[12,28],tuna:[77,33],slug:[50,51],shark:[85,57],fish:[38,51],amplectobelua:[66,64]})[id]:catalog[id].pos;
  return '<button class="map-pin '+id+'" style="--px:'+pos[0]/100+';--py:'+pos[1]/100+'" data-species="'+id+'" aria-label="'+esc(all[id].name)+'"><span class="pin-orb">'+previewMarkup(id,previewKey(id))+'</span></button>';
  }).join('');previews.refresh();$('island').querySelectorAll('[data-species]').forEach(b=>b.onclick=()=>navigate('/animal/'+b.dataset.species));layoutMap();$('world-title').textContent=world==='ocean'?'OCEAN WORLD':'DINOSAUR WORLD';
 }
