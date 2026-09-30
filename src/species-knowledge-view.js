@@ -7,7 +7,7 @@ const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 export const topicTitles={habitat:'Môi trường sống',diet:'Thức ăn',footprints:'Dấu chân & vận động',movement:'Cách di chuyển',size:'Kích thước',growth:'Sinh trưởng',range:'Phân bố'};
 export function speciesTopicButtons(id){
  const record=speciesKnowledge[id];
- return Object.keys(record.topics).map(key=>`<button class="topic-orb ocean-topic-orb" data-topic="${key}" aria-label="${id==='ptero'&&key==='footprints'?'Cánh & cách bay':topicTitles[key]}"><img src="${topicArtwork(record,key)}" alt=""></button>`).join('');
+ return Object.keys(record.topics).filter(key=>key!=='range').map(key=>`<button class="topic-orb ocean-topic-orb" data-topic="${key}" aria-label="${id==='ptero'&&key==='footprints'?'Cánh & cách bay':topicTitles[key]}"><img src="${topicArtwork(record,key)}" alt=""></button>`).join('');
 }
 function topicArtwork(record,key){if(key==='footprints'&&record.name==='Pterosaur')return '/assets/knowledge/ptero/icon-movement.png';if(key==='footprints'&&record.name==='Deinonychus')return '/assets/knowledge/deino/icon-movement.png';if(key==='diet'&&['Stegosaurus','Triceratops'].includes(record.name))return '/assets/knowledge/shared/herbivore-food.png';if(record.name==='Mosasaurus'&&key==='growth')return '/assets/knowledge/ocean/icons/growth.png';return record.world==='ocean'||key==='movement'?`/assets/knowledge/ocean/icons/${key}.png`:`/assets/knowledge/trex/icon-${key}.png`;}
 export function createSpeciesKnowledge({speak}){

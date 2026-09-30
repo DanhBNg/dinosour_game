@@ -15,7 +15,7 @@ const paths={
  range:'<circle cx="32" cy="32" r="24"/><path d="m13 17 13-4 7 8-9 6 1 8-8 1-6-11m20 8 13 3 3 8-10 12-6-9Zm9-22 1 9 13 6"/>'
 };
 export const topicIcon=key=>`<svg viewBox="0 0 64 64" aria-hidden="true">${paths[key]}</svg>`;
-export function topicButtons(){return Object.entries(topics).map(([key,t])=>`<button class="topic-orb" data-topic="${key}" style="--orb-hue:${t.hue}" aria-label="${t.title}"><span class="picture-icon picture-${key}" aria-hidden="true"></span></button>`).join('');}
+export function topicButtons(){return Object.entries(topics).filter(([key])=>key!=='range').map(([key,t])=>`<button class="topic-orb" data-topic="${key}" style="--orb-hue:${t.hue}" aria-label="${t.title}"><span class="picture-icon picture-${key}" aria-hidden="true"></span></button>`).join('');}
 export function createKnowledgeView({speak}){
  const $=id=>document.getElementById(id);let current='habitat',narration='',zoomed=true,pan=.5;
  const view=$('knowledge-view'),img=$('knowledge-image');

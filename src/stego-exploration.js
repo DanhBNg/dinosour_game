@@ -37,16 +37,99 @@ export function createStegoExploration({speak,record,id="stego",scenes=stegoExpl
   $('topic-options').hidden=true;$('size-guide').hidden=true;$('topic-notes').open=false;
   $('topic-explanation').textContent=[scene.voice||fact.voice,scene.note||fact.note,record.identity].filter(Boolean).join(' ');
   const source=scene.source||fact.source||record.source;$('topic-source').href=source.url;$('topic-source').textContent='Nguồn: '+source.name;
-  const overlay=$('knowledge-overlay');overlay.innerHTML=`<div class="explore-scroll" tabindex="0" aria-label="Cảnh minh họa; vuốt ngang để khám phá"><div class="explore-board"><img class="explore-art" src="/assets/knowledge/${id}/${key}.png" alt="${scene.alt}">${scene.points.map((p,i)=>(!p.measurement&&!p.portrait)?'':`<button class="explore-point ${p.measurement?'measured':''} ${p.portrait?'map-point':''}" data-point="${i}" aria-label="${p.label}" aria-pressed="false" style="left:${p.box[0]}%;top:${p.box[1]}%;width:${p.box[2]}%;height:${p.box[3]}%">${p.portrait?`<img src="${record.world==='ocean'?`/assets/map-portraits/${id}.png`:`/assets/portraits/${id}.webp`}" alt="">`:`<span class="explore-dot" aria-hidden="true">◉</span>`}${p.measurement?`<span class="explore-measure">${p.label}<b>${p.measurement}</b></span>`:''}</button>`).join('')}</div></div><button class="explore-pan previous" aria-label="Xem phần bên trái">‹</button><button class="explore-pan next" aria-label="Xem phần bên phải">›</button>`;
+  // Support video scenes: if scene.video is set, render a <video> element instead of <img>
+  let bgVid=null,videoFallbackTried=false;
+  const videoSrc=scene.video ? `/assets/knowledge/${id}/${scene.video}` : null;
+  const artTag=videoSrc
+   ? `<video class="explore-art explore-video" src="${videoSrc}" autoplay loop muted playsinline preload="auto" aria-label="${scene.alt}"></video>`
+   : `<img class="explore-art" src="/assets/knowledge/${id}/${key}.png" alt="${scene.alt}">`;
+  const overlay=$('knowledge-overlay');overlay.innerHTML=`<div class="explore-scroll" tabindex="0" aria-label="Cảnh minh họa; vuốt ngang để khám phá"><div class="explore-board">${artTag}${scene.points.map((p,i)=>(!p.measurement&&!p.portrait)?'':`<button class="explore-point ${p.measurement?'measured':''} ${p.portrait?'map-point':''}" data-point="${i}" aria-label="${p.label}" aria-pressed="false" style="left:${p.box[0]}%;top:${p.box[1]}%;width:${p.box[2]}%;height:${p.box[3]}%">${p.portrait?`<img src="${record.world==='ocean'?`/assets/map-portraits/${id}.png`:`/assets/portraits/${id}.webp`}" alt="">`:``}${p.measurement?`<span class="explore-measure">${p.label}<b>${p.measurement}</b></span>`:''}</button>`).join('')}</div></div><button class="explore-pan previous" aria-label="Xem phần bên trái">‹</button><button class="explore-pan next" aria-label="Xem phần bên phải">›</button>`;
   const scroll=overlay.querySelector('.explore-scroll'),board=overlay.querySelector('.explore-board'),art=overlay.querySelector('.explore-art');
   const arrows=[...overlay.querySelectorAll('.explore-pan')];
   const update=()=>{arrows[0].hidden=scroll.scrollLeft<2;arrows[1].hidden=scroll.scrollLeft+scroll.clientWidth>=scroll.scrollWidth-2;};
-  let ratio=2.2,zoomed=key!=='range';
+  let ratio=videoSrc ? (16/9) : 2.2,zoomed=key!=='range';
   const fitButton=document.createElement('button');fitButton.className='explore-fit round';fitButton.textContent='⛶';fitButton.setAttribute('aria-label','Đổi giữa toàn cảnh và phóng gần');overlay.append(fitButton);
-  const backdrop=document.createElement('div');backdrop.className='explore-backdrop';backdrop.style.backgroundImage=`url('/assets/knowledge/${id}/${key}.png')`;overlay.prepend(backdrop);
+  const backdrop=document.createElement('div');backdrop.className='explore-backdrop';
+  if(videoSrc){
+   bgVid=document.createElement('video');bgVid.src=videoSrc;bgVid.autoplay=true;bgVid.loop=true;bgVid.muted=true;bgVid.playsInline=true;bgVid.className='explore-backdrop-video';backdrop.append(bgVid);
+  }else{
+   backdrop.style.backgroundImage=`url('/assets/knowledge/${id}/${key}.png')`;
+  }
+  overlay.prepend(backdrop);
   fitButton.onclick=()=>{zoomed=!zoomed;layout();};
-  function layout(){if(token!==serial||(view.dataset.owner!=='illustrated'||view.dataset.record!==id))return;const portrait=matchMedia('(max-width:650px) and (orientation:portrait)').matches;const width=portrait?(zoomed?Math.max(scroll.clientWidth,scroll.clientHeight*1.25):scroll.clientWidth):Math.max(scroll.clientWidth,scroll.clientHeight*ratio);board.style.width=width+'px';board.style.height=(width/ratio)+'px';board.style.marginTop=portrait?Math.max(0,(scroll.clientHeight-width/ratio)/2)+'px':'0px';scroll.scrollLeft=Math.max(0,width*scene.focus-scroll.clientWidth/2);fitButton.hidden=!portrait;fitButton.setAttribute('aria-pressed',String(zoomed));if(matchMedia('(max-width:1024px)').matches||navigator.maxTouchPoints>0){for(const label of board.querySelectorAll('.explore-measure')){label.style.top='0px';const overflow=8-(label.getBoundingClientRect().top-scroll.getBoundingClientRect().top);if(overflow>0)label.style.top=overflow+'px';}}update();}
-  art.onload=()=>{if(token!==serial||view.dataset.record!==id)return;ratio=art.naturalWidth/art.naturalHeight;layout();scroll.scrollLeft=Math.max(0,board.clientWidth*(scroll.clientWidth<650?scene.focus:.5)-scroll.clientWidth/2);update();};
+  function layout(){
+   if(token!==serial||(view.dataset.owner!=='illustrated'||view.dataset.record!==id))return;
+   const portrait=matchMedia('(max-width:650px) and (orientation:portrait)').matches;
+   if(videoSrc){
+    if(portrait){
+     const width=zoomed?Math.max(scroll.clientWidth,scroll.clientHeight*1.25):scroll.clientWidth;
+     const height=width/ratio;
+     board.style.width=Math.round(width)+'px';
+     board.style.height=Math.round(height)+'px';
+     board.style.marginTop=Math.max(0,(scroll.clientHeight-height)/2)+'px';
+     board.style.marginLeft='0px';
+     scroll.scrollLeft=Math.max(0,width*scene.focus-scroll.clientWidth/2);
+     fitButton.hidden=false;
+     fitButton.setAttribute('aria-pressed',String(zoomed));
+    }else{
+     const w=scroll.clientWidth||window.innerWidth;
+     const h=scroll.clientHeight||window.innerHeight;
+     board.style.width=w+'px';
+     board.style.height=h+'px';
+     board.style.marginTop='0px';
+     board.style.marginLeft='0px';
+     scroll.scrollLeft=0;
+     fitButton.hidden=true;
+    }
+    arrows.forEach(b=>b.hidden=true);
+    return;
+   }
+   const width=portrait?(zoomed?Math.max(scroll.clientWidth,scroll.clientHeight*1.25):scroll.clientWidth):Math.max(scroll.clientWidth,scroll.clientHeight*ratio);
+   board.style.width=width+'px';
+   board.style.height=(width/ratio)+'px';
+   board.style.marginTop=portrait?Math.max(0,(scroll.clientHeight-width/ratio)/2)+'px':'0px';
+   board.style.marginLeft='0px';
+   scroll.scrollLeft=Math.max(0,width*scene.focus-scroll.clientWidth/2);
+   fitButton.hidden=!portrait;
+   fitButton.setAttribute('aria-pressed',String(zoomed));
+   if(matchMedia('(max-width:1024px)').matches||navigator.maxTouchPoints>0){
+    for(const label of board.querySelectorAll('.explore-measure')){
+     label.style.top='0px';
+     const overflow=8-(label.getBoundingClientRect().top-scroll.getBoundingClientRect().top);
+     if(overflow>0)label.style.top=overflow+'px';
+    }
+   }
+   update();
+  }
+  if(videoSrc){
+   const syncVideoRatio=()=>{
+    if(token!==serial||view.dataset.record!==id)return;
+    if(art.videoWidth&&art.videoHeight){
+     ratio=art.videoWidth/art.videoHeight;
+     layout();
+    }
+    art.play?.().catch(()=>{});
+    bgVid.play?.().catch(()=>{});
+   };
+   art.addEventListener('loadedmetadata',syncVideoRatio);
+   art.addEventListener('canplay',()=>art.play?.().catch(()=>{}));
+   art.addEventListener('error',()=>{
+    if(videoFallbackTried)return;videoFallbackTried=true;
+    if(art.src.includes('movement.mp4')){art.src=`/assets/knowledge/${id}/motion.mp4`;bgVid.src=`/assets/knowledge/${id}/motion.mp4`;}
+    else if(art.src.includes('motion.mp4')){art.src=`/assets/knowledge/${id}/movement.mp4`;bgVid.src=`/assets/knowledge/${id}/movement.mp4`;}
+   });
+   if(art.readyState>=1)syncVideoRatio();
+   art.play?.().catch(()=>{});
+   bgVid.play?.().catch(()=>{});
+  }else{
+   art.onload=()=>{
+    if(token!==serial||view.dataset.record!==id)return;
+    ratio=art.naturalWidth/art.naturalHeight;
+    layout();
+    scroll.scrollLeft=Math.max(0,board.clientWidth*(scroll.clientWidth<650?scene.focus:.5)-scroll.clientWidth/2);
+    update();
+   };
+  }
   arrows.forEach((b,i)=>b.onclick=()=>scroll.scrollBy({left:(i?1:-1)*scroll.clientWidth*.7,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));scroll.onscroll=update;
   scroll.onkeydown=e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();scroll.scrollBy({left:(e.key==='ArrowRight'?1:-1)*scroll.clientWidth*.7,behavior:'smooth'});}};
   overlay.querySelectorAll('[data-point]').forEach(b=>b.onclick=()=>{overlay.querySelectorAll('[data-point]').forEach(other=>other.setAttribute('aria-pressed',String(other===b)));narration=scene.points[Number(b.dataset.point)].voice;speak(narration,'vi-VN');});
