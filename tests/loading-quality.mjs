@@ -1,0 +1,9 @@
+import fs from 'node:fs/promises';
+await fs.mkdir('artifacts/loading',{recursive:true});
+import {chromium} from 'playwright';import assert from 'node:assert/strict';
+const b=await chromium.launch({channel:'chrome',headless:true});try{for(const [w,h,touch]of [[844,390,true],[1366,768,false]]){const p=await b.newPage({viewport:{width:w,height:h},hasTouch:touch});const errors=[];p.on('pageerror',e=>errors.push(e.message));
+await p.goto('http://127.0.0.1:4175/animal/seal');await p.waitForTimeout(500);const boxes=await p.evaluate(()=>{const a=document.querySelector('#knowledge-view').getBoundingClientRect(),b=document.querySelector('#experience').getBoundingClientRect();return {bottom:a.bottom,end:b.bottom};});assert.ok(Math.abs(boxes.bottom-boxes.end)<2);await p.screenshot({path:'artifacts/loading/seal-continuous-'+w+'.png'});
+let release;const pending=new Promise(r=>release=r);await p.route('**/assets/sea/**',async r=>{await pending;await r.continue().catch(()=>{});});await p.locator('[data-enter-3d]').click();await p.waitForFunction(()=>document.querySelector('#load-status').dataset.quality==='high');
+const size=touch?512:768;const info=await p.locator('#load-status .action-sprite').evaluate(async e=>{const im=new Image();im.src=e.style.backgroundImage.slice(5,-2);await im.decode();return {w:im.naturalWidth,h:im.naturalHeight,frames:e.dataset.frames,css:e.style.backgroundImage};});assert.equal(info.w,size*6);assert.equal(info.h,size*4);assert.equal(info.frames,'24');await p.screenshot({path:'artifacts/loading/seal-hq-'+w+'.png'});
+release();await p.waitForFunction(()=>document.querySelector('#load-status').hidden&&dinoGame.state?.id==='seal',null,{timeout:90000});assert.deepEqual(errors,[]);await p.close();console.log('PASS continuous backdrop and HQ loading',w,size);
+}}finally{await b.close();}

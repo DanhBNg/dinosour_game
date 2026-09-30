@@ -84,3 +84,6 @@ Home → world → animal habitat/knowledge topics → 3D actions. Swipe knowled
 Home open-world representatives shuffle every 9.6 seconds. Four locked worlds have elephant, gorilla, cow and wolf previews from supplied models. Icons use per-animation silhouette bounds over 48 frames; run `node scripts/measure-preview-bounds.mjs` with the local server running after replacing preview sheets. Generated locked previews need no model downloads at runtime.
 
 Regression: `node tests/navigation-overhaul.mjs`, `node tests/navigation-loading.mjs`, and `npm test`.
+
+Loading previews use dedicated close-up WebP atlases (24 frames): 768px desktop and 512px touch/mobile. Only the selected animal is requested; the small icon preview stays visible until the larger image decodes. Regenerate with `node scripts/render-loading-previews.mjs` while the local server is running. Knowledge artwork fills the view behind the transparent tray, avoiding a strip of unrelated environment imagery.
+After rendering, run `node scripts/measure-loading-bounds.mjs` and rebuild. Verify with `node tests/loading-quality.mjs` (desktop/mobile, continuous background, delayed loading and handoff).

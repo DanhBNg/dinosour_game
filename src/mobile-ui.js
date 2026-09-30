@@ -1,3 +1,5 @@
+import {loadingBounds} from './loading-framing.js';
+import {previewBounds} from './preview-framing.js';
 import {previewMarkup} from './action-previews.js';
 import {previewKey} from './preview-species.js';
 // Mobile chrome follows viewport geometry; no CSS rotation of the 3D canvas.
@@ -46,11 +48,22 @@ export function createMobileUI({notify}){
 }
 
 export function createModelLoading(host){
- function begin(id,marine,action){
-  host.hidden=false;host.dataset.failed='false';host.setAttribute('aria-busy','true');host.onclick=null;
-  host.innerHTML=`<div class="loading-subject">${previewMarkup(id,previewKey(id))}<span class="sr-only">Đang chuẩn bị mô hình</span></div>`;
+ let generation=0,currentId=null;
+ function layout(){const sprite=host.querySelector('[data-preview]');if(!sprite||host.hidden||!currentId)return;
+  const bounds=host.dataset.quality==='high'?loadingBounds[currentId]:previewBounds[currentId+'-'+previewKey(currentId)];
+  const [x0,y0,x1,y1]=bounds||[.1,.1,.9,.9],w=host.clientWidth,h=host.clientHeight,size=Math.min(w*.82/(x1-x0),h*.86/(y1-y0));
+  Object.assign(sprite.style,{width:size+'px',height:size+'px',left:(w/2-(x0+x1)/2*size)+'px',top:(h/2-(y0+y1)/2*size)+'px'});
  }
- function end(){host.hidden=true;host.setAttribute('aria-busy','false');host.onclick=null;}
+ new ResizeObserver(layout).observe(host);
+ function begin(id,marine,action){
+  currentId=id;const request=++generation;host.hidden=false;host.dataset.failed='false';host.setAttribute('aria-busy','true');host.onclick=null;
+  host.innerHTML=`<div class="loading-subject">${previewMarkup(id,previewKey(id))}<span class="sr-only">Đang chuẩn bị mô hình</span></div>`;
+  const sprite=host.querySelector('[data-preview]'),image=new Image(),small=matchMedia('(max-width:1024px), (pointer:coarse)').matches;
+  image.src='/assets/loading-previews/'+id+(small?'-512':'-768')+'.webp';
+  image.decode().then(()=>{if(generation!==request||host.hidden)return;sprite.style.backgroundImage='url("'+image.src+'")';sprite.style.backgroundSize='600% 400%';sprite.style.backgroundPosition='0% 0%';sprite.dataset.frames='24';sprite.dataset.columns='6';host.dataset.quality='high';layout();}).catch(()=>{});
+  host.dataset.quality='fallback';layout();
+ }
+ function end(){generation++;host.hidden=true;host.setAttribute('aria-busy','false');host.onclick=null;}
  function fail(retry){host.dataset.failed='true';host.setAttribute('aria-busy','false');host.querySelector('.loading-ring')?.remove();const b=document.createElement('button');b.className='round loading-retry';b.textContent='↻';b.setAttribute('aria-label','Tải model chưa thành công. Chạm để thử lại');b.onclick=retry;host.querySelector('.loading-subject')?.append(b);const hint=host.querySelector('.sr-only');if(hint)hint.textContent='Tải chưa thành công. Có thể thử lại hoặc quay về.';}
  return {begin,end,fail};
 }

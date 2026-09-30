@@ -29,7 +29,7 @@ export function createActionPreviews(){
   requestAnimationFrame(tick);if(now-last<100)return;last=now;
   if(!active||document.hidden||reduced.matches)return;clock++;
   // Every visible preview loops independently of hover/focus, without a held final frame.
-  for(const item of items){if(!item._visible)continue;const frame=(clock+(item.dataset.preview.startsWith('loggerhead')?24:0))%48;item.style.backgroundPosition=`${frame%8/7*100}% ${Math.floor(frame/8)/5*100}%`;}
+  for(const item of items){if(!item._visible)continue;const count=Number(item.dataset.frames)||48,cols=Number(item.dataset.columns)||8,rows=Math.ceil(count/cols),frame=(clock+(item.dataset.preview.startsWith('loggerhead')?24:0))%count;item.style.backgroundPosition=`${frame%cols/(cols-1)*100}% ${Math.floor(frame/cols)/(rows-1)*100}%`;}
 
  }
  document.addEventListener('visibilitychange',syncVideos);reduced.addEventListener('change',syncVideos);

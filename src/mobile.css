@@ -128,3 +128,13 @@ body[data-screen=map] #island{padding-bottom:30px}
 body[data-screen=topic] #knowledge-view .explore-pan{display:none!important}
 body[data-screen=topic] #knowledge-view img{-webkit-user-drag:none;user-select:none}
 body[data-screen=topic] #knowledge-view .explore-point{touch-action:pan-y}
+
+/* The same knowledge scene continues behind the glass tray: no second background strip. */
+body[data-screen=topic] #knowledge-view{inset:0!important;height:100%!important}
+/* Large loading artwork has its own close-up renders, separate from icon atlases. */
+body #load-status{bottom:var(--scene-bottom,155px)!important;height:auto!important;overflow:hidden}
+body #load-status .loading-subject{width:min(88vw,calc(var(--app-height,100dvh) - var(--scene-bottom,155px)));height:min(88vw,calc(var(--app-height,100dvh) - var(--scene-bottom,155px)));position:relative}
+body #load-status .action-sprite{position:absolute;width:100%;height:100%;inset:0;background-repeat:no-repeat}
+body #load-status[data-quality=fallback] .action-sprite{width:var(--preview-scale);height:var(--preview-scale);left:var(--preview-left);top:var(--preview-top)}
+
+body #load-status .loading-subject{width:100%!important;height:100%!important;max-width:none;aspect-ratio:auto}
