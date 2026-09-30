@@ -16,7 +16,7 @@ export const oceanContent={loggerhead:{
 export function oceanTopicButtons(){return Object.entries(oceanCategories).map(([key,t])=>`<button class="topic-orb ocean-topic-orb" data-topic="${key}" style="--orb-hue:${t.hue}" aria-label="${t.title}"><img src="/assets/knowledge/ocean/icons/${key}.png" alt=""></button>`).join('');}
 export function createOceanKnowledge({speak}){
  const $=id=>document.getElementById(id);let narration='';
- const hotspot=(label,x,y,w,h,voice)=>`<button class="ocean-hotspot" aria-label="${label}" aria-pressed="false" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%" data-voice="${voice}"><span aria-hidden="true">◉</span></button>`;
+ const hotspot=()=>'';
  function show(id,key){
   const t=oceanContent[id]?.[key];if(!t)return false;narration=t.voice;
   const view=$('knowledge-view');view.dataset.owner='ocean';view.dataset.topic=key;view.removeAttribute('data-focus');
