@@ -1,3 +1,4 @@
+import {createMapPan} from './map-pan.js';
 import {oceanJourneyMarkup,startOceanJourney,stopOceanJourney} from './ocean-journey.js';
 import {createFreeRoam} from './free-roam.js';
 import {previewKey,shuffledCycle} from './preview-species.js';
@@ -69,6 +70,7 @@ for(const [id,d]of [['actions-prev',-1],['actions-next',1]])$(id).onclick=()=>$(
 // Keep marine pins and the painting in the same coordinate system, including on phones.
 function layoutMap(){const e=$('island');if(world==='ocean')return;if(!e.querySelector('.island-art'))return;const w=Math.max(e.clientWidth,e.clientHeight*1.777),h=w/1.777;e.style.setProperty('--map-width',w+'px');e.style.setProperty('--map-height',h+'px');}
 new ResizeObserver(layoutMap).observe($('island'));
+createMapPan($('island'));
 function topicKeys(){return [...$('topic-hub').querySelectorAll('[data-topic]')].filter(b=>b.getAttribute('aria-disabled')!=='true').map(b=>b.dataset.topic);}
 function stepTopic(d){if(screen!=='topic')return;const keys=topicKeys(),i=keys.indexOf(currentTopic)+d;if(i>=keys.length){navigate('/animal/'+selected+'/actions');}else if(i>=0)navigate('/animal/'+selected+'/topics/'+keys[i]);}
 for(const [id,d]of [['knowledge-prev',-1],['knowledge-next',1]]){const button=document.createElement('button');button.id=id;button.className='round knowledge-step';button.textContent=d<0?'‹':'›';button.setAttribute('aria-label',d<0?'Mục kiến thức trước':'Mục tiếp theo hoặc model 3D');button.onclick=()=>stepTopic(d);$('experience').append(button);}
