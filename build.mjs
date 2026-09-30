@@ -5,7 +5,7 @@ import {resolve,dirname} from 'node:path';
 const root=dirname(fileURLToPath(import.meta.url)),out=resolve(root,'dist');
 await rm(out,{recursive:true,force:true});
 await mkdir(out,{recursive:true});
-await build({entryPoints:[root+'/src/app.js'],bundle:true,minify:true,format:'esm',outfile:out+'/app.js'});
+await build({entryPoints:[root+'/src/mobile-bootstrap.js'],bundle:true,minify:true,format:'esm',outfile:out+'/app.js'});
 await build({entryPoints:[root+'/src/legacy-app.js'],bundle:true,minify:true,format:'esm',outfile:out+'/legacy-app.js'});
 for(const f of ['legacy.html','index.html','style.css','redesign.css','child.css','knowledge.css','world.css','ocean-knowledge.css','species-knowledge.css','stego-exploration.css','mobile.css'])await copyFile(root+'/src/'+f,out+'/'+f);
 await cp(root+'/assets',out+'/assets',{recursive:true,filter:p=>!(/\.(zip|rar)$/i.test(p))});

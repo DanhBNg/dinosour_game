@@ -6,7 +6,7 @@ export function framePreview(id,key){
  // Keep the complete animated silhouette centered horizontally; feet have a stable baseline.
  const scale=Math.min(1.28/(x1-x0),1.16/(y1-y0),5);
  const left=.5-(x0+x1)*scale/2,top=land?.98-y1*scale:.48-(y0+y1)*scale/2;
- return '--preview-scale:'+scale*100+'%;--preview-left:'+left*100+'%;--preview-top:'+top*100+'%;';
+ return '--preview-anchor-x:'+((x0+x1)/2*100)+'%;--preview-anchor-y:'+((land?y1:(y0+y1)/2)*100)+'%;--preview-scale:'+scale*100+'%;--preview-left:'+left*100+'%;--preview-top:'+top*100+'%;';
 }
 export function previewMarkup(id,key){return '<span class="action-sprite" data-preview="'+id+'/'+key+'" style="'+framePreview(id,key)+'background-image:url(\'/assets/action-previews/'+id+'-'+key+'.webp\')" aria-hidden="true"></span>';}
 export function createActionPreviews(){

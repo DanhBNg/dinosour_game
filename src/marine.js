@@ -18,7 +18,7 @@ export const marine={
 };
 // Temporarily hidden at the user's request; keep source assets for repair.
 export const hiddenMarineIds=new Set(['isopod','hawksbill','whale','paShark']);
-export const visibleMarineIds=Object.keys(marine).filter(id=>!hiddenMarineIds.has(id));
+export const visibleMarineIds=['loggerhead','squid',...Object.keys(marine).filter(id=>!hiddenMarineIds.has(id)&&!['loggerhead','squid'].includes(id))];
 export async function loadMarine(id){
  const spec=marine[id],manager=new T.LoadingManager();
  // FBX files carry author-machine texture paths. Resolve the supplied diffuse explicitly.
