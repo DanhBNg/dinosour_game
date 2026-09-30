@@ -37,10 +37,11 @@ function showMap(){stopOceanJourney();ticket++;loading=false;modelLoading.end();
 }
 function setupAnimal(id){selected=id;world=group(id);document.body.dataset.species=id;document.body.dataset.marine=String(!!marine[id]);$('experience').style.setProperty('--environment','url("'+environment(id)+'")');$('hero-image').hidden=true;$('hero-backdrop').style.backgroundImage='url("'+environment(id)+'")';
  $('topic-hub').innerHTML=(speciesKnowledge[id]?speciesTopicButtons(id):marine[id]?oceanTopicButtons():topicButtons())+'<button class="action-orb" data-enter-3d aria-label="Xem model 3D">'+previewMarkup(id,previewKey(id))+'<span class="orb-play">▶</span></button>';
+ $('topic-hub').querySelector('[data-topic=range]')?.remove();
  $('topic-hub').querySelector('[data-enter-3d]').onclick=()=>navigate('/animal/'+id+'/actions');
  $('topic-hub').querySelectorAll('[data-topic]').forEach(b=>{b.setAttribute('aria-disabled',String(!hasTopic(id,b.dataset.topic)));b.onclick=()=>hasTopic(id,b.dataset.topic)?navigate('/animal/'+id+'/topics/'+b.dataset.topic):notify('Mục này chưa có nội dung');});previews.refresh();
 }
-function showTopic(id,key='habitat'){++ticket;loading=false;modelLoading.end();setupAnimal(id);currentTopic=key;route('topic');
+function showTopic(id,key='habitat'){if(key==='range')key='habitat';++ticket;loading=false;modelLoading.end();setupAnimal(id);currentTopic=key;route('topic');
  if(hasTopic(id,key)){if(speciesKnowledge[id])speciesView.show(id,key);else if(marine[id])oceanKnowledge.show(id,key);else{$('knowledge-view').dataset.owner='dinosaur';knowledge.show(key);}}
  else{$('knowledge-view').hidden=true;}
  $('topic-hub').querySelectorAll('[data-topic]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topic===key)));

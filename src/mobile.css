@@ -228,3 +228,9 @@ body[data-screen=map] #island img{-webkit-user-drag:none}
  body[data-screen=home] .world-badge.available[data-world=dinosaurs] .action-sprite{transform:scale(1.12)!important}
  body[data-world=dinosaurs] .map-pin:not(.mosa):not(.ptero) .pin-orb .action-sprite{transform:scale(1.5)}
 }
+
+.roam-joystick{display:none;position:absolute;left:24px;bottom:24px;width:106px;height:106px;border:2px solid #e8f9f299;border-radius:50%;background:#143f4666;touch-action:none;z-index:5;user-select:none}
+.joystick-thumb{position:absolute;width:42px;height:42px;left:30px;top:30px;border-radius:50%;border:2px solid #fff9;background:#d4e8dfb0;box-shadow:0 3px 12px #002b3b66;pointer-events:none}
+.roam-actions{position:absolute;bottom:24px;right:80px;z-index:5;display:flex;gap:12px}.roam-action{position:relative;display:grid;place-items:center;gap:1px;min-width:78px;padding:8px 14px;border:1px solid #fff9;border-radius:22px;background:#17454acc;color:#fff;cursor:pointer;touch-action:manipulation}.roam-action-icon{font-size:32px;line-height:1}.roam-action small{font-size:11px}.roam-action kbd{position:absolute;top:-8px;right:-7px;border-radius:50%;background:#f3dd98;color:#243c38;width:24px;height:24px;display:grid;place-items:center}.roam-action:disabled{opacity:.6}
+@media(pointer:coarse){.roam-joystick{display:block}.roam-action kbd{display:none}.roam-actions{bottom:24px;right:76px}}
+@media(max-height:350px){.roam-joystick{bottom:10px;left:14px}.roam-actions{bottom:14px}}
