@@ -198,3 +198,22 @@ body[data-screen=home] .world-badge.locked>span{border-width:3px;box-shadow:0 0 
  body[data-screen=home] .world-badge .action-sprite,body .map-pin .pin-orb .action-sprite{transform:scale(1.5);transform-origin:var(--preview-anchor-x,50%) var(--preview-anchor-y,80%)}
 }
 body.landscape-shell{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important}
+
+/* Relative to the previous mobile scale (1.5): locked -25%, open +25%. */
+@media(max-width:1024px),(pointer:coarse) and (max-width:1600px){
+ body[data-screen=home] .world-badge.locked .action-sprite{transform:scale(1.125)}
+ body[data-screen=home] .world-badge.available .action-sprite,body .map-pin .pin-orb .action-sprite{transform:scale(1.875)}
+}
+body[data-world=ocean][data-screen=map] #island{padding:0;overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x;scrollbar-width:none;background:#073345;cursor:grab}
+body[data-world=ocean][data-screen=map] #island:active{cursor:grabbing}
+.ocean-journey{position:relative;width:var(--journey-width);height:100%;min-height:260px;isolation:isolate}
+.journey-scenery{position:absolute;inset:0;background:#087787 url('/assets/worlds/ocean-journey.png') center/cover no-repeat;pointer-events:none}
+.journey-scenery:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#59eedc08,#061e6530);pointer-events:none}
+.journey-trail{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.journey-trail path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.trail-shadow{stroke:#08384480;stroke-width:13}.trail-light{stroke:#fff0b6;stroke-width:4;stroke-dasharray:3 13;filter:drop-shadow(0 0 5px #d9fff5)}
+body[data-world=ocean] #map-screen .journey-pin{left:var(--journey-x)!important;top:var(--journey-y)!important;z-index:2;touch-action:pan-x}
+.journey-stop{position:absolute;bottom:-31px;left:calc(50% - 13px);width:26px;height:26px;display:grid;place-items:center;border:1px solid #ffe5a6;border-radius:50%;color:#fff4cb;background:#145362;font-size:12px;font-weight:700}
+.journey-pin:after{display:none!important}.journey-end{position:absolute;right:28px;top:50%;font-size:64px;color:#b8eafa}
+.journey-navigation{position:absolute;inset:50% 12px auto;display:flex;justify-content:space-between;z-index:8;pointer-events:none}
+.journey-navigation button{pointer-events:auto;background:#113d49bf;border:1px solid #eeebbb88}.journey-navigation button:disabled{visibility:hidden}
