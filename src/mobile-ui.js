@@ -1,9 +1,11 @@
+import {createTrayDock} from './tray-dock.js';
 import {loadingBounds} from './loading-framing.js';
 import {previewBounds} from './preview-framing.js';
 import {previewMarkup} from './action-previews.js';
 import {previewKey} from './preview-species.js';
 // Mobile chrome follows viewport geometry; no CSS rotation of the 3D canvas.
 export function createMobileUI({notify}){
+ createTrayDock();
  const $=id=>document.getElementById(id),mobile=()=>matchMedia('(max-width:1024px)').matches||(navigator.maxTouchPoints>0&&innerWidth<=1600),portraitPhone=()=>navigator.maxTouchPoints>0&&innerHeight>innerWidth;
  const gate=document.createElement('div');gate.id='landscape-gate';gate.hidden=true;gate.setAttribute('role','dialog');gate.setAttribute('aria-modal','true');gate.setAttribute('aria-labelledby','rotate-title');gate.innerHTML='<div class="rotate-card"><div class="rotate-illustration" aria-hidden="true"><span class="rotate-phone"></span><span class="rotate-arrow">↻</span></div><h1 id="rotate-title">Xoay ngang điện thoại</h1><p>Cùng khám phá thế giới động vật!</p><button id="landscape-start">Bắt đầu <span aria-hidden="true">→</span></button><p id="rotate-hint">Giữ điện thoại nằm ngang để tiếp tục.</p></div>';document.body.append(gate);
  let previousFocus=null;
@@ -29,7 +31,7 @@ export function createMobileUI({notify}){
  }
  function tray(){const visible=['intro','topic'].includes(document.body.dataset.screen);for(const [id,edge]of [['topics-prev',hub.scrollLeft<=2],['topics-next',hub.scrollLeft+hub.clientWidth>=hub.scrollWidth-2]]){$(id).hidden=!mobile()||!visible||hub.scrollWidth<=hub.clientWidth+2;$(id).disabled=edge;}}
  hub.addEventListener('scroll',tray);new ResizeObserver(tray).observe(hub);
- new MutationObserver(()=>{requestAnimationFrame(()=>{hub.querySelector('[aria-pressed=true]')?.scrollIntoView({block:'nearest',inline:'nearest'});tray();});}).observe(hub,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-pressed']});
+ new MutationObserver(()=>{requestAnimationFrame(()=>{const selected=hub.querySelector('[aria-pressed=true]');if(selected&&!hub.inert){const a=selected.getBoundingClientRect(),r=hub.getBoundingClientRect();if(a.left<r.left+48)hub.scrollLeft-=r.left+48-a.left;else if(a.right>r.right-48)hub.scrollLeft+=a.right-r.right+48;}tray();});}).observe(hub,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-pressed']});
  new MutationObserver(tray).observe(document.body,{attributes:true,attributeFilter:['data-screen']});
  let viewportFrame=0;
  function viewport(){
@@ -51,7 +53,7 @@ export function createModelLoading(host){
  let generation=0,currentId=null;
  function layout(){const sprite=host.querySelector('[data-preview]');if(!sprite||host.hidden||!currentId)return;
   const bounds=host.dataset.quality==='high'?loadingBounds[currentId]:previewBounds[currentId+'-'+previewKey(currentId)];
-  const [x0,y0,x1,y1]=bounds||[.1,.1,.9,.9],w=host.clientWidth,h=host.clientHeight,size=Math.min(w*.82/(x1-x0),h*.86/(y1-y0));
+  const [x0,y0,x1,y1]=bounds||[.1,.1,.9,.9],w=host.clientWidth,h=host.clientHeight,size=.82*Math.min(w*.82/(x1-x0),h*.86/(y1-y0));
   Object.assign(sprite.style,{width:size+'px',height:size+'px',left:(w/2-(x0+x1)/2*size)+'px',top:(h/2-(y0+y1)/2*size)+'px'});
  }
  new ResizeObserver(layout).observe(host);

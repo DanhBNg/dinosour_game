@@ -48,7 +48,8 @@ export function createHabitat(host){
  function play(key){if(!actions)return false;entrance.cancel();const ok=actions.play(key);if(ok){lastKey=key;if(!actions.hunt?.active)fit(false);}return ok;}
  function stop(){if(actions&&!actions.state.paused)actions.pause();}
  function fit(animate=true){if(!root)return;if(actions?.hunt?.active){actions.frameView('hero');return;}entrance.frame(root,id,{animate,distanceScale:id==='mosa'?1.65:1.16});}
- function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.clearViewOffset();if(matchMedia("(max-width:650px)").matches)camera.setViewOffset(w,h,0,-h*.07,w,h);camera.updateProjectionMatrix();if(root&&active)fit(false);}
+ let previousHeight=0,previousDock=document.body.dataset.trayCollapsed;
+ function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.clearViewOffset();if(matchMedia("(max-width:650px)").matches)camera.setViewOffset(w,h,0,-h*.07,w,h);camera.updateProjectionMatrix();if(root&&active){const dock=document.body.dataset.trayCollapsed;if(previousHeight&&dock!==previousDock){entrance.cancel();camera.position.sub(controls.target).multiplyScalar(h/previousHeight).add(controls.target);controls.update();}else fit(false);}previousHeight=h;previousDock=document.body.dataset.trayCollapsed;}
  new ResizeObserver(resize).observe(host);
  let last=performance.now();function frame(now){requestAnimationFrame(frame);const dt=Math.min((now-last)/1000,.05);last=now;if(!active||document.hidden)return;actions?.update(dt);if(actions?.hunt?.active&&actions.progress>=1&&!actions.state.paused)actions.play("hunt");entrance.update(dt);controls.update();renderer.render(scene,camera);}requestAnimationFrame(frame);
 

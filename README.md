@@ -87,3 +87,5 @@ Regression: `node tests/navigation-overhaul.mjs`, `node tests/navigation-loading
 
 Loading previews use dedicated close-up WebP atlases (24 frames): 768px desktop and 512px touch/mobile. Only the selected animal is requested; the small icon preview stays visible until the larger image decodes. Regenerate with `node scripts/render-loading-previews.mjs` while the local server is running. Knowledge artwork fills the view behind the transparent tray, avoiding a strip of unrelated environment imagery.
 After rendering, run `node scripts/measure-loading-bounds.mjs` and rebuild. Verify with `node tests/loading-quality.mjs` (desktop/mobile, continuous background, delayed loading and handoff).
+
+Mobile trays now dock to the visible bottom edge. Tap or drag the trapezoid handle to collapse/expand; its state persists across topics and actions. Hidden trays are inert. Home has its own scroll area and bottom clearance independent of browser bars. Loading previews are reduced 18%. Check with `node tests/mobile-dock.mjs` and `node tests/visible-viewport.mjs`.
