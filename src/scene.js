@@ -1,3 +1,4 @@
+import {TURTLE_ACTIVITIES} from './turtle-activities.js';
 import {viewDirection} from './creatures/view-directions.js';
 import {marine,loadMarine} from './marine.js';
 import * as T from 'three';
@@ -57,7 +58,7 @@ export function createHabitat(host){
  async function captureAction(key,{resolution=256,frames=48,columns=8,closeup=false}={}){
   active=false;entrance.cancel();floor.visible=false;ring.visible=false;renderer.setPixelRatio(1);renderer.setSize(resolution,resolution);camera.aspect=1;camera.clearViewOffset();camera.updateProjectionMatrix();
   const animation=root.userData.sculptRuntime.animations[definitions[key]?.[0]];
-  const duration=key==='turn360'?4.2:key==='hunt'?10:key==='roarSweep'?ROAR_SWEEP_DURATION:CUSTOM[key]?.duration||animation?.duration||6;
+  const duration=TURTLE_ACTIVITIES[key]?TURTLE_ACTIVITIES[key].duration:key==='turn360'?4.2:key==='hunt'?10:key==='roarSweep'?ROAR_SWEEP_DURATION:CUSTOM[key]?.duration||animation?.duration||6;
   const step=duration/1.25/frames;
   function advance(){let left=step;while(left>0){const dt=Math.min(.025,left);actions.update(dt);left-=dt;}root.updateMatrixWorld(true);root.traverse(n=>n.skeleton?.update());}
   const box=new T.Box3();actions.mixer.stopAllAction();actions.play(key);

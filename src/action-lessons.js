@@ -1,5 +1,9 @@
 // Each runtime action gets its own lesson; no clip is silently omitted.
 const vocabulary=[
+ [/^boost$/i,'Speed up','Tăng tốc','swims faster','bơi nhanh hơn'],
+ [/^dive$/i,'Dive','Lặn','dives deeper','lặn xuống sâu hơn'],
+ [/^rise$/i,'Swim up','Nổi lên','swims upward','bơi lên cao hơn'],
+ [/^eat$/i,'Eat','Ăn','reaches for food','vươn đầu lấy thức ăn'],
  [/t.?pose/i,'Stand still','Đứng yên','stands still','đứng yên'],
  [/soar/i,'Soar','Sải cánh','soars above the ground','sải cánh trên cao'],
  [/roarSweep/i,'Roar and whip','Gầm và quét đuôi','roars and whips its tail','gầm và quét đuôi'],

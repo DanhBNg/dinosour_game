@@ -12,7 +12,7 @@ export function createRoamWorld(sea){
  obstacles.push({x,z,r:r*.85});
  }
  for(let i=0;i<44;i++){const a=i/44*Math.PI*2;rock(Math.sin(a)*61,Math.cos(a)*61,5+random()*4,true);}
- for(let i=0;i<38;i++){const x=(random()-.5)*108,z=(random()-.5)*108;if(Math.hypot(x,z)<12||Math.abs(x-Math.sin(z/4.8*.36)*13)<9)continue;
+ for(let i=0;i<38;i++){const x=(random()-.5)*108,z=(random()-.5)*108;if((sea&&Math.abs(x)<8&&z>-40&&z<5)||Math.hypot(x,z)<12||Math.abs(x-Math.sin(z/4.8*.36)*13)<9)continue;
  if(sea){rock(x,z,1.8+random()*2);for(let j=0;j<4;j++){const height=1.6+random()*3;mesh(new T.ConeGeometry(.6, height,5),[0xe29679,0xb397d1,0x69bda2][i%3],x+j*.7-1,-3+height/2,z+random()*2);}}
  else if(i%3===0)rock(x,z,2+random()*2);else{const h=5+random()*4;mesh(new T.CylinderGeometry(.35,.6,h,5),0x71553d,x,h/2,z);mesh(new T.ConeGeometry(3.5,h*.85,6),i%2?0x315f40:0x467b46,x,h*.9,z);mesh(new T.ConeGeometry(2.5,h*.65,6),0x63954d,x,h*1.25,z);obstacles.push({x,z,r:1.1});}
  }

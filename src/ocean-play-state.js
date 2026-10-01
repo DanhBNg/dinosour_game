@@ -1,0 +1,3 @@
+export const OCEAN_GOALS=[{kind:'ring',position:[0,2,-8]},{kind:'ring',position:[0,0,-16]},{kind:'ring',position:[0,4,-24]},{kind:'food',position:[3,0,-29]},{kind:'explore',position:[0,2,-34]}];
+export const clampDepth=y=>Math.max(0,Math.min(6,y));
+export function createOceanProgress(){let index=0,round=1;return {get index(){return index;},get round(){return round;},get target(){return OCEAN_GOALS[index];},get complete(){return index===OCEAN_GOALS.length;},advance(position,eating=false){const goal=OCEAN_GOALS[index];if(!goal)return false;const [x,y,z]=goal.position;if(Math.hypot(position.x-x,position.z-z)> (goal.kind==='ring'?2:3)||Math.abs(position.y-y)>1.3)return false;if(goal.kind==='food'&&!eating)return false;index++;return true;},restart(){index=0;round++;}};}
