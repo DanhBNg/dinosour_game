@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createRoamWorld,moveWithinMap} from '../src/roam-world.js';
+import {createRoamWorld,moveWithinMap} from '../src/core/roam-world.js';
 for(const sea of [false,true]){
  const world=createRoamWorld(sea);
  for(let angle=0;angle<Math.PI*2;angle+=.04){

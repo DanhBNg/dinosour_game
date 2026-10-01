@@ -1,16 +1,17 @@
-import {createMapPan} from './map-pan.js';
-import {oceanJourneyMarkup,startOceanJourney,stopOceanJourney} from './ocean-journey.js';
-import {createFreeRoam} from './free-roam.js';
-import {previewKey,shuffledCycle} from './preview-species.js';
-import {createMobileUI,createModelLoading} from './mobile-ui.js';
-import {catalog,ids as dinosaurIds} from './catalog.js';
-import {marine,hiddenMarineIds,visibleMarineIds} from './marine.js';
-import {oceanTopicButtons,oceanContent,createOceanKnowledge} from './ocean-knowledge.js';
-import {speciesKnowledge} from './species-knowledge-data.js';
-import {speciesTopicButtons,createSpeciesKnowledge} from './species-knowledge-view.js';
-import {createHabitat} from './scene.js';
-import {topicButtons,topics,createKnowledgeView} from './knowledge.js';
-import {previewMarkup,framePreview,createActionPreviews} from './action-previews.js';
+import {createMapPan} from './pages/home/dinosour/map-pan.js';
+import {oceanJourneyMarkup,startOceanJourney,stopOceanJourney} from './pages/home/ocean/ocean-journey.js';
+import {createFreeRoam} from './core/free-roam.js';
+import {previewKey,shuffledCycle} from './components/preview-species.js';
+import {createMobileUI,createModelLoading} from './components/mobile-ui.js';
+import {catalog,ids as dinosaurIds} from './pages/home/dinosour/catalog.js';
+import {marine,hiddenMarineIds,visibleMarineIds} from './pages/home/ocean/marine.js';
+import {oceanTopicButtons,oceanContent,createOceanKnowledge} from './pages/home/ocean/ocean-knowledge.js';
+import {speciesKnowledge} from './pages/home/dinosour/species-knowledge-data.js';
+import {speciesTopicButtons,createSpeciesKnowledge} from './pages/home/dinosour/species-knowledge-view.js';
+import {createHabitat} from './core/scene.js';
+import {topicButtons,topics,createKnowledgeView} from './pages/home/dinosour/trex/knowledge.js';
+import {previewMarkup,framePreview,createActionPreviews} from './components/action-previews.js';
+import {pages,getPage,resolvePage} from './pages/index.js';
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const seaIds=visibleMarineIds,all={...catalog,...marine};let selected='trex',world='dinosaurs',screen='home',habitat,ticket=0,loading=false,currentAction='',defs={};
 const previews=createActionPreviews(),knowledge=createKnowledgeView({speak}),oceanKnowledge=createOceanKnowledge({speak}),speciesView=createSpeciesKnowledge({speak});
@@ -31,7 +32,7 @@ function route(next){if(next!=='map')stopOceanJourney();roamScreen.hidden=next!=
 function navigate(path,replace=false){history[replace?'replaceState':'pushState']({},'',path);readRoute();}
 function showMap(){stopOceanJourney();ticket++;loading=false;modelLoading.end();route('map');
  $('island').innerHTML=world==='ocean'?oceanJourneyMarkup(list(),id=>previewMarkup(id,previewKey(id)),id=>esc(all[id].name)):'<img class="island-art" src="/assets/'+(world==='ocean'?'worlds/ocean.png':'prehistoric-island.png')+'" alt="">'+list().map(id=>{
- const pos=world==='ocean'?({seal:[54,32],squid:[30,44],loggerhead:[12,28],tuna:[77,33],slug:[50,51],shark:[85,57],fish:[38,51],amplectobelua:[66,64]})[id]:catalog[id].pos;
+ const pos=world==='ocean'?({loggerhead:[12,28],tuna:[30,44],shark:[54,32],fish:[77,33],seal:[50,51],squid:[85,57],slug:[38,51],amplectobelua:[66,64]})[id]:catalog[id].pos;
  return '<button class="map-pin '+id+'" style="--px:'+pos[0]/100+';--py:'+pos[1]/100+'" data-species="'+id+'" aria-label="'+esc(all[id].name)+'"><span class="pin-orb">'+previewMarkup(id,previewKey(id))+'</span></button>';
  }).join('');previews.refresh();$('island').querySelectorAll('[data-species]').forEach(b=>b.onclick=()=>navigate('/animal/'+b.dataset.species));layoutMap();if(world==='ocean')startOceanJourney($('island'));$('world-title').textContent=world==='ocean'?'OCEAN WORLD':'DINOSAUR WORLD';
 }
@@ -98,4 +99,4 @@ swipeView.addEventListener('pointerup',e=>{
 swipeView.addEventListener('click',e=>{if(suppressSceneClick){e.preventDefault();e.stopImmediatePropagation();}},true);
 swipeView.addEventListener('pointercancel',()=>gesture=null,true);
 for(const [name,ids,initial]of [['dinosaurs',dinosaurIds,'trex'],['ocean',seaIds,'loggerhead']]){const next=shuffledCycle(ids,initial);setInterval(async()=>{if(screen!=='home'||document.hidden)return;const id=next(),key=previewKey(id),img=new Image();img.src='/assets/action-previews/'+id+'-'+key+'.webp';try{await img.decode();}catch{return;}if(screen!=='home')return;const sprite=document.querySelector('button[data-world='+name+'] [data-preview]');if(!sprite)return;sprite.dataset.preview=id+'/'+key;sprite.style.cssText=framePreview(id,key)+'background-image:url("'+img.src+'")';},9600);}
-window.addEventListener('popstate',readRoute);if(location.hash){const [page,id,key]=location.hash.slice(1).split('/');history.replaceState({},'',all[id]?'/animal/'+id+(page==='learn'?'/actions/'+key:page==='topic'?'/topics/'+key:''):'/world/dinosaurs');}readRoute();window.dinoGame={get roam(){return roam?.state},get screen(){return screen},get selected(){return selected},get state(){return habitat?.state},get lessons(){return Object.entries(defs).map(([actionKey,s])=>({actionKey,word:s[1]}))},capture:async id=>{await habitat.load(id);return habitat.capturePortrait();}};
+window.addEventListener('popstate',readRoute);if(location.hash){const [page,id,key]=location.hash.slice(1).split('/');history.replaceState({},'',all[id]?'/animal/'+id+(page==='learn'?'/actions/'+key:page==='topic'?'/topics/'+key:''):'/world/dinosaurs');}readRoute();window.dinoGame={get roam(){return roam?.state},get screen(){return screen},get selected(){return selected},get state(){return habitat?.state},get lessons(){return Object.entries(defs).map(([actionKey,s])=>({actionKey,word:s[1]}))},capture:async id=>{await habitat.load(id);return habitat.capturePortrait();},pages,getPage,resolvePage};

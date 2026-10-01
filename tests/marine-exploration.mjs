@@ -1,8 +1,8 @@
-import {speciesKnowledge} from '../src/species-knowledge-data.js';
+import {speciesKnowledge} from '../src/pages/home/dinosour/species-knowledge-data.js';
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {marineExploration as records} from '../src/marine-exploration.js';
+import {marineExploration as records} from '../src/pages/home/ocean/marine-exploration.js';
 const browser=await chromium.launch({channel:'chrome',headless:true}),page=await browser.newPage(),errors=[],missing=[];
 page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)missing.push(r.url());});
 await page.addInitScript(()=>{window.__spoken=[];speechSynthesis.speak=u=>__spoken.push(u.text);});
