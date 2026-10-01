@@ -1,5 +1,5 @@
 import {buildActionLessons} from '../core/action-lessons.js';
-import {catalog,ids,matchesWord} from '../pages/home/dinosour/catalog.js';
+import {catalog,ids,matchesWord} from '../pages/dinosaur-world/catalog.js';
 import {createHabitat} from './legacy-scene.js';
 
 const $=id=>document.getElementById(id),esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

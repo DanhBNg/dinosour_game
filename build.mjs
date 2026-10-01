@@ -11,10 +11,10 @@ await build({entryPoints:[root+'/src/components/loading-3d.js'],bundle:true,mini
 await copyFile(root+'/src/legacy/legacy.html',out+'/legacy.html');
 await copyFile(root+'/src/index.html',out+'/index.html');
 for(const f of ['style.css','redesign.css','child.css','world.css','mobile.css'])await copyFile(root+'/src/styles/'+f,out+'/'+f);
-await copyFile(root+'/src/pages/home/dinosour/trex/knowledge.css',out+'/knowledge.css');
-await copyFile(root+'/src/pages/home/dinosour/species-knowledge.css',out+'/species-knowledge.css');
-await copyFile(root+'/src/pages/home/dinosour/stego/stego-exploration.css',out+'/stego-exploration.css');
-await copyFile(root+'/src/pages/home/ocean/ocean-knowledge.css',out+'/ocean-knowledge.css');
+await copyFile(root+'/src/pages/dinosaur-world/trex/knowledge.css',out+'/knowledge.css');
+await copyFile(root+'/src/pages/dinosaur-world/species-knowledge.css',out+'/species-knowledge.css');
+await copyFile(root+'/src/pages/dinosaur-world/stego/stego-exploration.css',out+'/stego-exploration.css');
+await copyFile(root+'/src/pages/ocean-world/ocean-knowledge.css',out+'/ocean-knowledge.css');
 await copyFile(root+'/src/components/loading-3d.css',out+'/loading-3d.css');
 await cp(root+'/assets',out+'/assets',{recursive:true,filter:p=>!(/\.(zip|rar)$/i.test(p))});
 await cp(root+'/video',out+'/video',{recursive:true});

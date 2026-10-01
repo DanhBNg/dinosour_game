@@ -1,6 +1,6 @@
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
-import {createOceanProgress,OCEAN_GOALS,clampDepth} from '../src/pages/home/ocean/ocean-play-state.js';
+import {createOceanProgress,OCEAN_GOALS,clampDepth} from '../src/pages/ocean-world/ocean-play-state.js';
 const progress=createOceanProgress();assert.equal(progress.advance({x:0,y:4,z:-24}),false);for(const g of OCEAN_GOALS){const [x,y,z]=g.position;if(g.kind==='food')assert.equal(progress.advance({x,y,z}),false);assert.equal(progress.advance({x,y,z},true),true);}assert.ok(progress.complete);progress.restart();assert.equal(progress.index,0);assert.equal(clampDepth(-2),0);assert.equal(clampDepth(9),6);
 const b=await chromium.launch({channel:'chrome',headless:true});
 try{for(const mobile of [false,true]){const p=await b.newPage({viewport:mobile?{width:844,height:390}:{width:1200,height:700},hasTouch:mobile,isMobile:mobile});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://127.0.0.1:4175/animal/loggerhead/explore');const iframe=await p.$('iframe');const f=iframe?await iframe.contentFrame():p;await f.waitForFunction(()=>window.dinoGame?.roam?.active,null,{timeout:90000});assert.equal(await f.locator('.roam-action').count(),5);assert.equal(await f.locator('.roam-action kbd').first().isVisible(),!mobile);

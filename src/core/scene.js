@@ -1,6 +1,6 @@
-import {TURTLE_ACTIVITIES} from '../pages/home/ocean/loggerhead/turtle-activities.js';
+import {TURTLE_ACTIVITIES} from '../pages/ocean-world/loggerhead/turtle-activities.js';
 import {viewDirection} from './creatures/view-directions.js';
-import {marine,loadMarine} from '../pages/home/ocean/marine.js';
+import {marine,loadMarine} from '../pages/ocean-world/marine.js';
 import * as T from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {createTrexModel} from './creatures/model.js';

@@ -1,7 +1,7 @@
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {triceExploration} from '../src/pages/home/dinosour/trice/trice-exploration.js';
+import {triceExploration} from '../src/pages/dinosaur-world/trice/trice-exploration.js';
 const b=await chromium.launch({channel:'chrome',headless:true}),p=await b.newPage({viewport:{width:1366,height:641}});const errors=[],missing=[];
 p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)missing.push(r.url());});
 await p.addInitScript(()=>{window.__spoken=[];speechSynthesis.speak=u=>__spoken.push(u.text);});

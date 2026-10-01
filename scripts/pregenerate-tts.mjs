@@ -3,10 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { speciesKnowledge } from '../src/pages/home/dinosour/species-knowledge-data.js';
-import { topics as trexTopics } from '../src/pages/home/dinosour/trex/knowledge.js';
-import { oceanContent } from '../src/pages/home/ocean/ocean-knowledge.js';
-import { marineKnowledge } from '../src/pages/home/ocean/marine-knowledge-data.js';
+import { speciesKnowledge } from '../src/pages/dinosaur-world/species-knowledge-data.js';
+import { topics as trexTopics } from '../src/pages/dinosaur-world/trex/knowledge.js';
+import { oceanContent } from '../src/pages/ocean-world/ocean-knowledge.js';
+import { marineKnowledge } from '../src/pages/ocean-world/marine-knowledge-data.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outDir = path.resolve(root, 'assets/audio/tts');

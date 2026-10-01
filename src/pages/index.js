@@ -1,21 +1,23 @@
 // Central Page Registry and Router
-import * as homePage from './home/index.js';
-import * as oceanPage from './home/ocean/index.js';
-import * as dinosourPage from './home/dinosour/index.js';
+import * as homePage from './home.js';
+import * as oceanPage from './ocean-world/index.js';
+import * as dinosourPage from './dinosaur-world/index.js';
 
 export { homePage, oceanPage, dinosourPage };
 
 export const maps = {
   ocean: oceanPage,
+  'ocean-world': oceanPage,
   dinosour: dinosourPage,
   dinosaurs: dinosourPage,
-  dinosaur: dinosourPage
+  dinosaur: dinosourPage,
+  'dinosaur-world': dinosourPage
 };
 export const pages = maps;
 
 export function getPage({ map, animal, tab }) {
   if (!map && !animal) return homePage;
-  const normMap = (map === 'dinosaurs' || map === 'dinosaur') ? 'dinosour' : map;
+  const normMap = (map === 'dinosaurs' || map === 'dinosaur' || map === 'dinosaur-world') ? 'dinosour' : (map === 'ocean-world' ? 'ocean' : map);
   const mapModule = maps[normMap];
   if (!mapModule) return null;
   if (!animal) return mapModule;
