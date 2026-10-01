@@ -18,7 +18,7 @@ export const marineExploration={
    point([10,5,25,17],'Mặt nước','Hải cẩu thở bằng phổi. Nó phải trở lên mặt nước để lấy không khí.')]),
   size:scene('Hải cẩu và người nhìn ngang để so sánh chiều dài với chiều cao',[
    point([38,44,43,28],'Hải cẩu', 'Hải cẩu minh họa dài một mét tám, đo từ đầu đến cuối thân. Đây là một ví dụ, không phải kích thước mọi hải cẩu.','↔ ví dụ 1,8 m'),
-   point([16,7,12,61],'Người','Người đối chiếu cao một mét bảy. Ta đang so chiều dài của hải cẩu với chiều cao của người.','↕ 1,7 m')],{voice:'Hãy so chiều dài hải cẩu minh họa một mét tám với người cao một mét bảy.',note:'Ví dụ hải cẩu cảng dài 1,8 m, người giả định cao 1,7 m. Không phải số đo của model hoặc chiều dài tối đa; tranh chỉ minh họa, không thay phép đo.'}),
+   point([16,7,12,61],'Người','Người đối chiếu cao một mét bảy. Ta đang so chiều dài của hải cẩu với chiều cao của người.','↕ 1,7 m')],{voice:'Hãy so chiều dài hải cẩu minh họa một mét tám với người cao một mét bảy.',note:''}),
   growth:scene('Hải cẩu con, con đang lớn và con trưởng thành',[
    point([9,41,21,30],'Hải cẩu con','Hải cẩu sinh con. Con nhỏ bú sữa mẹ.'),
    point([39,32,21,39],'Đang lớn','Hải cẩu con lớn dần và học tìm thức ăn.'),
@@ -57,7 +57,7 @@ export const marineExploration={
   movement:{...scene('Đuôi hình lưỡi liềm của cá ngừ tạo lực bơi',[
    point([71,23,22,42],'Đuôi','Cá ngừ quẫy đuôi sang hai bên để đẩy mình về phía trước.'),
    point([24,25,44,35],'Thân thuôn','Thân thuôn giúp cá đi qua nước. Cá ngừ vây vàng có thể di chuyển rất xa.')]),video:'motion.mp4'},
-  size:{...scene('Cá ngừ và người bơi nằm ngang cùng mặt phẳng',[],{voice:'Cá ngừ minh họa dài một mét rưỡi; người đối chiếu dài một mét bảy, không tính chân vịt.',note:'Ví dụ cá ngừ vây vàng dài 1,5 m và người 1,7 m; không khẳng định loài hoặc kích thước của model. Tranh minh họa không thay phép đo.'}),video:'size.mp4'},
+  size:{...scene('Cá ngừ và người bơi nằm ngang cùng mặt phẳng',[],{voice:'Cá ngừ vây vàng dài 1 mét rưỡi, dài gần bằng 1 người trưởng thành.',note:''}),video:'size.mp4'},
    growth:{...scene('Trứng trong nước, cá non và cá ngừ trưởng thành',[
    point([8,33,19,34],'Trứng trong nước','Cá ngừ vây vàng đẻ trứng trong nước biển.'),
    point([37,32,21,36],'Cá mới nở','Cá mới nở rất nhỏ, hình dáng chưa giống cá trưởng thành.'),

@@ -1,0 +1,662 @@
+{
+  "a80c4779ffd40b768fe3d966c3be2be0": {
+    "file": "/assets/audio/tts/a80c4779ffd40b768fe3d966c3be2be0.wav",
+    "text": "Tê rex sống trong môi trường ấm và ẩm. Hãy nhìn cây xanh, bãi bồi và dòng sông trong cảnh phục dựng này.",
+    "sources": [
+      "trex/habitat"
+    ]
+  },
+  "7aa59e152c0bc497b564cc6009e5bc38": {
+    "file": "/assets/audio/tts/7aa59e152c0bc497b564cc6009e5bc38.wav",
+    "text": "Tê rex ăn thịt. Nó săn các loài động vật khác và cũng có thể ăn xác động vật. Hãy nhìn Tê rex đang đuổi theo một con khủng long ăn thực vật.",
+    "sources": [
+      "trex/diet"
+    ]
+  },
+  "7e58808985c61c6278e6153fbc1d39f6": {
+    "file": "/assets/audio/tts/7e58808985c61c6278e6153fbc1d39f6.wav",
+    "text": "Tê rex đi bằng hai chân sau. Mỗi bàn chân có ba ngón chính hướng về phía trước. Hãy đếm ba ngón trên dấu chân nhé.",
+    "sources": [
+      "trex/footprints"
+    ]
+  },
+  "12fb7a61f75eb4d7372d402c57ef36fd": {
+    "file": "/assets/audio/tts/12fb7a61f75eb4d7372d402c57ef36fd.wav",
+    "text": "Một con Tê rex trưởng thành dài khoảng mười hai mét từ đầu tới chót đuôi. So với người lớn cao một mét bảy, nó thật to!",
+    "sources": [
+      "trex/size"
+    ]
+  },
+  "bf5eb55911644f1c30e043e87ac82fa5": {
+    "file": "/assets/audio/tts/bf5eb55911644f1c30e043e87ac82fa5.wav",
+    "text": "Từ trong trứng, khủng long nở thành con non. Khi lớn lên, thân hình và tỷ lệ các bộ phận thay đổi. Hãy chọn một giai đoạn ở phía trên.",
+    "sources": [
+      "trex/growth"
+    ]
+  },
+  "18188eda345bdbdb76f971fc8fee8a6d": {
+    "file": "/assets/audio/tts/18188eda345bdbdb76f971fc8fee8a6d.wav",
+    "text": "Hóa thạch Tê rex được tìm thấy ở Bắc Mỹ, trong những khu vực ngày nay thuộc Hoa Kỳ và Canada. Vùng sáng giúp con tìm phía tây Bắc Mỹ.",
+    "sources": [
+      "trex/range"
+    ]
+  },
+  "635f1e0cd610542256f7240025a56736": {
+    "file": "/assets/audio/tts/635f1e0cd610542256f7240025a56736.wav",
+    "text": "Stegosaurus sống trên cạn. Những vùng có sông và bãi bồi từng là nhà của nó.",
+    "sources": [
+      "stego/habitat"
+    ]
+  },
+  "7763d7efcebb6badfcad4e560924dc00": {
+    "file": "/assets/audio/tts/7763d7efcebb6badfcad4e560924dc00.wav",
+    "text": "Stegosaurus ăn thực vật, không săn động vật khác.",
+    "sources": [
+      "stego/diet"
+    ]
+  },
+  "80408474da0776e64d063f9744842dfb": {
+    "file": "/assets/audio/tts/80408474da0776e64d063f9744842dfb.wav",
+    "text": "Bốn chân nâng đỡ cơ thể Stegosaurus. Đuôi có gai giúp nó tự vệ.",
+    "sources": [
+      "stego/footprints"
+    ]
+  },
+  "15e2ae2deac1f730ea68b58df0ba19d3": {
+    "file": "/assets/audio/tts/15e2ae2deac1f730ea68b58df0ba19d3.wav",
+    "text": "Những Stegosaurus lớn có thể dài khoảng chín mét, tính cả đuôi.",
+    "sources": [
+      "stego/size"
+    ]
+  },
+  "32f591c01ea9836aacc588741da74e69": {
+    "file": "/assets/audio/tts/32f591c01ea9836aacc588741da74e69.wav",
+    "text": "Khủng long nở từ trứng rồi lớn lên. Tỷ lệ các bộ phận cũng thay đổi.",
+    "sources": [
+      "stego/growth",
+      "trice/growth",
+      "deino/growth"
+    ]
+  },
+  "52819f11cba5482c9189e4c9ba2c2b33": {
+    "file": "/assets/audio/tts/52819f11cba5482c9189e4c9ba2c2b33.wav",
+    "text": "Hóa thạch Stegosaurus được tìm thấy tại Hoa Kỳ. Nó sống trước Tê rex rất lâu.",
+    "sources": [
+      "stego/range"
+    ]
+  },
+  "005b5e478924562a854d74b8a72ef528": {
+    "file": "/assets/audio/tts/005b5e478924562a854d74b8a72ef528.wav",
+    "text": "Triceratops là khủng long trên cạn, sống vào cuối kỷ Phấn Trắng.",
+    "sources": [
+      "trice/habitat"
+    ]
+  },
+  "ce469fff7968c3810ca22f49d605ee08": {
+    "file": "/assets/audio/tts/ce469fff7968c3810ca22f49d605ee08.wav",
+    "text": "Triceratops dùng mỏ cắt thực vật và răng để xử lý thức ăn.",
+    "sources": [
+      "trice/diet"
+    ]
+  },
+  "ffa835047d0c3386242e5b59d5055f50": {
+    "file": "/assets/audio/tts/ffa835047d0c3386242e5b59d5055f50.wav",
+    "text": "Triceratops bước đi bằng bốn chân. Hãy tìm hai chân trước và hai chân sau.",
+    "sources": [
+      "trice/footprints"
+    ]
+  },
+  "3c08d2570844e1caa42bb855c5cf62ff": {
+    "file": "/assets/audio/tts/3c08d2570844e1caa42bb855c5cf62ff.wav",
+    "text": "Triceratops có thể dài khoảng chín mét từ đầu đến chót đuôi.",
+    "sources": [
+      "trice/size"
+    ]
+  },
+  "ab3eb17e06a592a5aba7de6ff42f087b": {
+    "file": "/assets/audio/tts/ab3eb17e06a592a5aba7de6ff42f087b.wav",
+    "text": "Hóa thạch Triceratops được tìm thấy ở Hoa Kỳ. Nó sống khoảng sáu mươi tám đến sáu mươi sáu triệu năm trước.",
+    "sources": [
+      "trice/range"
+    ]
+  },
+  "d4a0e1547bcd8047dc534b1609b9daf7": {
+    "file": "/assets/audio/tts/d4a0e1547bcd8047dc534b1609b9daf7.wav",
+    "text": "Deinonychus sống trên cạn ở Bắc Mỹ vào đầu kỷ Phấn Trắng.",
+    "sources": [
+      "deino/habitat"
+    ]
+  },
+  "f18d925c8230e31d0d315470b5caf5c1": {
+    "file": "/assets/audio/tts/f18d925c8230e31d0d315470b5caf5c1.wav",
+    "text": "Deinonychus ăn thịt các động vật khác. Móng cong lớn ở chân giúp nó xử lý con mồi.",
+    "sources": [
+      "deino/diet"
+    ]
+  },
+  "9f9cfb9b82266f078d0a1ed2a32cf643": {
+    "file": "/assets/audio/tts/9f9cfb9b82266f078d0a1ed2a32cf643.wav",
+    "text": "Deinonychus đi bằng hai chân. Ngón thứ hai có móng lớn, thường được nhấc khỏi đất.",
+    "sources": [
+      "deino/footprints"
+    ]
+  },
+  "1ba18504970b2845c0d599bc75df2525": {
+    "file": "/assets/audio/tts/1ba18504970b2845c0d599bc75df2525.wav",
+    "text": "Deinonychus dài khoảng ba mét bốn, tính cả chiếc đuôi dài.",
+    "sources": [
+      "deino/size"
+    ]
+  },
+  "1721b66b3ca68deb16f917a330657d48": {
+    "file": "/assets/audio/tts/1721b66b3ca68deb16f917a330657d48.wav",
+    "text": "Các hóa thạch Deinonychus được tìm thấy ở Hoa Kỳ. Nó sống trước Tê rex hàng chục triệu năm.",
+    "sources": [
+      "deino/range"
+    ]
+  },
+  "2187df4c5d0259b9d2d7cb710e8e94d7": {
+    "file": "/assets/audio/tts/2187df4c5d0259b9d2d7cb710e8e94d7.wav",
+    "text": "Bò sát bay có thể bay chủ động. Những loài khác nhau sống trong những môi trường khác nhau.",
+    "sources": [
+      "ptero/habitat"
+    ]
+  },
+  "598441eaa8016b5afcb3021ff24e5e5d": {
+    "file": "/assets/audio/tts/598441eaa8016b5afcb3021ff24e5e5d.wav",
+    "text": "Có bò sát bay ăn cá, có loài ăn côn trùng hoặc những động vật khác.",
+    "sources": [
+      "ptero/diet"
+    ]
+  },
+  "3e3942e307b0bb092b56dbdee8fdb253": {
+    "file": "/assets/audio/tts/3e3942e307b0bb092b56dbdee8fdb253.wav",
+    "text": "Cánh của bò sát bay là một màng được nâng đỡ bởi ngón tay rất dài.",
+    "sources": [
+      "ptero/footprints"
+    ]
+  },
+  "7276a8251e3100250dc411a77b3099a6": {
+    "file": "/assets/audio/tts/7276a8251e3100250dc411a77b3099a6.wav",
+    "text": "Bò sát bay có loài nhỏ và có loài rất lớn. Sải cánh được đo từ đầu cánh này sang đầu cánh kia.",
+    "sources": [
+      "ptero/size"
+    ]
+  },
+  "9b4de34209fc80230b7eb377021622c0": {
+    "file": "/assets/audio/tts/9b4de34209fc80230b7eb377021622c0.wav",
+    "text": "Bò sát bay đẻ trứng. Con non lớn lên thành con trưởng thành.",
+    "sources": [
+      "ptero/growth"
+    ]
+  },
+  "43ca454d2d449c10227ae855afb1e4d0": {
+    "file": "/assets/audio/tts/43ca454d2d449c10227ae855afb1e4d0.wav",
+    "text": "Hóa thạch bò sát bay được tìm thấy ở nhiều nơi trên thế giới.",
+    "sources": [
+      "ptero/range"
+    ]
+  },
+  "8c862404305ae75788ff140b11816343": {
+    "file": "/assets/audio/tts/8c862404305ae75788ff140b11816343.wav",
+    "text": "Mosasaurus sống trong biển nhưng thở bằng phổi, nên cần lên mặt nước lấy không khí.",
+    "sources": [
+      "mosa/habitat"
+    ]
+  },
+  "39064c7018a0cc824d5c4f7d266fcae0": {
+    "file": "/assets/audio/tts/39064c7018a0cc824d5c4f7d266fcae0.wav",
+    "text": "Mosasaurus ăn những động vật biển khác. Hàm và răng giúp nó bắt con mồi.",
+    "sources": [
+      "mosa/diet"
+    ]
+  },
+  "9a6613b59f8a4d4a2776c9e198d4a318": {
+    "file": "/assets/audio/tts/9a6613b59f8a4d4a2776c9e198d4a318.wav",
+    "text": "Đuôi góp phần tạo lực đẩy, còn những chiếc vây giúp điều hướng khi bơi.",
+    "sources": [
+      "mosa/movement"
+    ]
+  },
+  "f4699023d0b9711fcaef3a9094f32515": {
+    "file": "/assets/audio/tts/f4699023d0b9711fcaef3a9094f32515.wav",
+    "text": "Mosasaurus có những loài rất lớn. Muốn chọn số đo đúng, cần biết loài và mẫu hóa thạch.",
+    "sources": [
+      "mosa/size"
+    ]
+  },
+  "0a704518bd92e177af8f01fe73b362e7": {
+    "file": "/assets/audio/tts/0a704518bd92e177af8f01fe73b362e7.wav",
+    "text": "Bằng chứng ở họ mosasaur cho thấy chúng có thể sinh con ngay trong biển.",
+    "sources": [
+      "mosa/growth"
+    ]
+  },
+  "d39b036f9b40206a7509f0e2e2d17d1c": {
+    "file": "/assets/audio/tts/d39b036f9b40206a7509f0e2e2d17d1c.wav",
+    "text": "Mosasaurus nổi tiếng với hóa thạch được tìm thấy ở Maastricht, thuộc Hà Lan ngày nay.",
+    "sources": [
+      "mosa/range"
+    ]
+  },
+  "e063403dec2e18d70e8f4b6a197e0157": {
+    "file": "/assets/audio/tts/e063403dec2e18d70e8f4b6a197e0157.wav",
+    "text": "Hải cẩu cảng kiếm ăn dưới nước và lên bờ hoặc băng để nghỉ.",
+    "sources": [
+      "seal/habitat",
+      "ocean/seal/habitat",
+      "marine/seal/habitat"
+    ]
+  },
+  "99372165e6ad2bb67533be10bf4af81f": {
+    "file": "/assets/audio/tts/99372165e6ad2bb67533be10bf4af81f.wav",
+    "text": "Hải cẩu cảng ăn cá và một số động vật không xương sống dưới biển.",
+    "sources": [
+      "seal/diet",
+      "ocean/seal/diet",
+      "marine/seal/diet"
+    ]
+  },
+  "6b977dd009c21d62f935105b374ec73f": {
+    "file": "/assets/audio/tts/6b977dd009c21d62f935105b374ec73f.wav",
+    "text": "Hải cẩu cảng bơi và lặn tìm thức ăn. Nó phải lên mặt nước để thở.",
+    "sources": [
+      "seal/movement",
+      "ocean/seal/movement",
+      "marine/seal/movement"
+    ]
+  },
+  "3746f370746230abfaa1696b8b0814a0": {
+    "file": "/assets/audio/tts/3746f370746230abfaa1696b8b0814a0.wav",
+    "text": "Có nhiều loài hải cẩu với kích thước khác nhau. Model này chưa được xác định loài.",
+    "sources": [
+      "seal/size",
+      "ocean/seal/size",
+      "marine/seal/size"
+    ]
+  },
+  "2f2e799e47ce5ba482c024bd9e566edb": {
+    "file": "/assets/audio/tts/2f2e799e47ce5ba482c024bd9e566edb.wav",
+    "text": "Hải cẩu là động vật có vú. Hải cẩu cảng sinh con, con non bú sữa mẹ.",
+    "sources": [
+      "seal/growth",
+      "ocean/seal/growth",
+      "marine/seal/growth"
+    ]
+  },
+  "b8dc87e4a62ff21177e54c979ce286f9": {
+    "file": "/assets/audio/tts/b8dc87e4a62ff21177e54c979ce286f9.wav",
+    "text": "Hải cẩu cảng sống ở vùng ven biển phía bắc Đại Tây Dương và Thái Bình Dương.",
+    "sources": [
+      "seal/range",
+      "ocean/seal/range",
+      "marine/seal/range"
+    ]
+  },
+  "8edc1e09a008a560bcb48c36e1b55956": {
+    "file": "/assets/audio/tts/8edc1e09a008a560bcb48c36e1b55956.wav",
+    "text": "Mực bobtail Hawaii thường vùi mình trong cát ban ngày và kiếm ăn ban đêm.",
+    "sources": [
+      "squid/habitat",
+      "ocean/squid/habitat",
+      "marine/squid/habitat"
+    ]
+  },
+  "43581aacca3a458b015ebfc58086c272": {
+    "file": "/assets/audio/tts/43581aacca3a458b015ebfc58086c272.wav",
+    "text": "Mực bobtail Hawaii ăn các động vật giáp xác nhỏ.",
+    "sources": [
+      "squid/diet",
+      "ocean/squid/diet",
+      "marine/squid/diet"
+    ]
+  },
+  "36c6fd141faafab957a1c0441a383c3c": {
+    "file": "/assets/audio/tts/36c6fd141faafab957a1c0441a383c3c.wav",
+    "text": "Ban đêm, mực bobtail Hawaii rời nơi ẩn ở đáy biển để kiếm ăn.",
+    "sources": [
+      "squid/movement",
+      "ocean/squid/movement",
+      "marine/squid/movement"
+    ]
+  },
+  "c4fbb29e6643739322f4de3490ca687f": {
+    "file": "/assets/audio/tts/c4fbb29e6643739322f4de3490ca687f.wav",
+    "text": "Thân áo của mực bobtail Hawaii dài tới khoảng ba phẩy năm xen ti mét.",
+    "sources": [
+      "squid/size",
+      "ocean/squid/size",
+      "marine/squid/size"
+    ]
+  },
+  "f121cd89d428e92167246d35270679f3": {
+    "file": "/assets/audio/tts/f121cd89d428e92167246d35270679f3.wav",
+    "text": "Mực bobtail Hawaii đẻ trứng. Mực con nở ra rồi lớn lên.",
+    "sources": [
+      "squid/growth",
+      "ocean/squid/growth",
+      "marine/squid/growth"
+    ]
+  },
+  "815e85e2b11e3baca515203f49664cdf": {
+    "file": "/assets/audio/tts/815e85e2b11e3baca515203f49664cdf.wav",
+    "text": "Mực bobtail Hawaii sống ở vùng biển nông ven các đảo Hawaii.",
+    "sources": [
+      "squid/range",
+      "ocean/squid/range",
+      "marine/squid/range"
+    ]
+  },
+  "a2519e0209b9f98cde4fcdc0775f158e": {
+    "file": "/assets/audio/tts/a2519e0209b9f98cde4fcdc0775f158e.wav",
+    "text": "Cá ngừ vây vàng sống trong các đại dương ấm, thường ở gần mặt nước.",
+    "sources": [
+      "tuna/habitat",
+      "ocean/tuna/habitat",
+      "marine/tuna/habitat"
+    ]
+  },
+  "43f9d0d97bc85316a4c5e92f65836183": {
+    "file": "/assets/audio/tts/43f9d0d97bc85316a4c5e92f65836183.wav",
+    "text": "Cá ngừ vây vàng ăn cá, mực và giáp xác.",
+    "sources": [
+      "tuna/diet",
+      "ocean/tuna/diet",
+      "marine/tuna/diet"
+    ]
+  },
+  "b0f0b01dd3b88663b03dfba8a702159a": {
+    "file": "/assets/audio/tts/b0f0b01dd3b88663b03dfba8a702159a.wav",
+    "text": "Cá ngừ vây vàng có thể bơi qua cả một đại dương.",
+    "sources": [
+      "tuna/movement",
+      "ocean/tuna/movement",
+      "marine/tuna/movement"
+    ]
+  },
+  "3faa3031c04cb807036c081cdce1ac63": {
+    "file": "/assets/audio/tts/3faa3031c04cb807036c081cdce1ac63.wav",
+    "text": "Cá ngừ vây vàng dài 1 mét rưỡi, dài gần bằng 1 người trưởng thành.",
+    "sources": [
+      "tuna/size",
+      "ocean/tuna/size",
+      "marine/tuna/size"
+    ]
+  },
+  "e2b5ff3ae3c4e65d7e0d7637548bdb03": {
+    "file": "/assets/audio/tts/e2b5ff3ae3c4e65d7e0d7637548bdb03.wav",
+    "text": "Cá ngừ vây vàng đẻ trứng trong nước. Cá non lớn lên và thường bơi thành đàn.",
+    "sources": [
+      "tuna/growth",
+      "ocean/tuna/growth",
+      "marine/tuna/growth"
+    ]
+  },
+  "2dfab1f2fecfd7868edd1b73d8104eae": {
+    "file": "/assets/audio/tts/2dfab1f2fecfd7868edd1b73d8104eae.wav",
+    "text": "Cá ngừ vây vàng có ở các đại dương nhiệt đới và cận nhiệt đới trên thế giới.",
+    "sources": [
+      "tuna/range",
+      "ocean/tuna/range",
+      "marine/tuna/range"
+    ]
+  },
+  "cb2274c631b81d25ff98c8ddc92cceea": {
+    "file": "/assets/audio/tts/cb2274c631b81d25ff98c8ddc92cceea.wav",
+    "text": "Sên biển Chromodoris annae được ghi nhận trên các rạn và nền đá dưới biển.",
+    "sources": [
+      "slug/habitat",
+      "ocean/slug/habitat",
+      "marine/slug/habitat"
+    ]
+  },
+  "a9971d70d88085764b2fbba3c8ea4480": {
+    "file": "/assets/audio/tts/a9971d70d88085764b2fbba3c8ea4480.wav",
+    "text": "Chromodoris annae ăn bọt biển. Bọt biển là động vật, không phải cây.",
+    "sources": [
+      "slug/diet",
+      "ocean/slug/diet",
+      "marine/slug/diet"
+    ]
+  },
+  "fb397965d88de5e45229a85546dd41b2": {
+    "file": "/assets/audio/tts/fb397965d88de5e45229a85546dd41b2.wav",
+    "text": "Sên biển di chuyển trên nền đáy bằng phần chân mềm ở mặt dưới.",
+    "sources": [
+      "slug/movement",
+      "ocean/slug/movement",
+      "marine/slug/movement"
+    ]
+  },
+  "d19552e99fc2a59f079748e80fe031c3": {
+    "file": "/assets/audio/tts/d19552e99fc2a59f079748e80fe031c3.wav",
+    "text": "Sên biển này là động vật nhỏ. Hình trên màn hình đã được phóng lớn.",
+    "sources": [
+      "slug/size",
+      "ocean/slug/size",
+      "marine/slug/size"
+    ]
+  },
+  "aa65e9db898ecaa589b00565dcdcb5ce": {
+    "file": "/assets/audio/tts/aa65e9db898ecaa589b00565dcdcb5ce.wav",
+    "text": "Sên biển đẻ trứng. Các giai đoạn phát triển khác nhau giữa các loài.",
+    "sources": [
+      "slug/growth",
+      "ocean/slug/growth",
+      "marine/slug/growth"
+    ]
+  },
+  "32a80652a4b1c01a7fbbf1e89ab2b60c": {
+    "file": "/assets/audio/tts/32a80652a4b1c01a7fbbf1e89ab2b60c.wav",
+    "text": "Chromodoris annae được ghi nhận ở vùng nhiệt đới phía tây Thái Bình Dương.",
+    "sources": [
+      "slug/range",
+      "ocean/slug/range",
+      "marine/slug/range"
+    ]
+  },
+  "70063032433840a3a7181adbaced0d79": {
+    "file": "/assets/audio/tts/70063032433840a3a7181adbaced0d79.wav",
+    "text": "Cá mập trắng sống ở biển ôn đới và cận nhiệt đới, cả vùng ven bờ và ngoài khơi.",
+    "sources": [
+      "shark/habitat",
+      "ocean/shark/habitat",
+      "marine/shark/habitat"
+    ]
+  },
+  "55445412ba215abcb472e4682f091127": {
+    "file": "/assets/audio/tts/55445412ba215abcb472e4682f091127.wav",
+    "text": "Cá mập trắng ăn cá và những động vật biển khác. Con lớn có thể săn hải cẩu.",
+    "sources": [
+      "shark/diet",
+      "ocean/shark/diet",
+      "marine/shark/diet"
+    ]
+  },
+  "079ff4f2fd6d2b423eab0e1a99b6a886": {
+    "file": "/assets/audio/tts/079ff4f2fd6d2b423eab0e1a99b6a886.wav",
+    "text": "Cá mập trắng bơi và có thể di chuyển rất xa giữa các vùng biển.",
+    "sources": [
+      "shark/movement",
+      "ocean/shark/movement",
+      "marine/shark/movement"
+    ]
+  },
+  "85abcfa9e57818c18dd14e458e9a5e57": {
+    "file": "/assets/audio/tts/85abcfa9e57818c18dd14e458e9a5e57.wav",
+    "text": "Những cá mập trắng lớn có thể dài tới khoảng sáu mét bốn.",
+    "sources": [
+      "shark/size",
+      "ocean/shark/size",
+      "marine/shark/size"
+    ]
+  },
+  "fa86912c0e7731f5e771587d29650cf8": {
+    "file": "/assets/audio/tts/fa86912c0e7731f5e771587d29650cf8.wav",
+    "text": "Cá mập trắng sinh ra cá con đã có thể bơi. Nó không đẻ trứng trên bãi cát.",
+    "sources": [
+      "shark/growth",
+      "ocean/shark/growth",
+      "marine/shark/growth"
+    ]
+  },
+  "89a120ba403d7141d1da78c00a8cc9a0": {
+    "file": "/assets/audio/tts/89a120ba403d7141d1da78c00a8cc9a0.wav",
+    "text": "Cá mập trắng phân bố ở các vùng biển ôn đới và cận nhiệt đới trên thế giới.",
+    "sources": [
+      "shark/range",
+      "ocean/shark/range",
+      "marine/shark/range"
+    ]
+  },
+  "af55cb0ce6e3e0bfce0f09c5d8083273": {
+    "file": "/assets/audio/tts/af55cb0ce6e3e0bfce0f09c5d8083273.wav",
+    "text": "Cá cờ Heniochus acuminatus sống ở vịnh ven bờ và vùng rạn san hô.",
+    "sources": [
+      "fish/habitat",
+      "ocean/fish/habitat",
+      "marine/fish/habitat"
+    ]
+  },
+  "cfe0ec825bd798241421e14567e6c8b5": {
+    "file": "/assets/audio/tts/cfe0ec825bd798241421e14567e6c8b5.wav",
+    "text": "Loài cá cờ tham chiếu ăn động vật phù du và động vật không xương sống ở đáy.",
+    "sources": [
+      "fish/diet",
+      "ocean/fish/diet",
+      "marine/fish/diet"
+    ]
+  },
+  "e852b2dfffa268561801f9e44c33d8a1": {
+    "file": "/assets/audio/tts/e852b2dfffa268561801f9e44c33d8a1.wav",
+    "text": "Hãy quan sát vây và đuôi của model cá. Đó là những bộ phận giúp cá di chuyển.",
+    "sources": [
+      "fish/movement",
+      "ocean/fish/movement",
+      "marine/fish/movement"
+    ]
+  },
+  "6978351d7cf297d6d8f38f3f50280e30": {
+    "file": "/assets/audio/tts/6978351d7cf297d6d8f38f3f50280e30.wav",
+    "text": "Cá cờ Heniochus acuminatus có thể dài tới hai mươi lăm xen ti mét.",
+    "sources": [
+      "fish/size",
+      "ocean/fish/size",
+      "marine/fish/size"
+    ]
+  },
+  "f456b3874cd1b3bf96ee9eb98189908b": {
+    "file": "/assets/audio/tts/f456b3874cd1b3bf96ee9eb98189908b.wav",
+    "text": "Cá con lớn lên, kích thước và hình dáng có thể thay đổi.",
+    "sources": [
+      "fish/growth",
+      "ocean/fish/growth",
+      "marine/fish/growth"
+    ]
+  },
+  "cf26e8cf899a250ff919a28bc5db3d27": {
+    "file": "/assets/audio/tts/cf26e8cf899a250ff919a28bc5db3d27.wav",
+    "text": "Loài cá cờ tham chiếu có ở vùng nhiệt đới Ấn Độ Dương và phần tây, trung tâm Thái Bình Dương.",
+    "sources": [
+      "fish/range",
+      "ocean/fish/range",
+      "marine/fish/range"
+    ]
+  },
+  "25f2cc33a3356f07283f45033477d029": {
+    "file": "/assets/audio/tts/25f2cc33a3356f07283f45033477d029.wav",
+    "text": "Amplectobelua sống trong biển từ kỷ Cambri, rất lâu trước khủng long.",
+    "sources": [
+      "amplectobelua/habitat",
+      "ocean/amplectobelua/habitat",
+      "marine/amplectobelua/habitat"
+    ]
+  },
+  "8710daa49101331a5f73023dfd9144c1": {
+    "file": "/assets/audio/tts/8710daa49101331a5f73023dfd9144c1.wav",
+    "text": "Các phụ bộ phía trước giúp Amplectobelua nắm giữ con mồi.",
+    "sources": [
+      "amplectobelua/diet",
+      "ocean/amplectobelua/diet",
+      "marine/amplectobelua/diet"
+    ]
+  },
+  "4eee70c1da5b187ea0d8d5c4cfa08b40": {
+    "file": "/assets/audio/tts/4eee70c1da5b187ea0d8d5c4cfa08b40.wav",
+    "text": "Amplectobelua có những thùy dọc hai bên cơ thể, thích nghi cho việc bơi.",
+    "sources": [
+      "amplectobelua/movement",
+      "ocean/amplectobelua/movement",
+      "marine/amplectobelua/movement"
+    ]
+  },
+  "fd81aa2f15135547aed69f44ea5e363a": {
+    "file": "/assets/audio/tts/fd81aa2f15135547aed69f44ea5e363a.wav",
+    "text": "Nhà khoa học nghiên cứu kích thước Amplectobelua từ hóa thạch.",
+    "sources": [
+      "amplectobelua/size",
+      "ocean/amplectobelua/size",
+      "marine/amplectobelua/size"
+    ]
+  },
+  "c2e34df0efc3369c93d777b4da6b341e": {
+    "file": "/assets/audio/tts/c2e34df0efc3369c93d777b4da6b341e.wav",
+    "text": "Chúng ta chưa biết đầy đủ vòng đời của Amplectobelua. Hóa thạch giúp tìm hiểu thêm.",
+    "sources": [
+      "amplectobelua/growth",
+      "ocean/amplectobelua/growth",
+      "marine/amplectobelua/growth"
+    ]
+  },
+  "b0d172868fa058da5ebfeb3c0b2d4782": {
+    "file": "/assets/audio/tts/b0d172868fa058da5ebfeb3c0b2d4782.wav",
+    "text": "Hóa thạch Amplectobelua symbrachiata được nghiên cứu từ Chengjiang ở Trung Quốc.",
+    "sources": [
+      "amplectobelua/range",
+      "ocean/amplectobelua/range",
+      "marine/amplectobelua/range"
+    ]
+  },
+  "b7377d35e2a58ef0c20d9593563c8ea1": {
+    "file": "/assets/audio/tts/b7377d35e2a58ef0c20d9593563c8ea1.wav",
+    "text": "Rùa quản đồng sống ngoài biển và vùng nước ven bờ.",
+    "sources": [
+      "ocean/loggerhead/habitat"
+    ]
+  },
+  "cb306cde87cb4e2697ee347dcafd5101": {
+    "file": "/assets/audio/tts/cb306cde87cb4e2697ee347dcafd5101.wav",
+    "text": "Rùa quản đồng ăn cua và các động vật có vỏ. Hàm khỏe giúp rùa nghiền vỏ thức ăn.",
+    "sources": [
+      "ocean/loggerhead/diet"
+    ]
+  },
+  "8d87535f5b3dd01183d9fc254c1f1228": {
+    "file": "/assets/audio/tts/8d87535f5b3dd01183d9fc254c1f1228.wav",
+    "text": "Rùa bơi bằng những chiếc chân chèo.",
+    "sources": [
+      "ocean/loggerhead/movement"
+    ]
+  },
+  "3b229d79366f8a073a2cc3f007e5e857": {
+    "file": "/assets/audio/tts/3b229d79366f8a073a2cc3f007e5e857.wav",
+    "text": "Mai rùa trưởng thành dài khoảng không phẩy tám đến một phẩy một mét.",
+    "sources": [
+      "ocean/loggerhead/size"
+    ]
+  },
+  "2f5a78a42f919d100a6916f4ab3979e6": {
+    "file": "/assets/audio/tts/2f5a78a42f919d100a6916f4ab3979e6.wav",
+    "text": "Rùa đẻ trứng trên bãi cát. Rùa con nở ra, xuống biển rồi lớn lên.",
+    "sources": [
+      "ocean/loggerhead/growth"
+    ]
+  },
+  "42cb1b8e03a0f4e3fac8e23fada85345": {
+    "file": "/assets/audio/tts/42cb1b8e03a0f4e3fac8e23fada85345.wav",
+    "text": "Rùa quản đồng sống ở Đại Tây Dương, Thái Bình Dương, Ấn Độ Dương và Địa Trung Hải.",
+    "sources": [
+      "ocean/loggerhead/range"
+    ]
+  }
+}

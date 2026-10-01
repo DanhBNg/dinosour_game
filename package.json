@@ -6,6 +6,7 @@
     "build": "node build.mjs",
     "dev": "node serve.mjs",
     "start": "node serve.mjs",
+    "pregenerate:tts": "node scripts/pregenerate-tts.mjs",
     "test": "node --test tests/entrance-camera.test.mjs && node tests/world-routes.mjs"
   },
   "dependencies": {

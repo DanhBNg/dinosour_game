@@ -12,13 +12,21 @@ if(embedded){
  document.addEventListener('click',event=>{if(event.target.closest('#orientation-toggle')){event.preventDefault();event.stopImmediatePropagation();parent.postMessage({type:'animal-fullscreen'},location.origin);}},true);
  import('./app.js');
 }else if(touch){
+ const unlockOuter = () => {
+  try {
+   const Ctx = window.AudioContext || window.webkitAudioContext;
+   if (Ctx) { const c = new Ctx(); c.resume().catch(()=>{}); }
+  } catch(e){}
+  try { window.speechSynthesis?.resume(); } catch(e){}
+ };
+ ['touchstart','touchend','pointerdown','click'].forEach(evt => window.addEventListener(evt, unlockOuter, {once:true, passive:true, capture:true}));
  document.body.replaceChildren();document.body.className='landscape-shell';
- const frame=document.createElement('iframe');frame.dataset.animalApp='true';frame.title='Animal World';frame.allow='fullscreen; autoplay';frame.setAttribute('allowfullscreen','');
+ const frame=document.createElement('iframe');frame.dataset.animalApp='true';frame.title='Animal World';frame.allow='fullscreen; autoplay *; autoplay; speaker *; microphone *; camera *; sound *';frame.setAttribute('allowfullscreen','');
  Object.assign(frame.style,{position:'absolute',border:'0',transformOrigin:'0 0',display:'block'});
  Object.assign(document.body.style,{position:'fixed',inset:'0',margin:'0',overflow:'hidden',background:'#122b25'});
  const gate=document.createElement('div');gate.id='landscape-gate';gate.setAttribute('role','dialog');gate.setAttribute('aria-modal','true');gate.setAttribute('aria-labelledby','rotate-title');gate.innerHTML='<div class="rotate-card"><div class="rotate-illustration" aria-hidden="true"><span class="rotate-phone"></span></div><h1 id="rotate-title">Xoay ngang điện thoại</h1><p>Cùng khám phá thế giới động vật!</p><button id="landscape-start">Bắt đầu</button><p id="rotate-hint">Nếu điện thoại đang khóa xoay, đặt máy nằm ngang rồi bấm Bắt đầu.</p></div>';document.body.append(gate);
  let acceptedPortrait=false,wasPortrait=null;
- gate.querySelector('button').onclick=()=>{acceptedPortrait=true;fit();frame.focus();};
+ gate.querySelector('button').onclick=()=>{acceptedPortrait=true;unlockOuter();fit();frame.focus();};
  function fit(){const vv=visualViewport;if(vv&&Math.abs(vv.scale-1)>.02)return;const w=vv?.width||innerWidth,h=vv?.height||innerHeight,portrait=h>w;frame.style.width=(portrait?h:w)+'px';frame.style.height=(portrait?w:h)+'px';frame.style.left=(vv?.offsetLeft||0)+'px';frame.style.top=(vv?.offsetTop||0)+'px';frame.style.transform=portrait?'translateX('+w+'px) rotate(90deg)':'none';document.body.dataset.appRotated=String(portrait);if(!portrait)acceptedPortrait=false;const blocked=portrait&&!acceptedPortrait;gate.hidden=!blocked;frame.inert=blocked;frame.style.visibility=blocked?'hidden':'visible';if(blocked&&wasPortrait!==true)gate.querySelector('button').focus();wasPortrait=portrait;}
  fit();frame.src=location.href;document.body.append(frame);
  window.addEventListener('resize',fit);visualViewport?.addEventListener('resize',fit);visualViewport?.addEventListener('scroll',fit);

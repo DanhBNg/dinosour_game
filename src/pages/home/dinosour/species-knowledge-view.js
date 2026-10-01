@@ -21,8 +21,9 @@ export function createSpeciesKnowledge({speak}){
   const r=speciesKnowledge[id],t=r?.topics[key];if(!t)return false;
   narration=t.voice;const v=$('knowledge-view');v.dataset.owner='species';v.dataset.topic=key;v.dataset.record=id;v.removeAttribute('data-focus');
   $('topic-options').hidden=true;$('size-guide').hidden=true;$('topic-notes').open=false;
-  // Detailed prose is optional; the main page uses one small label and a listening target.
-  $('topic-explanation').textContent=[t.voice,t.note,r.identity,'Hình hiện tại giới thiệu loài, chưa phải sơ đồ chuyên biệt của mục này.'].filter(Boolean).join(' ');
+  const mainVoice=(t.voice||'').trim();
+  const esc=s=>(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+  $('topic-explanation').innerHTML='<span class="topic-voice-text">'+esc(mainVoice)+'</span>';
   const source=t.source||r.source;$('topic-source').href=source.url;$('topic-source').textContent='Nguồn: '+source.name;
   const art=r.world==='ocean'?`/assets/worlds/${r.environment||'reef'}.png`:`/assets/heroes/${id}.png`;
   const portrait=r.world==='ocean'?`<img class="species-fact-animal" src="/assets/portraits/${id}.webp" alt="${escape(r.name)}">`:'';
@@ -31,5 +32,5 @@ export function createSpeciesKnowledge({speak}){
   document.querySelectorAll('#topic-hub button[data-topic]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topic===key)));
   return true;
  }
- return {show,narrate(){if(illustrated)illustrated.narrate();else speak(narration,'vi-VN');}};
+ return {show,narrate(onFinish){if(illustrated)illustrated.narrate(onFinish);else speak(narration,'vi-VN',onFinish);}};
 }

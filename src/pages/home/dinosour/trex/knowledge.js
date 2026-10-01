@@ -67,5 +67,5 @@ export function createKnowledgeView({speak}){
   box.querySelectorAll('[data-measure-index]').forEach((b,i)=>{b.style.left=((w-iw)/2+anchors[i][0]*iw-offset)+'px';b.style.top=((h-ih)/2+anchors[i][1]*ih)+'px';});
  }
  $('knowledge-image').addEventListener('load',layout);new ResizeObserver(layout).observe($('knowledge-view'));
- return {show,narrate(){speak(narration,'vi-VN');}};
+ return {show,narrate(onFinish){speak(narration,'vi-VN',onFinish);}};
 }

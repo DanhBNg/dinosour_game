@@ -37,7 +37,9 @@ export function createStegoExploration({speak,record,id="stego",scenes=stegoExpl
   const scene=scenes[key],fact=record.topics[key];if(!scene)return false;
   const token=++serial;narration=scene.voice||fact.voice;const view=$('knowledge-view');view.dataset.owner='illustrated';view.dataset.record=id;view.dataset.topic=key;view.removeAttribute('data-focus');
   $('topic-options').hidden=true;$('size-guide').hidden=true;$('topic-notes').open=false;
-  $('topic-explanation').textContent=[scene.voice||fact.voice,scene.note||fact.note,record.identity].filter(Boolean).join(' ');
+  const mainVoice=(scene.voice||fact.voice||'').trim();
+  const esc=s=>(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+  $('topic-explanation').innerHTML='<span class="topic-voice-text">'+esc(mainVoice)+'</span>';
   const source=scene.source||fact.source||record.source;$('topic-source').href=source.url;$('topic-source').textContent='Nguồn: '+source.name;
   // Support video scenes: if scene.video is set, render a <video> element instead of <img>
   let bgVid=null,videoFallbackTried=false;
@@ -166,5 +168,5 @@ export function createStegoExploration({speak,record,id="stego",scenes=stegoExpl
   return true;
  }
  let resize;
- return{show,narrate(){speak(narration,'vi-VN');}};
+ return{show,narrate(onFinish){speak(narration,'vi-VN',onFinish);}};
 }

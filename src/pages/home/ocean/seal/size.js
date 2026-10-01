@@ -8,7 +8,7 @@ export const pageInfo = {
   tab: "size",
   title: "Kích thước",
   voice: "Hãy so chiều dài hải cẩu minh họa một mét tám với người cao một mét bảy.",
-  note: "Ví dụ hải cẩu cảng dài 1,8 m, người giả định cao 1,7 m. Không phải số đo của model hoặc chiều dài tối đa; tranh chỉ minh họa, không thay phép đo.",
+  note: "",
   video: null,
   art: "/assets/knowledge/ocean/seal/size.png",
   points: [{"box":[40,38,45,32],"label":"Hải cẩu","voice":"Hải cẩu minh họa dài một mét tám, đo từ đầu đến cuối thân. Đây là một ví dụ, không phải kích thước mọi hải cẩu.","measurement":"↔ ví dụ 1,8 m"},{"box":[16,20,12,50],"label":"Người","voice":"Người đối chiếu cao một mét bảy. Ta đang so chiều dài của hải cẩu với chiều cao của người.","measurement":"↕ 1,7 m"}],
@@ -50,7 +50,7 @@ export function render(container, context = {}) {
   }
 
   const explanation = document.getElementById('topic-explanation');
-  if (explanation) explanation.textContent = pageInfo.note || pageInfo.voice;
+  if (explanation) explanation.innerHTML = '<span class="topic-voice-text">' + pageInfo.voice + '</span>';
 
   if (speak && context.autoNarrate) {
     speak(pageInfo.voice, 'vi-VN');

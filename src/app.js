@@ -12,11 +12,11 @@ import {createHabitat} from './core/scene.js';
 import {topicButtons,topics,createKnowledgeView} from './pages/home/dinosour/trex/knowledge.js';
 import {previewMarkup,framePreview,createActionPreviews} from './components/action-previews.js';
 import {pages,getPage,resolvePage} from './pages/index.js';
+import {speak,stopSpeech,unlockAudio} from './core/speech.js';
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const seaIds=visibleMarineIds,all={...catalog,...marine};let selected='trex',world='dinosaurs',screen='home',habitat,ticket=0,loading=false,currentAction='',defs={};
 const previews=createActionPreviews(),knowledge=createKnowledgeView({speak}),oceanKnowledge=createOceanKnowledge({speak}),speciesView=createSpeciesKnowledge({speak});
 const hasTopic=(id,key)=>key!=='range'&&!!(speciesKnowledge[id]?.topics[key]||(id==='trex'&&topics[key])||oceanContent[id]?.[key]);
-function speak(text,lang='vi-VN'){if(!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=lang;speechSynthesis.speak(u);}
 const group=id=>marine[id]?'ocean':'dinosaurs',list=()=>world==='ocean'?seaIds:dinosaurIds;
 const portrait=id=>'/assets/portraits/'+id+'.webp';
 const environment=id=>id==='trex'?'/assets/knowledge/trex/habitat.png':'/assets/worlds/'+(marine[id]?.env||({mosa:'deep',ptero:'cliffs'}[id]||'forest'))+'.png';
@@ -28,12 +28,14 @@ const roamScreen=document.createElement('section');roamScreen.id='roam-screen';r
 const gameButton=document.createElement('button');gameButton.id='explore-game';gameButton.className='round';gameButton.hidden=true;gameButton.setAttribute('aria-label','Khám phá tự do');gameButton.innerHTML='<svg viewBox="0 0 32 24" aria-hidden="true"><path d="M9 4h14c4 0 7 12 5 15-2 3-6-3-8-3h-8c-2 0-6 6-8 3C2 16 5 4 9 4Z"/><path d="M10 7v7M6.5 10.5h7"/><circle cx="22" cy="9" r="1"/><circle cx="25" cy="12" r="1"/></svg>';$('stage').querySelector('.stage-tools').prepend(gameButton);gameButton.onclick=()=>navigate('/animal/'+selected+'/explore');
 function openRoam(id){ticket++;loading=false;modelLoading.end();selected=id;world=group(id);route('explore');roam??=createFreeRoam(roamScreen);roam.load(id);}
 createMobileUI({notify});
-function route(next){if(next!=='map')stopOceanJourney();roamScreen.hidden=next!=='explore';if(next!=='explore')roam?.setActive(false);gameButton.hidden=next!=='learn'||!['trex','loggerhead'].includes(selected);$('notice').textContent='';screen=next;document.body.dataset.screen=next;document.body.dataset.world=world;$('home-screen').hidden=next!=='home';$('map-screen').hidden=next!=='map';$('experience').hidden=['home','map','explore'].includes(next);$('action-tray').hidden=next!=='learn';$('topic-hub').hidden=!['intro','topic'].includes(next);$('knowledge-view').hidden=next!=='topic';$('learn-panel').hidden=true;$('back').hidden=next==='home';$('say-name').hidden=!['intro','topic'].includes(next);habitat?.setActive(next==='learn');previews.setActive(['home','intro','learn','topic','map'].includes(next));previews.refresh();}
+function route(next){if(next!=='map')stopOceanJourney();roamScreen.hidden=next!=='explore';if(next!=='explore')roam?.setActive(false);gameButton.hidden=next!=='learn'||!['trex','loggerhead'].includes(selected);$('notice').textContent='';screen=next;document.body.dataset.screen=next;document.body.dataset.world=world;$('home-screen').hidden=next!=='home';$('map-screen').hidden=next!=='map';$('experience').hidden=['home','map','explore'].includes(next);$('action-tray').hidden=next!=='learn';$('topic-hub').hidden=!['intro','topic'].includes(next);$('knowledge-view').hidden=next!=='topic';if(next!=='topic'){clearTimeout(notesHideTimer);clearTimeout(subtitleHideTimer);if($('topic-notes'))$('topic-notes').open=false;if($('topic-subtitle'))$('topic-subtitle').hidden=true;}$('learn-panel').hidden=true;$('back').hidden=next==='home';$('say-name').hidden=!['intro','topic'].includes(next);habitat?.setActive(next==='learn');previews.setActive(['home','intro','learn','topic','map'].includes(next));previews.refresh();}
 function navigate(path,replace=false){history[replace?'replaceState':'pushState']({},'',path);readRoute();}
 function showMap(){stopOceanJourney();ticket++;loading=false;modelLoading.end();route('map');
  $('island').innerHTML=world==='ocean'?oceanJourneyMarkup(list(),id=>previewMarkup(id,previewKey(id)),id=>esc(all[id].name)):'<img class="island-art" src="/assets/'+(world==='ocean'?'worlds/ocean.png':'prehistoric-island.png')+'" alt="">'+list().map(id=>{
  const pos=world==='ocean'?({loggerhead:[12,28],tuna:[30,44],shark:[54,32],fish:[77,33],seal:[50,51],squid:[85,57],slug:[38,51],amplectobelua:[66,64]})[id]:catalog[id].pos;
- return '<button class="map-pin '+id+'" style="--px:'+pos[0]/100+';--py:'+pos[1]/100+'" data-species="'+id+'" aria-label="'+esc(all[id].name)+'"><span class="pin-orb">'+previewMarkup(id,previewKey(id))+'</span></button>';
+ const isLocked=world==='ocean'&&!['loggerhead','tuna'].includes(id);
+ const lockBadge=isLocked?'<i class="badge-lock" aria-hidden="true">🔒</i>':'';
+ return '<button class="map-pin '+id+(isLocked?' locked':'')+'" style="--px:'+pos[0]/100+';--py:'+pos[1]/100+'" data-species="'+id+'" aria-label="'+esc(all[id].name)+'"><span class="pin-orb">'+previewMarkup(id,previewKey(id))+lockBadge+'</span></button>';
  }).join('');previews.refresh();$('island').querySelectorAll('[data-species]').forEach(b=>b.onclick=()=>navigate('/animal/'+b.dataset.species));layoutMap();if(world==='ocean')startOceanJourney($('island'));$('world-title').textContent=world==='ocean'?'OCEAN WORLD':'DINOSAUR WORLD';
 }
 function setupAnimal(id){selected=id;world=group(id);document.body.dataset.species=id;document.body.dataset.marine=String(!!marine[id]);$('experience').style.setProperty('--environment','url("'+environment(id)+'")');$('hero-image').hidden=true;$('hero-backdrop').style.backgroundImage='url("'+environment(id)+'")';
@@ -42,8 +44,69 @@ function setupAnimal(id){selected=id;world=group(id);document.body.dataset.speci
  $('topic-hub').querySelector('[data-enter-3d]').onclick=()=>navigate('/animal/'+id+'/actions');
  $('topic-hub').querySelectorAll('[data-topic]').forEach(b=>{b.setAttribute('aria-disabled',String(!hasTopic(id,b.dataset.topic)));b.onclick=()=>hasTopic(id,b.dataset.topic)?navigate('/animal/'+id+'/topics/'+b.dataset.topic):notify('Mục này chưa có nội dung');});previews.refresh();
 }
+let notesHideTimer=null,subtitleHideTimer=null,userManuallyToggledNotes=false;
+function autoPresentTopicNotes(){
+ clearTimeout(notesHideTimer);
+ clearTimeout(subtitleHideTimer);
+ const notes=$('topic-notes');
+ const sub=$('topic-subtitle');
+ if(notes)notes.open=false;
+ if(sub)sub.hidden=true;
+ userManuallyToggledNotes=false;
+ const currentTicket=ticket;
+ const viewObj=speciesKnowledge[selected]?speciesView:marine[selected]?oceanKnowledge:knowledge;
+
+ const startNarration=()=>{
+  if(ticket!==currentTicket||screen!=='topic')return;
+  const text=(document.querySelector('#topic-explanation .topic-voice-text')?.textContent||$('topic-explanation')?.textContent||'').trim();
+  if(sub&&text){
+   sub.textContent=text;
+   sub.hidden=false;
+  }
+  if(viewObj?.narrate){
+   viewObj.narrate(()=>{
+    subtitleHideTimer=setTimeout(()=>{
+     if(sub)sub.hidden=true;
+    },1000);
+   });
+  }
+ };
+
+ const kv=$('knowledge-view');
+ const video=kv?.querySelector('video.ocean-scene, video.explore-video, video');
+ if(video){
+  if(video.readyState>=2&&!video.paused&&video.currentTime>0.05){
+   startNarration();
+  } else {
+   let fired=false;
+   const onReady=()=>{
+    if(fired)return;
+    fired=true;
+    video.removeEventListener('playing',onReady);
+    video.removeEventListener('timeupdate',onTime);
+    startNarration();
+   };
+   const onTime=()=>{
+    if(video.currentTime>0.05)onReady();
+   };
+   video.addEventListener('playing',onReady,{once:true});
+   video.addEventListener('timeupdate',onTime);
+   setTimeout(()=>{
+    if(!fired&&ticket===currentTicket)onReady();
+   },3500);
+  }
+ } else {
+  const img=kv?.querySelector('img.ocean-scene, img#knowledge-image, img.explore-art');
+  if(img&&!img.complete){
+   img.addEventListener('load',startNarration,{once:true});
+   setTimeout(startNarration,400);
+  } else {
+   setTimeout(startNarration,100);
+  }
+ }
+}
 function showTopic(id,key='habitat'){if(key==='range')key='habitat';++ticket;loading=false;modelLoading.end();setupAnimal(id);currentTopic=key;route('topic');
- if(hasTopic(id,key)){if(speciesKnowledge[id])speciesView.show(id,key);else if(marine[id])oceanKnowledge.show(id,key);else{$('knowledge-view').dataset.owner='dinosaur';knowledge.show(key);}}
+ if(hasTopic(id,key)){if(speciesKnowledge[id])speciesView.show(id,key);else if(marine[id])oceanKnowledge.show(id,key);else{$('knowledge-view').dataset.owner='dinosaur';knowledge.show(key);}autoPresentTopicNotes();}
  else{$('knowledge-view').hidden=true;}
  $('topic-hub').querySelectorAll('[data-topic]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.topic===key)));
  $('knowledge-prev').disabled=topicKeys().indexOf(currentTopic)<=0;
@@ -56,7 +119,7 @@ async function open(id,action){const request=++ticket;setupAnimal(id);loading=tr
  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));if(request!==ticket)return;$('stage').style.opacity='1';modelLoading.end();
  }catch(e){if(request!==ticket)return;loading=false;loadedId=null;modelLoading.fail(()=>open(id,action));console.error(e);}}
 function showAction(key){selected=loadedId||selected;setupAnimal(selected);if(!defs[key])key=Object.keys(defs)[0];currentAction=key;route('learn');habitat.play(key);habitat.fit(true);document.querySelectorAll('[data-action]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.action===key)));updateTray();}
-function readRoute(){window.speechSynthesis?.cancel();const p=decodeURIComponent(location.pathname).split('/').filter(Boolean);
+function readRoute(){stopSpeech();const p=decodeURIComponent(location.pathname).split('/').filter(Boolean);
  if(!p.length){ticket++;loading=false;modelLoading.end();route('home');return;}
  if(p[0]==='world'&&['dinosaurs','ocean'].includes(p[1])){world=p[1];showMap();return;}
  if(p[0]==='animal'&&hiddenMarineIds.has(p[1])){navigate('/world/ocean',true);return;}
@@ -65,7 +128,26 @@ function readRoute(){window.speechSynthesis?.cancel();const p=decodeURIComponent
 $('home-screen').innerHTML='<img class="home-art" src="/assets/worlds/home.png" alt="Bản đồ thế giới động vật">'+[{id:'dinosaurs',name:'THẾ GIỚI CỔ ĐẠI',x:23,y:36,art:'/assets/heroes/trex.png'},{id:'ocean',name:'ĐẠI DƯƠNG',x:80,y:46,art:'/assets/map-portraits/loggerhead.png'},{model:'elephant',name:'ĐỒNG CỎ',x:13,y:64},{model:'gorilla',name:'RỪNG NHIỆT ĐỚI',x:46,y:44},{model:'wolf',name:'NÚI & BẦU TRỜI',x:72,y:23},{model:'cow',name:'NÔNG TRẠI',x:42,y:81},{name:'VÙNG ĐẤT MỚI',x:88,y:82}].map(v=>`<button class="world-badge ${v.id?'available':'locked'}" style="left:${v.x}%;top:${v.y}%" ${v.id?'data-world="'+v.id+'"':'aria-disabled="true"'} aria-label="${v.name}"><span>${v.id?previewMarkup(v.id==='dinosaurs'?'trex':'loggerhead',v.id==='dinosaurs'?'roar':'clip0'):v.model?previewMarkup(v.model,'clip0')+'<i class="badge-lock" aria-hidden="true">🔒</i>':'🔒'}</span><b>${v.name}</b></button>`).join('');
 $('home-screen').innerHTML='<div class="home-canvas">'+$('home-screen').innerHTML+'</div>';
 $('home-screen').querySelectorAll('button[data-world]').forEach(b=>b.onclick=()=>navigate('/world/'+b.dataset.world));document.querySelectorAll('.world-badge.locked').forEach(b=>b.onclick=()=>notify('Vùng này sẽ được mở sau'));
-$('back').onclick=()=>navigate(screen==='explore'?'/animal/'+selected+'/actions':screen==='home'?'/':screen==='map'?'/':screen==='topic'||screen==='intro'?'/world/'+world:'/animal/'+selected);document.querySelector('.brand').onclick=e=>{e.preventDefault();navigate('/');};$('say-name').onclick=()=>screen==='topic'?(speciesKnowledge[selected]?speciesView:marine[selected]?oceanKnowledge:knowledge).narrate():speak(all[selected].name);$('reset-camera').onclick=()=>habitat?.fit(true);$('info').onclick=()=>notify(marine[selected]?'Model minh hoạ · animation gốc nếu có':'Chọn biểu tượng ở trang giới thiệu để xem thông tin');document.querySelectorAll('.close-dialog').forEach(b=>b.onclick=()=>b.closest('dialog').close());
+$('back').onclick=()=>navigate(screen==='explore'?'/animal/'+selected+'/actions':screen==='home'?'/':screen==='map'?'/':screen==='topic'||screen==='intro'?'/world/'+world:'/animal/'+selected);document.querySelector('.brand').onclick=e=>{e.preventDefault();navigate('/');};
+$('say-name').addEventListener('pointerdown',unlockAudio,{passive:true});$('say-name').onclick=()=>{unlockAudio();if(screen==='topic')(speciesKnowledge[selected]?speciesView:marine[selected]?oceanKnowledge:knowledge).narrate();else speak(all[selected].name);};
+$('reset-camera').onclick=()=>habitat?.fit(true);$('info').onclick=()=>notify(marine[selected]?'Model minh hoạ · animation gốc nếu có':'Chọn biểu tượng ở trang giới thiệu để xem thông tin');document.querySelectorAll('.close-dialog').forEach(b=>b.onclick=()=>b.closest('dialog').close());
+const topicNotesEl=$('topic-notes');
+if(topicNotesEl){
+ topicNotesEl.querySelector('summary')?.addEventListener('click',()=>{
+  userManuallyToggledNotes=true;clearTimeout(notesHideTimer);
+  const willOpen=!topicNotesEl.open;
+  if($('topic-subtitle'))$('topic-subtitle').hidden=true;
+  if(willOpen){
+   setTimeout(()=>{
+    const viewObj=speciesKnowledge[selected]?speciesView:marine[selected]?oceanKnowledge:knowledge;
+    viewObj?.narrate?.();
+   },60);
+  } else stopSpeech();
+ });
+ topicNotesEl.querySelector('.topic-notes-close')?.addEventListener('click',e=>{
+  e.preventDefault();e.stopPropagation();userManuallyToggledNotes=true;clearTimeout(notesHideTimer);topicNotesEl.open=false;stopSpeech();
+ });
+}
 function updateTray(){const e=$('action-picker');$('actions-prev').disabled=e.scrollLeft<=2;$('actions-next').disabled=e.scrollLeft+e.clientWidth>=e.scrollWidth-2;}
 for(const [id,d]of [['actions-prev',-1],['actions-next',1]])$(id).onclick=()=>$('action-picker').scrollBy({left:d*300,behavior:'smooth'});$('action-picker').onscroll=updateTray;new ResizeObserver(updateTray).observe($('action-picker'));
 

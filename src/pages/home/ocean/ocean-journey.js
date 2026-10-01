@@ -5,7 +5,8 @@ export function oceanJourneyMarkup(ids,preview,label){
  const pts=ids.map(id=>oceanDestinations[id]);const path=pts.reduce((d,p,i)=>i?d+' C'+((pts[i-1][0]+p[0])/2)+','+pts[i-1][1]+' '+((pts[i-1][0]+p[0])/2)+','+p[1]+' '+p[0]+','+p[1]:'M'+p[0]+','+p[1],'');
  const links='<svg class="journey-trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="trail-shadow" d="'+path+'"/><path class="trail-light" d="'+path+'"/></svg>';
 
- return `<div class="ocean-journey"><img class="journey-map-image" src="/assets/worlds/ocean-destinations.png" alt="Bản đồ các vùng khám phá: cỏ biển, bãi cát, đảo đá, rạn san hô và biển sâu" draggable="false">${links}${ids.map(id=>{const [x,y]=oceanDestinations[id];return `<button class="map-pin journey-pin ${id}" style="--journey-x:${x}%;--journey-y:${y}%" data-species="${id}" aria-label="${label(id)}"><span class="pin-orb">${preview(id)}</span></button>`;}).join('')}</div>`;
+ const unlocked=new Set(['loggerhead','tuna']);
+ return `<div class="ocean-journey"><img class="journey-map-image" src="/assets/worlds/ocean-destinations.png" alt="Bản đồ các vùng khám phá: cỏ biển, bãi cát, đảo đá, rạn san hô và biển sâu" draggable="false">${links}${ids.map(id=>{const [x,y]=oceanDestinations[id];const isLocked=!unlocked.has(id);const lockBadge=isLocked?'<i class="badge-lock" aria-hidden="true">🔒</i>':'';return `<button class="map-pin journey-pin ${id} ${isLocked?'locked':'available'}" style="--journey-x:${x}%;--journey-y:${y}%" data-species="${id}" aria-label="${label(id)}"><span class="pin-orb">${preview(id)}${lockBadge}</span></button>`;}).join('')}</div>`;
 }
 export function startOceanJourney(island){
  const nav=document.createElement('nav');nav.className='journey-navigation';nav.setAttribute('aria-label','Di chuyển bản đồ');nav.innerHTML='<button class="round" aria-label="Khám phá phía trước">‹</button><button class="round" aria-label="Khám phá tiếp">›</button>';island.parentElement.append(nav);

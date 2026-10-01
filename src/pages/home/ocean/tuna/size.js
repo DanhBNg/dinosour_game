@@ -7,8 +7,8 @@ export const pageInfo = {
   animalName: "Cá ngừ",
   tab: "size",
   title: "Kích thước",
-  voice: "Cá ngừ minh họa dài một mét rưỡi; người đối chiếu dài một mét bảy, không tính chân vịt.",
-  note: "Ví dụ cá ngừ vây vàng dài 1,5 m và người 1,7 m; không khẳng định loài hoặc kích thước của model. Tranh minh họa không thay phép đo.",
+  voice: "Cá ngừ vây vàng dài 1 mét rưỡi, dài gần bằng 1 người trưởng thành.",
+  note: "",
   video: "/assets/knowledge/ocean/tuna/size.mp4",
   art: "/assets/knowledge/ocean/tuna/size.png",
   points: [],
@@ -50,7 +50,7 @@ export function render(container, context = {}) {
   }
 
   const explanation = document.getElementById('topic-explanation');
-  if (explanation) explanation.textContent = pageInfo.note || pageInfo.voice;
+  if (explanation) explanation.innerHTML = '<span class="topic-voice-text">' + pageInfo.voice + '</span>';
 
   if (speak && context.autoNarrate) {
     speak(pageInfo.voice, 'vi-VN');

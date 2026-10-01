@@ -22,7 +22,7 @@ export const marineKnowledge={
   habitat:entry('Đại dương · tầng gần mặt','Cá ngừ vây vàng sống trong các đại dương ấm, thường ở gần mặt nước.'),
   diet:entry('Cá · mực · giáp xác','Cá ngừ vây vàng ăn cá, mực và giáp xác.'),
   movement:entry('Bơi xa · di cư','Cá ngừ vây vàng có thể bơi qua cả một đại dương.'),
-  size:entry('Kích thước tùy loài','Các loài cá ngừ có kích thước khác nhau. Cần biết loài trước khi chọn số đo.','Chưa gán chiều dài tối đa của cá ngừ vây vàng cho model chưa rõ loài.'),
+  size:entry('Dài khoảng 1,5 m','Cá ngừ vây vàng dài 1 mét rưỡi, dài gần bằng 1 người trưởng thành.'),
   growth:entry('Trứng → cá non','Cá ngừ vây vàng đẻ trứng trong nước. Cá non lớn lên và thường bơi thành đàn.'),
   range:entry('Biển nhiệt đới · cận nhiệt đới','Cá ngừ vây vàng có ở các đại dương nhiệt đới và cận nhiệt đới trên thế giới.')
  }},
