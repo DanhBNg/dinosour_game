@@ -1,4 +1,6 @@
 import { installGlobalVideoPolicy } from './components/video-utils.js';
+import {installContentInteractionPolicy} from './components/content-interaction.js';
+installContentInteractionPolicy();
 installGlobalVideoPolicy();
 
 // A real landscape viewport keeps pointer coordinates, media queries and WebGL

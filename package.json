@@ -7,7 +7,8 @@
     "dev": "node serve.mjs",
     "start": "node serve.mjs",
     "pregenerate:tts": "node scripts/pregenerate-tts.mjs",
-    "test": "node --test tests/entrance-camera.test.mjs && node tests/world-routes.mjs"
+    "test": "node --test tests/entrance-camera.test.mjs tests/survival.test.mjs tests/content-interaction.test.mjs tests/hold-actions.test.mjs tests/depth-motion.test.mjs tests/turtle-eating.test.mjs tests/feeding-camera.test.mjs tests/camera-movement.test.mjs && node tests/world-routes.mjs",
+    "test:survival": "node --test tests/survival.test.mjs"
   },
   "dependencies": {
     "three": "0.180.0"

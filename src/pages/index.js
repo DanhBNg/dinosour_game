@@ -38,6 +38,9 @@ export function resolvePage(pathname) {
     const animalId = parts[1];
     const isOcean = oceanPage.mapInfo.animals.includes(animalId);
     const map = isOcean ? 'ocean' : 'dinosour';
+    if (parts[2] === 'gameplay' || (parts[2] === 'explore' && animalId === 'loggerhead')) {
+      return getPage({ map, animal: animalId, tab: 'gameplay' });
+    }
     if (parts[2] === 'topics' && parts[3]) {
       return getPage({ map, animal: animalId, tab: parts[3] });
     }

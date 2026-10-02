@@ -1,4 +1,6 @@
 import {buildActionLessons} from '../core/action-lessons.js';
+import {installContentInteractionPolicy} from '../components/content-interaction.js';
+installContentInteractionPolicy();
 import {catalog,ids,matchesWord} from '../pages/dinosaur-world/catalog.js';
 import {createHabitat} from './legacy-scene.js';
 
