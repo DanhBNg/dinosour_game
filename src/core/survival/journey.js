@@ -58,7 +58,7 @@ export function createSurvivalJourney(scene,host,config=loggerheadConfig){
   const state=progress.state,landmark=nearbyMark();
   if(landmark?.mark.id==='cave')return {id:'hide',icon:'🏠',label:'Trú ẩn',enabled:true};
   if(landmark){
-   if(landmark.mark.nest===false)return {id:'unsuitable',icon:'⚠️',label:'Kiểm tra cát',enabled:true};
+   if(landmark.mark.nest===false)return {id:'explore',icon:'🔍',label:'Đến gần vật thể',enabled:false};
    if(landmark.mark.nest&&!state.complete)return {id:state.dig<config.lifeMission.digCount?'dig':'eggs',icon:state.dig<config.lifeMission.digCount?'🕳️':'🥚',label:state.dig<config.lifeMission.digCount?`Đào ${state.dig}/${config.lifeMission.digCount}`:'Đẻ trứng',enabled:true};
    return {id:'explore',icon:'🔍',label:'Khám phá',enabled:!state.discoveries.includes(landmark.mark.id)};
   }

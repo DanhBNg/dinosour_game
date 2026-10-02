@@ -23,11 +23,13 @@ export const pageInfo = {
 };
 
 export function createLoggerheadGameplay(host) {
+  const toggle = document.getElementById('orientation-toggle');
+  if (toggle) toggle.style.display = 'none';
   host.innerHTML = '<div class="roam-canvas"></div><div class="roam-joystick"></div><div class="roam-actions"><button class="roam-action" aria-label="Thực hiện hành động"><span class="roam-action-icon" aria-hidden="true"></span><small></small><kbd>1</kbd></button></div><div class="roam-status" role="status" style="display:none"></div>' + getLoading3DHtml('AI đang tạo mô hình 3d, vui lòng đợi');
   const joystick = createJoystick(host.querySelector('.roam-joystick'));
   const actionButton = host.querySelector('.roam-action');
   let turnTime = -1, activity = '', quest = null, depthStart = 2, depthTarget = 2, baseScale = 1;
-  const actionKeys = ['context', 'boost', 'dive', 'rise'];
+  const actionKeys = ['context', 'dive', 'rise', 'boost'];
 
   function fireAction(key = 'context') {
     if (!active) return;
@@ -52,10 +54,23 @@ export function createLoggerheadGameplay(host) {
   const cameraMovement = createCameraMovement(), worldInput = new T.Vector2();
 
   function updateActionButtons() {
+    const isBoosting = activity === 'boost' && turnTime >= 0;
+    const boostDuration = TURTLE_ACTIVITIES.boost?.duration ?? 3;
+    const boostRemaining = isBoosting ? Math.max(0, boostDuration - turnTime) : 0;
+
     host.querySelectorAll('.roam-action').forEach(b => {
-      b.disabled = turnTime >= 0 && !['dive', 'rise'].includes(b.dataset.roamAction);
-      if (b.dataset.roamAction === 'boost') b.disabled ||= !quest?.canBoost();
-      if (b.dataset.roamAction === 'context') {
+      const isAction = b.dataset.roamAction;
+      b.disabled = turnTime >= 0 && !['dive', 'rise'].includes(isAction);
+      if (isAction === 'boost') {
+        b.disabled = isBoosting ? true : !quest?.canBoost();
+        b.classList.toggle('boosting', isBoosting);
+        const timer = b.querySelector('.boost-active-timer');
+        if (timer) {
+          timer.hidden = !isBoosting;
+          if (isBoosting) timer.textContent = `${boostRemaining.toFixed(1)}s`;
+        }
+      }
+      if (isAction === 'context') {
         const action = quest?.context;
         b.hidden = !action?.enabled;
         b.disabled ||= !action?.enabled;
@@ -66,7 +81,7 @@ export function createLoggerheadGameplay(host) {
           b.classList.toggle('ready', action.enabled);
         }
       }
-      b.classList.toggle('playing', b.dataset.roamAction === activity);
+      b.classList.toggle('playing', isAction === activity);
     });
   }
 
@@ -82,8 +97,12 @@ export function createLoggerheadGameplay(host) {
       button.className = 'roam-action extra-action';
       button.dataset.roamAction = key;
       button.setAttribute('aria-label', TURTLE_ACTIVITIES[key].label);
-      button.innerHTML = `<span class="roam-action-icon" aria-hidden="true">${icons[key]}</span><small>${TURTLE_ACTIVITIES[key].label}</small><kbd>${index + 1}</kbd>`;
-      if (key === 'boost') button.disabled = true;
+      if (key === 'boost') {
+        button.innerHTML = `<span class="roam-action-icon" aria-hidden="true">${icons[key]}</span><small>${TURTLE_ACTIVITIES[key].label}</small><span class="boost-active-timer" aria-hidden="true" hidden></span><kbd>${index + 1}</kbd>`;
+        button.disabled = true;
+      } else {
+        button.innerHTML = `<span class="roam-action-icon" aria-hidden="true">${icons[key]}</span><small>${TURTLE_ACTIVITIES[key].label}</small><kbd>${index + 1}</kbd>`;
+      }
       if (key === 'dive' || key === 'rise') {
         button.style.touchAction = 'none';
         depthHold.bind(button, key);
@@ -160,7 +179,7 @@ export function createLoggerheadGameplay(host) {
     if (/^(Digit|Numpad)[1-4]$/.test(e.code)) {
       e.preventDefault();
       const slot = Number(e.code.slice(-1)) - 1;
-      if (slot >= 2) depthHold.press(e.code, actionKeys[slot]);
+      if (slot === 1 || slot === 2) depthHold.press(e.code, actionKeys[slot]);
       else if (!e.repeat) fireAction(actionKeys[slot]);
       return;
     }
@@ -427,6 +446,8 @@ export function createLoggerheadGameplay(host) {
       active = value && !!animal;
       controls.enabled = active;
       clear();
+      const toggle = document.getElementById('orientation-toggle');
+      if (toggle) toggle.style.display = value ? 'none' : '';
       if (!value) {
         serial++;
         status.hidden = true;
@@ -456,6 +477,8 @@ export function createLoggerheadGameplay(host) {
       controls.dispose();
       observer.disconnect();
       clear();
+      const toggle = document.getElementById('orientation-toggle');
+      if (toggle) toggle.style.display = '';
       depthHold.dispose();
       disposeAnimal();
       quest?.dispose();

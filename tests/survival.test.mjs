@@ -300,7 +300,7 @@ test('adult scene completes nesting through context actions and releases resourc
  withJourney(260,journey=>{
   assert.equal(journey.canBoost(),true);
   const player=new T.Vector3(-6,6,8);journey.update(1,player);
-  assert.equal(journey.context.id,'unsuitable');journey.act();assert.equal(journey.state.dig,0);
+  assert.equal(journey.context.enabled,false);journey.act();assert.equal(journey.state.dig,0);
   player.set(0,6,12);
   for(let count=0;count<3;count++){journey.update(1,player);assert.equal(journey.context.id,'dig');journey.act();}
   journey.update(1,player);assert.equal(journey.context.id,'eggs');journey.act();assert.equal(journey.state.complete,true);
