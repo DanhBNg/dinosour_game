@@ -34,3 +34,5 @@ body[data-screen=learn][data-species=trex] #stage{bottom:100px}
 /* The upright neck sits near 40% of the generated panorama. */
 body[data-screen=intro][data-species=brachio] #hero-image{object-position:42% center}
 body[data-world=ocean] #experience,body[data-marine=true] #experience{background:#04141c var(--environment) center/cover!important}
+
+.sea-pin-lock{position:absolute;right:-3px;bottom:-3px;z-index:4;font-style:normal;font-size:20px;background:#254443e8;border:1px solid #e2cc8f;border-radius:50%;padding:4px;line-height:1.2}.journey-pin[aria-disabled="true"] .pin-orb{filter:saturate(.75)}

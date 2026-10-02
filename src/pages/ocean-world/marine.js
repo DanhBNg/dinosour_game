@@ -5,6 +5,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
 const base='/assets/sea/';
 export const marine={
+ blueWhale:{name:'Cá voi xanh',file:'blue-whale/source/Kit anime.fbx',texture:'blue-whale/textures/material_Base_Color.jpg',env:'deep'},
  seal:{name:'Hải cẩu',file:'aniamted-seal/source/seal.glb',env:'coast'},
  squid:{name:'Mực đuôi cộc',file:'bobtail_squid/bobtail_squid.glb',env:'reef'},
  isopod:{name:'Bọ chân đều khổng lồ',file:'giant_isopod/giant_isopod.glb',env:'deep',bottom:true},
@@ -19,8 +20,9 @@ export const marine={
  amplectobelua:{name:'Amplectobelua',file:'amplectobelua-symbrachiata/source/amplectobelua/amplectobelua_anim.fbx',texture:'amplectobelua-symbrachiata/textures/amplectobelua_diffuse.png',env:'deep'}
 };
 // Temporarily hidden at the user's request; keep source assets for repair.
-export const hiddenMarineIds=new Set(['isopod','hawksbill','whale','paShark']);
-export const visibleMarineIds=['loggerhead','tuna','shark','fish',...Object.keys(marine).filter(id=>!hiddenMarineIds.has(id)&&!['loggerhead','tuna','shark','fish'].includes(id))];
+export const hiddenMarineIds=new Set(['isopod','hawksbill','whale','paShark','amplectobelua']);
+export const lockedMarineIds=new Set(['blueWhale']);
+export const visibleMarineIds=['loggerhead','tuna','shark','fish',...Object.keys(marine).filter(id=>!hiddenMarineIds.has(id)&&!['loggerhead','tuna','shark','fish','blueWhale'].includes(id)),'blueWhale'];
 export async function loadMarine(id){
  const spec=marine[id],manager=new T.LoadingManager();
  // FBX files carry author-machine texture paths. Resolve the supplied diffuse explicitly.
@@ -28,6 +30,8 @@ export async function loadMarine(id){
  let source,clips;
  if(/\.glb$/i.test(spec.file)){const g=await new GLTFLoader(manager).loadAsync(base+spec.file);source=g.scene;clips=g.animations;}
  else{source=await new FBXLoader(manager).loadAsync(base+spec.file);clips=source.animations||[];if(spec.texture){const map=await new T.TextureLoader().loadAsync(base+spec.texture);map.colorSpace=T.SRGBColorSpace;source.traverse(o=>{if(o.isMesh){o.material=new T.MeshStandardMaterial({map,roughness:.75,side:T.DoubleSide});}});}}
+ // Strip exported rig curves without changing their hierarchy or animation targets.
+ if(id==='blueWhale')source.traverse(o=>{if(o.isLine){o.geometry.dispose();o.geometry=new T.BufferGeometry();}});
  const remove=[];source.traverse(o=>{if(o.isCamera||o.isLight)remove.push(o);if(o.isMesh){o.castShadow=o.receiveShadow=true;o.frustumCulled=false;}});remove.forEach(o=>o.removeFromParent());
  const mixer=new T.AnimationMixer(source);if(clips[0]){mixer.clipAction(clips[0]).play();mixer.update(.001);}
  source.updateMatrixWorld(true);const box=new T.Box3().setFromObject(source,true),size=box.getSize(new T.Vector3()),center=box.getCenter(new T.Vector3()),scale=6/Math.max(size.x,size.y,size.z);
