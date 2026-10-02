@@ -12,6 +12,7 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {createRoamWorld,moveWithinMap} from '../../../core/roam-world.js';
 import {loadMarine} from '../marine.js';
 import {getLoading3DHtml,dismissLoading3D} from '../../../components/loading-3d.js';
+import {createBubbleSystem} from './bubble-particles.js';
 
 export const pageInfo = {
   map: 'ocean',
@@ -133,6 +134,7 @@ export function createLoggerheadGameplay(host) {
 
   const actor = new T.Group();
   scene.add(actor);
+  const bubbles = createBubbleSystem(scene);
   const followPosition = new T.Vector3(), followDelta = new T.Vector3();
   const mouthPosition = new T.Vector3();
 
@@ -236,6 +238,7 @@ export function createLoggerheadGameplay(host) {
   function disposeAnimal() {
     actions?.dispose();
     actions = null;
+    bubbles.setAnimal(null, null);
     if (animal) {
       actor.remove(animal);
       disposeModel(animal);
@@ -258,6 +261,7 @@ export function createLoggerheadGameplay(host) {
     }
     status.hidden = true;
     disposeAnimal();
+    bubbles.reset();
     quest?.dispose();
     quest = null;
     actor.position.set(0, 0, 0);
@@ -290,6 +294,7 @@ export function createLoggerheadGameplay(host) {
       }
       animal = result.model;
       actor.add(animal);
+      bubbles.setAnimal(animal, actor);
       actions = result.createActions();
       actions.play('clip0');
       actions.setSpeed(0.35);
@@ -429,6 +434,15 @@ export function createLoggerheadGameplay(host) {
     if (automaticAction === 'eat') fireAction('eat');
     actor.scale.setScalar(baseScale * quest.stage.scale);
 
+    const isMoving = walking || activity === 'boost' || activity === 'dive' || activity === 'rise' || (activity === 'eat' && turnTime < 0.65);
+    if (isMoving) {
+      bubbles.emit(dt, {
+        isBoost: activity === 'boost',
+        scale: baseScale * (quest?.stage.scale ?? 1)
+      });
+    }
+    bubbles.update(dt);
+
     shadow.material.opacity = 1;
     shadow.position.set(actor.position.x, -2.97, actor.position.z);
     shadow.scale.set(0.65, 0.65, 1);
@@ -460,6 +474,7 @@ export function createLoggerheadGameplay(host) {
         id: 'loggerhead',
         active,
         moving,
+        bubblesActive: bubbles.activeCount,
         turnTime,
         activity,
         quest: quest?.state,
@@ -481,6 +496,7 @@ export function createLoggerheadGameplay(host) {
       if (toggle) toggle.style.display = '';
       depthHold.dispose();
       disposeAnimal();
+      bubbles.dispose();
       quest?.dispose();
       world?.dispose();
       shadow.geometry.dispose();

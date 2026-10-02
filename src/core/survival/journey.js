@@ -31,7 +31,6 @@ export function createSurvivalJourney(scene,host,config=loggerheadConfig){
  const minimap=createSurvivalMinimap(host,config,prey);
  for(const mark of config.landmarks){
   const body=new T.Group();body.position.set(...mark.position);group.add(body);
-  const ring=mesh(new T.TorusGeometry(mark.nest===undefined?2:1.6,.12,6,24),mark.id==='cave'?0x8dfff0:mark.nest===false?0xf8a56f:0xffdd85,body);ring.rotation.x=-Math.PI/2;
   const beacon=mesh(new T.OctahedronGeometry(.45),0xffe7a0,body);beacon.position.y=1.5;
   if(mark.id==='cave'){
    for(const side of [-1,1]){const pillar=mesh(new T.BoxGeometry(.7,3,3),0x406877,body);pillar.position.set(side*2,0,0);}
@@ -137,7 +136,7 @@ export function createSurvivalJourney(scene,host,config=loggerheadConfig){
    dangerRing.material.opacity=.6+.4*Math.sin(time*15);
    effectTime=Math.max(0,effectTime-dt);attackFlash.visible=effectTime>0;
    if(attackFlash.visible){attackFlash.position.copy(effectKind==='hit'?shark.position:player);attackFlash.position.y+=.8;attackFlash.scale.setScalar(1+(1-effectTime/.6)*1.8);attackFlash.rotation.z+=dt*8;}
-   const nearby=availablePrey();preyHalo.visible=!!nearby&&!feeding&&!bossState.combat;
+   const nearby=availablePrey();preyHalo.visible=false;
    if(nearby){preyHalo.position.copy(nearby.body.position);preyHalo.position.y-=.5;preyHalo.scale.setScalar(1+Math.sin(time*5)*.08);}
    let interruption=null;
    for(const event of combat.drainEvents()){

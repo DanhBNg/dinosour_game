@@ -47,11 +47,16 @@ function showMap(){stopOceanJourney();ticket++;loading=false;modelLoading.end();
  }).join('');previews.refresh();$('island').querySelectorAll('[data-species]').forEach(b=>b.onclick=()=>lockedMarineIds.has(b.dataset.species)?notify('Loài này chưa mở'):navigate('/animal/'+b.dataset.species));layoutMap();if(world==='ocean')startOceanJourney($('island'));$('world-title').textContent=world==='ocean'?'OCEAN WORLD':'DINOSAUR WORLD';
 }
 function setupAnimal(id){selected=id;world=group(id);document.body.dataset.species=id;document.body.dataset.marine=String(!!marine[id]);$('experience').style.setProperty('--environment','url("'+environment(id)+'")');$('hero-image').hidden=true;$('hero-backdrop').style.backgroundImage='url("'+environment(id)+'")';
- $('topic-hub').innerHTML=(speciesKnowledge[id]?speciesTopicButtons(id):marine[id]?oceanTopicButtons():topicButtons())+'<button class="action-orb" data-enter-3d aria-label="Xem model 3D">'+previewMarkup(id,previewKey(id))+'<span class="orb-play">▶</span></button>';
- if(id==='loggerhead'){$('topic-hub').insertAdjacentHTML('beforeend','<button class="topic-orb nesting-orb" data-enter-nesting aria-label="Lên bờ đẻ trứng" title="Lên bờ đẻ trứng"><img src="/assets/ui/turtle-nesting.svg" alt=""><b>Lên bờ đẻ trứng</b></button>');$('topic-hub').querySelector('[data-enter-nesting]').onclick=()=>navigate('/animal/loggerhead/nesting');}
- $('topic-hub').querySelector('[data-topic=range]')?.remove();
- $('topic-hub').querySelector('[data-enter-3d]').onclick=()=>navigate('/animal/'+id+'/actions');
- $('topic-hub').querySelectorAll('[data-topic]').forEach(b=>{b.setAttribute('aria-disabled',String(!hasTopic(id,b.dataset.topic)));b.onclick=()=>hasTopic(id,b.dataset.topic)?navigate('/animal/'+id+'/topics/'+b.dataset.topic):notify('Mục này chưa có nội dung');});previews.refresh();
+  const topicsHtml = speciesKnowledge[id] ? speciesTopicButtons(id) : marine[id] ? oceanTopicButtons() : topicButtons();
+  const gameplayHtml = ['loggerhead', 'trex'].includes(id)
+    ? '<button class="topic-orb ocean-topic-orb gameplay-orb" data-enter-gameplay aria-label="Gameplay" title="Gameplay"><img src="/assets/knowledge/ocean/icons/gameplay.png" alt=""><span class="topic-label">Gameplay</span></button>'
+    : '';
+  $('topic-hub').innerHTML = topicsHtml + gameplayHtml + '<button class="action-orb" data-enter-3d aria-label="Xem model 3D">' + previewMarkup(id, previewKey(id)) + '<span class="orb-play">▶</span></button>';
+  if(id==='loggerhead'){$('topic-hub').insertAdjacentHTML('beforeend','<button class="topic-orb ocean-topic-orb nesting-orb" data-enter-nesting aria-label="Lên bờ đẻ trứng" title="Lên bờ đẻ trứng"><img src="/assets/knowledge/ocean/icons/nesting.png" alt=""><span class="topic-label">Lên bờ đẻ trứng</span></button>');$('topic-hub').querySelector('[data-enter-nesting]').onclick=()=>navigate('/animal/loggerhead/nesting');}
+  $('topic-hub').querySelector('[data-topic=range]')?.remove();
+  $('topic-hub').querySelector('[data-enter-3d]').onclick=()=>navigate('/animal/'+id+'/actions');
+  $('topic-hub').querySelector('[data-enter-gameplay]')?.addEventListener('click',()=>navigate(id==='loggerhead'?'/animal/loggerhead/gameplay':'/animal/'+id+'/explore'));
+  $('topic-hub').querySelectorAll('[data-topic]').forEach(b=>{b.setAttribute('aria-disabled',String(!hasTopic(id,b.dataset.topic)));b.onclick=()=>hasTopic(id,b.dataset.topic)?navigate('/animal/'+id+'/topics/'+b.dataset.topic):notify('Mục này chưa có nội dung');});previews.refresh();
 }
 let notesHideTimer=null,subtitleHideTimer=null,userManuallyToggledNotes=false;
 function autoPresentTopicNotes(){
