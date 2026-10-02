@@ -1,5 +1,9 @@
 # Animal World
 
+## Bắt đầu ở session mới
+
+Đọc [PROJECT_HANDOFF](docs/PROJECT_HANDOFF.md) để hiểu source và hiện trạng; task tiếp theo là [map rùa lên bờ/đẻ trứng](docs/TURTLE_NESTING_MAP.md). Quy trình animation nằm tại [QUY_TRINH_TAO_ANIMATION](docs/QUY_TRINH_TAO_ANIMATION.md). Các phần README bên dưới có lịch sử cập nhật, cần đối chiếu source khi mô tả mâu thuẫn.
+
 Web demo with a biome home map, prehistoric branch (6 models), ocean branch (8 visible models; 4 retained but hidden), model introduction and looping animation viewer.
 
 ## Local

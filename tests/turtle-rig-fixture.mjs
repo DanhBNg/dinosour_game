@@ -1,0 +1,5 @@
+﻿import fs from 'node:fs';
+import * as T from 'three';
+import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
+T.TextureLoader.prototype.load=function(){return new T.Texture();};
+export function testTurtle(){const b=fs.readFileSync('assets/sea/model-47a-loggerhead-sea-turtle/source/Loggerhead 18.fbx');const source=new FBXLoader().parse(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'');const mixer=new T.AnimationMixer(source);mixer.clipAction(source.animations[0]).play();mixer.update(.001);source.updateMatrixWorld(true);const box=new T.Box3().setFromObject(source,true),size=box.getSize(new T.Vector3()),center=box.getCenter(new T.Vector3()),s=6/Math.max(size.x,size.y,size.z);const root=new T.Group(),visual=new T.Group(),actor=new T.Group();visual.add(source);root.add(visual);actor.add(root);visual.scale.setScalar(s);visual.position.set(-center.x*s,-box.min.y*s+1,-center.z*s);actor.scale.setScalar(.75);actor.position.set(0,0,-15);actor.updateMatrixWorld(true);return {actor,root,mixer,source};}

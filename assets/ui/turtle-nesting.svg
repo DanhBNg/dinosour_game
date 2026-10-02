@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+<defs><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#27b9cb"/><stop offset="1" stop-color="#086a97"/></linearGradient><radialGradient id="egg"><stop stop-color="#fffdf0"/><stop offset="1" stop-color="#dbc490"/></radialGradient></defs>
+<circle cx="48" cy="48" r="48" fill="url(#sea)"/>
+<path d="M0 58Q25 25 48 44T96 39V96H0Z" fill="#f0d194"/><path d="M1 54Q25 22 49 40T96 35" fill="none" stroke="#c2ffef" stroke-width="4"/>
+<g transform="translate(39 32) rotate(-32)" fill="#9c793a" stroke="#524d2d" stroke-width="1.5"><path d="M-9 1Q-31-12-25 1L-10 9M9 1Q31-12 25 1L10 9M-8 18L-18 28L-7 23M8 18L18 28L7 23"/><ellipse cy="-10" rx="6" ry="8"/><ellipse cy="9" rx="13" ry="18" fill="#708455"/><path d="M0-3L8 3V15L0 21L-8 15V3Z" fill="#a0a46a"/><circle cx="-3" cy="-12" r="1" fill="#172d28"/><circle cx="3" cy="-12" r="1" fill="#172d28"/></g>
+<ellipse cx="63" cy="74" rx="22" ry="12" fill="#b18a54"/><g fill="url(#egg)" stroke="#c1a16e" stroke-width="1"><circle cx="52" cy="74" r="7"/><circle cx="64" cy="68" r="7"/><circle cx="75" cy="75" r="7"/><circle cx="63" cy="80" r="7"/></g>
+</svg>
