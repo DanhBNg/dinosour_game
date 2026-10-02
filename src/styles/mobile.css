@@ -220,7 +220,7 @@ body.landscape-shell{width:100%!important;height:100%!important;max-width:none!i
 }
 body[data-world=ocean][data-screen=map] #island{padding:0;overflow-x:auto!important;overflow-y:hidden!important;touch-action:pan-x;scrollbar-width:none;background:#073345;cursor:grab}
 body[data-world=ocean][data-screen=map] #island:active{cursor:grabbing}
-.ocean-journey{position:relative;width:var(--journey-width);height:100%;min-height:260px;isolation:isolate}
+.ocean-journey{position:relative;width:var(--journey-width);height:100%;min-height:260px;isolation:isolate;overflow:hidden}
 .journey-scenery{position:absolute;inset:0;background:#087787 url('/assets/worlds/ocean-journey.png') center/cover no-repeat;pointer-events:none}
 .journey-scenery:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#59eedc08,#061e6530);pointer-events:none}
 .journey-trail{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
@@ -233,8 +233,8 @@ body[data-world=ocean] #map-screen .journey-pin{left:var(--journey-x)!important;
 .journey-navigation button{pointer-events:auto;background:#113d49bf;border:1px solid #eeebbb88}.journey-navigation button:disabled{visibility:hidden}
 
 /* Keep every part of the destination artwork; markers share its coordinates. */
-body[data-world=ocean] .ocean-journey{min-height:0;margin:0 auto;flex:none}
-.journey-map-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+body[data-world=ocean] .ocean-journey{min-height:0;margin:0;flex:none;overflow:hidden}
+.journey-map-image{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;user-select:none}
 body[data-screen=map] #island,body[data-screen=map] #island .map-pin{touch-action:none!important;user-select:none;-webkit-user-select:none}
 body[data-screen=map] #island img{-webkit-user-drag:none}
 @media(max-width:1024px),(pointer:coarse) and (max-width:1600px){
@@ -257,3 +257,11 @@ body[data-screen=map] #island img{-webkit-user-drag:none}
 .goal-step.done{color:#ffe489;filter:drop-shadow(0 0 5px #ffd45e)}
 .ocean-goals.celebrate{box-shadow:0 0 24px #a0ffee88}.ocean-replay{border:0;background:transparent;color:#ffe489;font-size:26px;cursor:pointer}.ocean-replay[hidden]{display:none}.goal-direction{display:inline-block;color:#ffdf85}.ocean-sound{position:absolute;right:24px;top:20px}.roam-action.playing{box-shadow:0 0 16px #ffdb79}.roam-action:disabled{opacity:.65}.roam-action.playing:disabled{opacity:1}
 @media(pointer:coarse){.roam-actions{right:max(65px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));gap:5px}.roam-action{min-width:48px;padding:5px 7px;border-radius:15px}.roam-action-icon{font-size:26px}.roam-action .turtle-action-icon{width:32px;height:32px}.roam-action small{font-size:9px}.ocean-goals{top:8px;font-size:17px;gap:10px;padding:5px 12px}.ocean-sound{right:14px;top:12px}}
+
+video.explore-video,video.ocean-video,video.explore-backdrop-video,video.ocean-backdrop-video{
+ pointer-events:none!important;
+ -webkit-touch-callout:none!important;
+ user-select:none!important;
+ -webkit-user-select:none!important;
+}
+

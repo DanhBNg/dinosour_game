@@ -14,7 +14,7 @@ export function startOceanJourney(island){
  function scroll(){savedLeft=island.scrollLeft;prev.disabled=savedLeft<2;next.disabled=savedLeft+island.clientWidth>=island.scrollWidth-2;}
  function wheel(e){if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){const left=Math.max(0,Math.min(island.scrollWidth-island.clientWidth,island.scrollLeft+e.deltaY));if(left!==island.scrollLeft){e.preventDefault();island.scrollLeft=left;}}}
  const art=island.querySelector('.journey-map-image'),board=island.querySelector('.ocean-journey');
- function fit(){const ratio=art.naturalWidth/art.naturalHeight||3;board.style.width=(island.clientHeight*ratio)+'px';board.style.height=island.clientHeight+'px';scroll();}
+ function fit(){const ratio=art.naturalWidth/art.naturalHeight||3;const h=island.clientHeight;const w=Math.max(island.clientWidth,Math.round(h*ratio));const finalH=Math.max(h,Math.round(w/ratio));board.style.width=w+'px';board.style.height=finalH+'px';scroll();}
  // Fit from native image dimensions; no cover crop or nonuniform stretching.
  const restoreLeft=savedLeft;art.addEventListener('load',fit);fit();island.scrollLeft=restoreLeft;
  island.addEventListener('scroll',scroll);island.addEventListener('wheel',wheel,{passive:false});const observer=new ResizeObserver(fit);observer.observe(island);

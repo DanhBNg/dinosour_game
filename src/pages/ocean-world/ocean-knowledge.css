@@ -39,6 +39,10 @@ body[data-world=ocean] #island{bottom:0}body[data-world=ocean][data-screen=map] 
  object-fit:cover!important;
  object-position:center center!important;
  display:block!important;
+ pointer-events:none!important;
+ -webkit-touch-callout:none!important;
+ user-select:none!important;
+ -webkit-user-select:none!important;
 }
 .ocean-board.has-video{
  position:absolute!important;
@@ -59,7 +63,8 @@ body[data-world=ocean] #island{bottom:0}body[data-world=ocean][data-screen=map] 
  height:100%;
  object-fit:cover;
  opacity:.35;
- pointer-events:none;
+ pointer-events:none!important;
+ -webkit-touch-callout:none!important;
  filter:blur(14px) saturate(1.6);
 }
 @media(max-width:650px){

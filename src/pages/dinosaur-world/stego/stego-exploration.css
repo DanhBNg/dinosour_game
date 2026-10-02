@@ -15,9 +15,9 @@
 #knowledge-view[data-owner=illustrated] #topic-notes[open]{max-height:60vh;overflow:auto}
 @media(max-width:650px){.explore-pan{top:37%;width:38px;height:54px}.explore-pan.previous{left:7px}.explore-pan.next{right:7px}.explore-measure{padding:5px 9px;font-size:11px}.explore-measure b{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.explore-point{transition:none}}
-.explore-art.explore-video{object-fit:cover;object-position:center 36%}
+.explore-art.explore-video{object-fit:cover;object-position:center 36%;pointer-events:none!important;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
 @media(max-width:650px) and (orientation:portrait){.explore-art.explore-video{object-fit:contain;object-position:center center}}
-.explore-backdrop-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28;pointer-events:none;filter:blur(10px) saturate(1.6)}
+.explore-backdrop-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28;pointer-events:none!important;-webkit-touch-callout:none;filter:blur(10px) saturate(1.6)}
 
 .explore-dot{bottom:12%}.map-point>img{width:84px;height:84px;left:50%;top:50%;transform:translate(-50%,-50%)}
 #knowledge-view[data-owner=illustrated] #topic-notes:not([open]){width:44px}

@@ -1,4 +1,5 @@
 import { getLoading3DHtml, attachLoading3DToVideo } from '../../../components/loading-3d.js';
+import { INLINE_VIDEO_ATTRS, setupInlineVideo } from '../../../components/video-utils.js';
 
 // Positions are normalized against the final artwork, not against the viewport.
 export const stegoExploration={
@@ -46,7 +47,7 @@ export function createStegoExploration({speak,record,id="stego",scenes=stegoExpl
   const videoSrc=scene.video ? `/assets/knowledge/${id}/${scene.video}` : null;
   const loaderTag=videoSrc ? getLoading3DHtml() : '';
   const artTag=videoSrc
-   ? `<video class="explore-art explore-video" src="${videoSrc}" autoplay loop muted playsinline preload="auto" aria-label="${scene.alt}"></video>`
+   ? `<video class="explore-art explore-video" src="${videoSrc}" loop ${INLINE_VIDEO_ATTRS} preload="auto" aria-label="${scene.alt}"></video>`
    : `<img class="explore-art" src="/assets/knowledge/${id}/${key}.png" alt="${scene.alt}">`;
   const overlay=$('knowledge-overlay');overlay.innerHTML=`<div class="explore-scroll" tabindex="0" aria-label="Cảnh minh họa; vuốt ngang để khám phá"><div class="explore-board">${artTag}${scene.points.map((p,i)=>(!p.measurement&&!p.portrait)?'':`<button class="explore-point ${p.measurement?'measured':''} ${p.portrait?'map-point':''}" data-point="${i}" aria-label="${p.label}" aria-pressed="false" style="left:${p.box[0]}%;top:${p.box[1]}%;width:${p.box[2]}%;height:${p.box[3]}%">${p.portrait?`<img src="${record.world==='ocean'?`/assets/map-portraits/${id}.png`:`/assets/portraits/${id}.webp`}" alt="">`:``}${p.measurement?`<span class="explore-measure">${p.label}<b>${p.measurement}</b></span>`:''}</button>`).join('')}</div></div>${loaderTag}<button class="explore-pan previous" aria-label="Xem phần bên trái">‹</button><button class="explore-pan next" aria-label="Xem phần bên phải">›</button>`;
   const scroll=overlay.querySelector('.explore-scroll'),board=overlay.querySelector('.explore-board'),art=overlay.querySelector('.explore-art');
@@ -62,7 +63,10 @@ export function createStegoExploration({speak,record,id="stego",scenes=stegoExpl
     backdrop.style.backgroundSize='cover';
     backdrop.style.backgroundPosition='center';
    }
-   bgVid=document.createElement('video');bgVid.src=videoSrc;bgVid.autoplay=true;bgVid.loop=true;bgVid.muted=true;bgVid.playsInline=true;bgVid.className='explore-backdrop-video';backdrop.append(bgVid);
+   const isMobile=matchMedia('(pointer: coarse), (max-width: 650px)').matches;
+   if(!isMobile){
+    bgVid=document.createElement('video');bgVid.src=videoSrc;bgVid.loop=true;bgVid.className='explore-backdrop-video';setupInlineVideo(bgVid);backdrop.append(bgVid);
+   }
   }else{
    backdrop.style.backgroundImage=`url('/assets/knowledge/${id}/${key}.png')`;
   }
@@ -113,6 +117,8 @@ export function createStegoExploration({speak,record,id="stego",scenes=stegoExpl
    update();
   }
   if(videoSrc){
+   setupInlineVideo(art);
+   if(bgVid)setupInlineVideo(bgVid);
    const syncVideoRatio=()=>{
     if(token!==serial||view.dataset.record!==id)return;
     if(art.videoWidth&&art.videoHeight){
@@ -120,17 +126,15 @@ export function createStegoExploration({speak,record,id="stego",scenes=stegoExpl
      layout();
     }
     art.play?.().catch(()=>{});
-    bgVid.play?.().catch(()=>{});
+    bgVid?.play?.().catch(()=>{});
    };
    art.addEventListener('loadedmetadata',syncVideoRatio);
    art.addEventListener('canplay',()=>art.play?.().catch(()=>{}));
    art.addEventListener('error',()=>{
     if(videoFallbackTried)return;videoFallbackTried=true;
-    if(art.src.includes('movement.mp4')){art.src=`/assets/knowledge/${id}/motion.mp4`;bgVid.src=`/assets/knowledge/${id}/motion.mp4`;}
-    else if(art.src.includes('motion.mp4')){art.src=`/assets/knowledge/${id}/movement.mp4`;bgVid.src=`/assets/knowledge/${id}/movement.mp4`;}
+    if(art.src.includes('movement.mp4')){art.src=`/assets/knowledge/${id}/motion.mp4`;if(bgVid)bgVid.src=`/assets/knowledge/${id}/motion.mp4`;}
+    else if(art.src.includes('motion.mp4')){art.src=`/assets/knowledge/${id}/movement.mp4`;if(bgVid)bgVid.src=`/assets/knowledge/${id}/movement.mp4`;}
    });
-   art.muted=true;art.defaultMuted=true;art.playsInline=true;
-   if(bgVid){bgVid.muted=true;bgVid.defaultMuted=true;bgVid.playsInline=true;}
    const loader=overlay.querySelector('.video-loading-screen');
    if(loader)attachLoading3DToVideo(loader,art);
    if(art.readyState>=1)syncVideoRatio();

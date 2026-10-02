@@ -2,6 +2,7 @@
 import { marineKnowledge } from './marine-knowledge-data.js';
 import { marine } from './marine.js';
 import { getLoading3DHtml, attachLoading3DToVideo } from '../../components/loading-3d.js';
+import { INLINE_VIDEO_ATTRS, setupInlineVideo } from '../../components/video-utils.js';
 
 export const oceanCategories = {
  habitat: { title: 'Môi trường sống', hue: 110 },
@@ -78,13 +79,14 @@ export function createOceanKnowledge({ speak }) {
     const isVideo = key !== 'range' && (id === 'loggerhead' || id === 'tuna');
     const videoSrc = isVideo ? (id === 'loggerhead' ? `/assets/knowledge/ocean/${id}/${key}.mp4` : `/assets/knowledge/${id}/${key}.mp4`) : null;
     const loaderTag = isVideo ? getLoading3DHtml('AI đang tạo mô hình 3d, vui lòng đợi') : '';
+    const isMobile = matchMedia('(pointer: coarse), (max-width: 650px)').matches;
     const backdropTag = isVideo
-      ? `<div class="ocean-topic-backdrop"><video class="ocean-backdrop-video" src="${videoSrc}" autoplay loop muted playsinline></video></div>`
+      ? (isMobile ? `<div class="ocean-topic-backdrop" style="background-image:url('${art}')"></div>` : `<div class="ocean-topic-backdrop"><video class="ocean-backdrop-video" src="${videoSrc}" loop ${INLINE_VIDEO_ATTRS}></video></div>`)
       : `<div class="ocean-topic-backdrop" style="background-image:url('${art}')"></div>`;
 
     const animalName = marine[id]?.name || 'rùa quản đồng';
     const sceneTag = isVideo
-      ? `<video class="ocean-scene ocean-video explore-art" src="${videoSrc}" autoplay loop muted playsinline preload="auto" aria-label="${oceanCategories[key]?.title || ''} — ${animalName}"></video>`
+      ? `<video class="ocean-scene ocean-video explore-art" src="${videoSrc}" loop ${INLINE_VIDEO_ATTRS} preload="auto" aria-label="${oceanCategories[key]?.title || ''} — ${animalName}"></video>`
       : `<img class="ocean-scene explore-art" src="${art}" alt="${oceanCategories[key]?.title || ''} — ${animalName}, hình minh họa">`;
 
     let marks = '';
@@ -100,10 +102,8 @@ export function createOceanKnowledge({ speak }) {
       const bgVid = overlay.querySelector('video.ocean-backdrop-video');
       const loader = overlay.querySelector('.video-loading-screen');
       if (artVideo) {
-        artVideo.muted = true;
-        artVideo.defaultMuted = true;
-        artVideo.playsInline = true;
-        if (bgVid) { bgVid.muted = true; bgVid.defaultMuted = true; bgVid.playsInline = true; }
+        setupInlineVideo(artVideo);
+        if (bgVid) setupInlineVideo(bgVid);
         artVideo.onerror = () => {
           if (!artVideo.dataset.triedFallback) {
             artVideo.dataset.triedFallback = '1';

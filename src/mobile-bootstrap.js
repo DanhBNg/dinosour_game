@@ -1,3 +1,6 @@
+import { installGlobalVideoPolicy } from './components/video-utils.js';
+installGlobalVideoPolicy();
+
 // A real landscape viewport keeps pointer coordinates, media queries and WebGL
 // consistent when only the app (not the browser) is rotated.
 const embedded=window.parent!==window&&window.frameElement?.hasAttribute('data-animal-app');
@@ -21,7 +24,7 @@ if(embedded){
  };
  ['touchstart','touchend','pointerdown','click'].forEach(evt => window.addEventListener(evt, unlockOuter, {once:true, passive:true, capture:true}));
  document.body.replaceChildren();document.body.className='landscape-shell';
- const frame=document.createElement('iframe');frame.dataset.animalApp='true';frame.title='Animal World';frame.allow='fullscreen; autoplay *; autoplay; speaker *; microphone *; camera *; sound *';frame.setAttribute('allowfullscreen','');
+ const frame=document.createElement('iframe');frame.dataset.animalApp='true';frame.title='Animal World';frame.allow='fullscreen; autoplay *; autoplay; speaker *; microphone *; camera *; sound *';frame.setAttribute('allowfullscreen','');frame.setAttribute('playsinline','');frame.setAttribute('webkit-playsinline','');frame.setAttribute('x5-playsinline','true');
  Object.assign(frame.style,{position:'absolute',border:'0',transformOrigin:'0 0',display:'block'});
  Object.assign(document.body.style,{position:'fixed',inset:'0',margin:'0',overflow:'hidden',background:'#122b25'});
  const gate=document.createElement('div');gate.id='landscape-gate';gate.setAttribute('role','dialog');gate.setAttribute('aria-modal','true');gate.setAttribute('aria-labelledby','rotate-title');gate.innerHTML='<div class="rotate-card"><div class="rotate-illustration" aria-hidden="true"><span class="rotate-phone"></span></div><h1 id="rotate-title">Xoay ngang điện thoại</h1><p>Cùng khám phá thế giới động vật!</p><button id="landscape-start">Bắt đầu</button><p id="rotate-hint">Nếu điện thoại đang khóa xoay, đặt máy nằm ngang rồi bấm Bắt đầu.</p></div>';document.body.append(gate);

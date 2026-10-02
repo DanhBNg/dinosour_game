@@ -1,3 +1,5 @@
+import {installGlobalVideoPolicy} from './components/video-utils.js';
+installGlobalVideoPolicy();
 import {createMapPan} from './pages/dinosaur-world/map-pan.js';
 import {oceanJourneyMarkup,startOceanJourney,stopOceanJourney} from './pages/ocean-world/ocean-journey.js';
 import {createFreeRoam} from './core/free-roam.js';
